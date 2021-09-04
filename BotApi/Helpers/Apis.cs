@@ -16,6 +16,9 @@ using ClassLibrary.Models;
 using System.Collections.Generic;
 using ClassLibrary.Models.HelperModels;
 using System.Collections;
+using System.Web;
+using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace BotApi.Helpers
 {
@@ -89,12 +92,50 @@ namespace BotApi.Helpers
             return result;
         }
 
-        public async Task<string> Rule34Api(string tags = "")
+        private async Task<int> GetItemCount(string url)
+        {
+            int num;
+            HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse webresponse = (HttpWebResponse)await webrequest.GetResponseAsync();
+            StreamReader responseStream = new StreamReader(webresponse.GetResponseStream());
+
+            var result = responseStream.ReadToEnd();
+            num = result.Length;
+            return num;
+        }
+
+        public static async Task<IList<Rule34Post>> PostCallAPI(string url, object jsonObject)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                    var response = client.PostAsync(url, content).Result;
+                    if (response != null)
+                    {
+                        return await client.GetFromJsonAsync<IList<Rule34Post>>("Posts");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+
+        public async Task<List<string>> Rule34Api(int count = 1, string tags = "")
         {
             string url = "";
+            var img = "";
+            count = count > 15 ? 15 : count;
             Random rand = new Random();
-            int rint = rand.Next(0, 10000);
-            int res = rand.Next(0, 10000);
+            var url1 = $"http://www.rule34.xxx/index.php?page=dapi&s=post&q=index&json=1&tags=" + tags;
+            int total = await GetItemCount(url1);
+            int rint = rand.Next(0, total);
+            int res = 500;
+
             if (tags != "")
             {
                 tags += "+score:>=10";
@@ -107,32 +148,42 @@ namespace BotApi.Helpers
 
             HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse webresponse = (HttpWebResponse)await webrequest.GetResponseAsync();
-            StreamReader responseStream = new StreamReader(webresponse.GetResponseStream());
+            WebHeaderCollection header = webresponse.Headers;
 
-            var img = "";
-            if (responseStream.BaseStream.CanRead)
+            var encoding = ASCIIEncoding.ASCII;
+            var lst = new List<string>();
+            using (var reader = new System.IO.StreamReader(webresponse.GetResponseStream(), encoding))
             {
-                var result = responseStream.ReadToEnd();
-                var json = JArray.Parse(result);
-                if (!json.Children().Any())
+                string responseText = reader.ReadToEnd();
+                if (responseText != "")
                 {
-                    img = "No good results found :(";
-                }
-                else
-                {
-                    int randRes = rand.Next(0, json.Children().Count());
-                    var ingUrl = JObject.Parse(json[randRes].ToString());
-                    while (ingUrl.SelectToken("file_url").ToString().Contains(".mp4") 
-                        || ingUrl.SelectToken("file_url").ToString().Contains(".gifv"))
+                    var result = responseText;
+                    var json = JArray.Parse(result);
+                    if (!json.Children().Any())
                     {
-                        randRes = rand.Next(0, json.Children().Count());
-                        ingUrl = JObject.Parse(json[randRes].ToString());
+                        img = "No good results found :(";
                     }
-                    img = ingUrl.SelectToken("file_url").ToString();
+                    else
+                    {
+                        var tmpCount = 0;
+                        for (int i = 0; i < count; i++)
+                        {
+                            int randRes = rand.Next(i+tmpCount, json.Children().Count());
+                            var ingUrl = JObject.Parse(json[randRes].ToString());
+                            while (ingUrl.SelectToken("file_url").ToString().Contains(".mp4")
+                                || ingUrl.SelectToken("file_url").ToString().Contains(".gifv"))
+                            {
+                                randRes = rand.Next(i+tmpCount, json.Children().Count());
+                                ingUrl = JObject.Parse(json[randRes].ToString());
+                                tmpCount++;
+                            }
+                            lst.Add(ingUrl.SelectToken("file_url").ToString());
+                        }
+                        
+                    }
                 }
             }
-            
-            return img;
+            return lst;
         }
 
         public async Task<RedditResponse> RedditApiGetTop(RedditBot bot, string subreddit, int number)

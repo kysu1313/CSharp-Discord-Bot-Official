@@ -58,18 +58,21 @@ namespace DiscBotConsole.Modules
         [Command("r34", RunMode = RunMode.Async)]
         [RequireContext(ContextType.Guild)]
         [Summary("Pulls a random NSFW rule34 image. Optional tag parameter can be added, i.e. 'girl+boy'.")]
-        public async Task Rule34(string tags = "")
+        public async Task Rule34(int count = 1, string tags = "")
         {
             try
             {
                 var user = Context.User;
                 var guild = Context.Guild;
 
-                var result = await _apis.Rule34Api(tags);
+                var results = await _apis.Rule34Api(count, tags);
                 var embed = new EmbedBuilder();
 
-                embed.ImageUrl = result;
-                await ReplyAsync(null, false, embed.Build());
+                foreach (var img in results)
+                {
+                    embed.ImageUrl = img;
+                    await ReplyAsync(null, false, embed.Build());
+                }
             }
             catch (Exception e)
             {
