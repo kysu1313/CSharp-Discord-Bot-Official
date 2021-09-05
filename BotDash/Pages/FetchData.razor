@@ -1,0 +1,70 @@
+﻿@page "/fetchdata"
+
+@using ClassLibrary.Models
+@using BotApi.Helpers
+@using System.Collections.Generic
+@inject ClassLibrary.Data.ApplicationDbContext _context;
+@inject Helper _helper;
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (users == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>User Id</th>
+            <th></th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in users)
+        {
+            <tr>
+                <td>@user.userName</td>
+                <td>@user.id</td>
+                <td>@user.userLevel</td>
+                <td>@user.bank</td>
+                <td>@user.wallet</td>
+                <td>
+                    <MatSelect Label="Pick a Food Group" @bind-Value="selectedServer">
+                        <MatOptionString ></MatOptionString>
+                        @foreach (var server in userServer.GetValueOrDefault(user.userId))
+                        {
+                            <MatOptionString Value="@server.serverId.ToString()">@server.serverName</MatOptionString>
+                        }
+                    </MatSelect>
+                </td>
+                <td>@user.luck</td>
+                <td>@user.messages</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<UserExperience>? users;
+    private Dictionary<ulong, List<ServerModel>> userServer;
+    private ServerModel selectedServer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await _helper.GetAllUserExperiences();
+        if (users != null)
+        {
+            userServer = await _helper.GetServersFromUser(users);
+        }
+    }
+
+}

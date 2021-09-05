@@ -29,6 +29,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="NBitcoin" Version="6.0.8" />
     <PackageReference Include="NBitcoin.Altcoins" Version="3.0.4" />
     <PackageReference Include="QBitNinja.Client" Version="1.0.4" />
@@ -47,6 +48,10 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers" />
   </ItemGroup>
 
 </Project>

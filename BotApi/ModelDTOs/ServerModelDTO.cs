@@ -27,8 +27,8 @@ namespace BotApi.ModelDTOs
             
             return s;
         }
-
-        public List<ServerModel> GetAllUsers()
+        
+        public List<ServerModel> GetAllServers()
         {
             List<ServerModel> list = new List<ServerModel>();
             list = _context.ServerModels

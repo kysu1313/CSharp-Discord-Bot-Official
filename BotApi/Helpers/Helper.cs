@@ -41,7 +41,7 @@ namespace BotApi.Helpers
             _staticService = services;
         }
 
-        public  async Task<UserModel> getUser(ulong userId)
+        public  async Task<UserModel> GetUser(ulong userId)
         {
             UserModel user = new UserModel();
             var userModelDTO = new UserModelDTO(_context);
@@ -50,7 +50,7 @@ namespace BotApi.Helpers
             return user;
         }
 
-        public  async Task<UserExperience> getUserExperienceInServer(ulong userId, ulong serverId)
+        public  async Task<UserExperience> GetUserExperienceInServer(ulong userId, ulong serverId)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
             UserExperience user = new UserExperience();
@@ -59,7 +59,28 @@ namespace BotApi.Helpers
             return user;
         }
 
-        public async Task<UserExperience> getUserNameExperienceInServer(string username, ulong serverId)
+        public  async Task<List<UserExperience>> GetAllUserExperiences()
+        {
+            var userExperienceDTO = new UserExperienceDTO(_context, _service);
+            var users = new List<UserExperience>();
+            users = await userExperienceDTO.GetAllUserExperiences();
+            
+            return users;
+        }
+
+        public async Task<Dictionary<ulong, List<ServerModel>>> GetServersFromUser(List<UserExperience> users)
+        {
+            var serverDTO = new ServerModelDTO(_context);
+            var servers = serverDTO.GetAllServers();
+            var userDict = new Dictionary<ulong, List<ServerModel>>();
+            foreach (var user in users)
+            {
+                userDict.Add(user.userId, servers.Where(x => x.serverId == user.serverId).ToList());
+            }
+            return userDict;
+        }
+
+        public async Task<UserExperience> GetUserNameExperienceInServer(string username, ulong serverId)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
             var users = await userExperienceDTO.GetAllUserExperiencesInServer(serverId);
@@ -72,7 +93,7 @@ namespace BotApi.Helpers
             return Regex.Replace(userId, "[^.0-9]", "");
         }
 
-        public  async Task<List<UserExperience>> getAllUserInServer(ulong serverId)
+        public  async Task<List<UserExperience>> GetAllUserInServer(ulong serverId)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
             List<UserExperience> user = new List<UserExperience>();
@@ -83,25 +104,25 @@ namespace BotApi.Helpers
 
         public async Task<(int, int)> GetUserMoney(IUser user, IGuild guild)
         {
-            var getUser = await getUserExperienceInServer(user.Id, guild.Id);
+            var GetUser = await GetUserExperienceInServer(user.Id, guild.Id);
             int bank = 0;
             int wallet = 0;
-            if (getUser == null)
+            if (GetUser == null)
             {
                 await AddNewUser(user, guild);
                 bank = wallet = 500;
             }
             else
             {
-                bank = getUser.bank;
-                wallet = getUser.wallet;
+                bank = GetUser.bank;
+                wallet = GetUser.wallet;
             }
             return (bank, wallet);
         }
 
         public  async Task AddNewUser(IUser user, IGuild guild)
         {
-            var userExists = await getUser(user.Id);
+            var userExists = await GetUser(user.Id);
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
             var userModelDTO = new UserModelDTO(_context);
             if (userExists == null)
@@ -110,7 +131,7 @@ namespace BotApi.Helpers
                 
             }
 
-            var userExpExists = await getUserExperienceInServer(user.Id, guild.Id);
+            var userExpExists = await GetUserExperienceInServer(user.Id, guild.Id);
             if (userExpExists == null)
             {
                 await userExperienceDTO.AddUserExperience(user, guild);
@@ -121,13 +142,13 @@ namespace BotApi.Helpers
         {
             bool isValid = false;
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
-            var userExpExists = await getUserExperienceInServer(user.Id, guild.Id);
-            var userInMainTable = await getUser(user.Id);
+            var userExpExists = await GetUserExperienceInServer(user.Id, guild.Id);
+            var userInMainTable = await GetUser(user.Id);
 
             if (userInMainTable == null || userExpExists == null)
             {
                 await AddNewUser(user, guild);
-                userExpExists = await getUserExperienceInServer(user.Id, guild.Id);
+                userExpExists = await GetUserExperienceInServer(user.Id, guild.Id);
             }
 
             if (userExpExists != null)
@@ -145,7 +166,7 @@ namespace BotApi.Helpers
         {
             var success = false;
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
-            var userExpExists = await getUserExperienceInServer(id, guild.Id);
+            var userExpExists = await GetUserExperienceInServer(id, guild.Id);
 
             if (userExpExists != null)
             {
@@ -178,7 +199,7 @@ namespace BotApi.Helpers
             var currUser = new UserExperience();
             if (user == null)
             {
-                currUser = await getUserNameExperienceInServer(iusr.Username, guild.Id);
+                currUser = await GetUserNameExperienceInServer(iusr.Username, guild.Id);
             }
             else
             {
@@ -211,7 +232,7 @@ namespace BotApi.Helpers
             using (var dto = new UserDashDTO(_context, _service))
             {
                 dash = await dto.GetUserDash(user, guild);
-                var dbUser = await getUserExperienceInServer(user.Id, guild.Id);
+                var dbUser = await GetUserExperienceInServer(user.Id, guild.Id);
                 var api = new Apis(_context, _service);
                 var colorEnum = new DashColor();
                 foreach (var item in dash.items)

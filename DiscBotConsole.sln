@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotApi", "BotApi\BotApi.csproj", "{1B6A4B5A-469C-4B8A-8F6D-12AE4F86CC37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotApi", "BotApi\BotApi.csproj", "{1B6A4B5A-469C-4B8A-8F6D-12AE4F86CC37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{23822E13-85F0-4DAD-8E0D-1C66C4D97343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{23822E13-85F0-4DAD-8E0D-1C66C4D97343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotDash", "BotDash\BotDash.csproj", "{80A8193C-D341-4DEA-8952-5E2AB89F75DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{23822E13-85F0-4DAD-8E0D-1C66C4D97343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23822E13-85F0-4DAD-8E0D-1C66C4D97343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23822E13-85F0-4DAD-8E0D-1C66C4D97343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A8193C-D341-4DEA-8952-5E2AB89F75DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A8193C-D341-4DEA-8952-5E2AB89F75DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A8193C-D341-4DEA-8952-5E2AB89F75DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A8193C-D341-4DEA-8952-5E2AB89F75DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

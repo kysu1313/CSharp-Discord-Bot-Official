@@ -69,6 +69,14 @@ namespace ClassLibrary.Models
             return (List<UserExperience>)tmp;
         }
 
+        public async Task<List<UserExperience>> GetAllUserExperiences()
+        {
+            var list = new List<UserExperience>();
+            var result = new List<UserExperience>();
+            var users = await _context.UserExperiences.ToListAsync();
+            return users;
+        }
+
         public async Task<UserExperience> GetUserExperience(ulong userId, ulong serverId)
         {
             UserExperience user = new UserExperience();
