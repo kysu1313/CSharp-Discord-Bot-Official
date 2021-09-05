@@ -54,7 +54,7 @@ namespace BotApi.Helpers
 
         private async void TimerTask(object timerState)
         {
-            // await TimerTaskAsync(timerState);
+            //await TimerTaskAsync(timerState);
         }
 
         private async Task TimerTaskAsync(object timerState)
@@ -77,6 +77,9 @@ namespace BotApi.Helpers
                     {
                         // TODO: fix
                         await _helper.SendReminder(item);
+
+                        
+
                         item.numberOfRepeats++;
                         item.hasExecuted = true;
                     }

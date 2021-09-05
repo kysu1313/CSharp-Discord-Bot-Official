@@ -107,20 +107,20 @@ namespace DiscBotConsole.Modules
             }
 
             var userExists = new UserExperience();
-            var users = await _helper.GetAllUserInServer(guild.Id);
+            var users = await _helper.getAllUserInServer(guild.Id);
             if (users.Count > 0)
             {
                 userExists = users.FirstOrDefault(x => x.userId == user.Id && x.serverId == guild.Id);
                 if (userExists == null)
                 {
                     await _helper.AddNewUser(user, guild).ConfigureAwait(false);
-                    userExists = await _helper.GetUserExperienceInServer(user.Id, guild.Id).ConfigureAwait(false);
+                    userExists = await _helper.getUserExperienceInServer(user.Id, guild.Id).ConfigureAwait(false);
                 }
             }
             else
             {
                 await _helper.AddNewUser(user, guild).ConfigureAwait(false);
-                userExists = await _helper.GetUserExperienceInServer(user.Id, guild.Id).ConfigureAwait(false);
+                userExists = await _helper.getUserExperienceInServer(user.Id, guild.Id).ConfigureAwait(false);
             }
 
             bankAmount = userExists.bank.ToString();
@@ -177,7 +177,7 @@ namespace DiscBotConsole.Modules
             }
 
             var userExists = new UserExperience();
-            var users = await _helper.GetAllUserInServer(guild.Id);
+            var users = await _helper.getAllUserInServer(guild.Id);
             if (users.Count > 0)
             {
                 userExists = users.FirstOrDefault(x => x.userId == payee.Id);
@@ -190,7 +190,7 @@ namespace DiscBotConsole.Modules
             else
             {
                 await _helper.AddNewUser(payee, guild).ConfigureAwait(false);
-                userExists = await _helper.GetUserExperienceInServer(payee.Id, guild.Id).ConfigureAwait(false);
+                userExists = await _helper.getUserExperienceInServer(payee.Id, guild.Id).ConfigureAwait(false);
             }
 
             if (await _helper.CheckValidAmount(payer, guild, amount).ConfigureAwait(false))
@@ -412,7 +412,7 @@ namespace DiscBotConsole.Modules
 
             await _helper.AddNewUser(user, guild);
             var userExists = new UserExperience();
-            userExists = await _helper.GetUserExperienceInServer(user.Id, guild.Id);
+            userExists = await _helper.getUserExperienceInServer(user.Id, guild.Id);
             if (userExists != null)
             {
                 bankAmount = userExists.bank.ToString();
@@ -480,7 +480,7 @@ namespace DiscBotConsole.Modules
                 }
             }
             
-            var victim = await _helper.GetUserNameExperienceInServer(username, guild.Id);
+            var victim = await _helper.getUserNameExperienceInServer(username, guild.Id);
             
             if (victim == null)
             {
@@ -496,7 +496,7 @@ namespace DiscBotConsole.Modules
                 return;
             }
 
-            var userExists = await _helper.GetUserExperienceInServer(user.Id, guild.Id);
+            var userExists = await _helper.getUserExperienceInServer(user.Id, guild.Id);
             int userLuck = userExists.luck == null ||
                            userExists.luck== 0 ? 1 :
                            userExists.luck;

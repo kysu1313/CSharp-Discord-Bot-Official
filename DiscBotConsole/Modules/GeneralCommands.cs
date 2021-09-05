@@ -268,12 +268,12 @@ namespace DiscBotConsole.Modules
 
             if (userName != "")
             {
-                user = await _helper.GetUserNameExperienceInServer(userName, guild.Id);
+                user = await _helper.getUserNameExperienceInServer(userName, guild.Id);
                 sbTitle.AppendLine($"{user.userName}'s Stats");
             }
             else
             {
-                user = await _helper.GetUserExperienceInServer(Context.User.Id, guild.Id);
+                user = await _helper.getUserExperienceInServer(Context.User.Id, guild.Id);
                 sbTitle.AppendLine($"{user.userName}'s Stats");
             }
 
