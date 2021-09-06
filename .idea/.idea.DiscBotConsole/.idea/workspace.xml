@@ -141,7 +141,7 @@
       <updated>1630798748462</updated>
       <workItem from="1630798758107" duration="9865000" />
       <workItem from="1630808979903" duration="1913000" />
-      <workItem from="1630881293196" duration="6478000" />
+      <workItem from="1630881293196" duration="11261000" />
     </task>
     <servers />
   </component>
@@ -171,26 +171,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotApi/Helpers/Helper.cs</url>
-          <line>303</line>
+          <line>312</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Helpers\Helper.cs" initialLine="303" containingFunctionPresentation="method 'SendReminder'">
             <startOffsets>
-              <option value="11133" />
+              <option value="11425" />
             </startOffsets>
             <endOffsets>
-              <option value="11218" />
+              <option value="11510" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotApi/Helpers/Helper.cs</url>
-          <line>291</line>
+          <line>300</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Helpers\Helper.cs" initialLine="291" containingFunctionPresentation="method 'SendReminder'">
             <startOffsets>
-              <option value="10698" />
+              <option value="10990" />
             </startOffsets>
             <endOffsets>
-              <option value="10765" />
+              <option value="11057" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

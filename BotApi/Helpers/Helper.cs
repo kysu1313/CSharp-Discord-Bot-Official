@@ -72,6 +72,15 @@ namespace BotApi.Helpers
             return Regex.Replace(userId, "[^.0-9]", "");
         }
 
+        public async Task<List<ServerModel>> getAllServerModels()
+        {
+            var serverDTO = new ServerModelDTO(_context);
+            var servers = new List<ServerModel>();
+            servers = await serverDTO.GetAllServers();
+            
+            return servers;
+        }
+
         public  async Task<List<UserExperience>> getAllUserInServer(ulong serverId)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);

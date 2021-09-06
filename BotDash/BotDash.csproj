@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazorise" Version="0.9.4.3" />
+    <PackageReference Include="Blazorise.Charts" Version="0.9.4.3" />
+    <PackageReference Include="Blazorise.Icons.Material" Version="0.9.4.3" />
+    <PackageReference Include="Blazorise.Material" Version="0.9.4.3" />
     <PackageReference Include="MatBlazor" Version="2.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />

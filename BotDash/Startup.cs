@@ -1,3 +1,6 @@
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.Material;
 using BotDash.Areas.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -35,6 +38,14 @@ namespace BotDash
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddMatBlazor();
+            services
+                .AddBlazorise( options =>
+                {
+                    options.ChangeTextOnKeyPress = true; // optional
+                } )
+                .AddBootstrapProviders()
+                .AddMaterialIcons();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BotApi.Helpers;
+using ClassLibrary.Data;
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +14,20 @@ namespace BotApi.Controllers
     [ApiController]
     public class HelperApiController : ControllerBase
     {
+
+        private ApplicationDbContext _context;
+        private Helper _helper;
+        
+        public HelperApiController(ApplicationDbContext _context, IServiceProvider services)
+        {
+            _helper = new Helper(_context, services);
+        }
         // GET: api/HelperApi
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<ServerModel>> GetTotalServers()
         {
-            return new string[] { "value1", "value2" };
+            var servers = await _helper.getAllServerModels();
+            return servers;
         }
 
         // GET: api/HelperApi/5
