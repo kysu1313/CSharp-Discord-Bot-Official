@@ -28,11 +28,10 @@ namespace BotApi.ModelDTOs
             return s;
         }
 
-        public List<ServerModel> GetAllUsers()
+        public async Task<List<ServerModel>> GetAllServers()
         {
-            List<ServerModel> list = new List<ServerModel>();
-            list = _context.ServerModels
-                .ToList<ServerModel>();
+            var list = new List<ServerModel>();
+            list = await _context.ServerModels.AsQueryable().ToListAsync();
             
             return list;
         }

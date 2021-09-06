@@ -13,6 +13,8 @@ namespace ClassLibrary.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
+
+        public Guid userGuid { get; set; }
         public ulong userId { get; set; }
         public string userName { get; set; }
         public bool slowModeEnabled { get; set; }

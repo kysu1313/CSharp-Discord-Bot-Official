@@ -1,0 +1,14 @@
+
+@inherits UsageGraphModel
+@inject ApplicationDbContext _context
+@inject Helper _helper
+@inject IServiceProvider _services
+@using Blazorise.Charts;
+@using ClassLibrary.Data
+
+<h3>UsageGraph</h3>
+
+<Button Clicked="@(async () => await HandleRedraw())">Redraw</Button>
+
+<LineChart @ref="_lineChart" TItem="double" />
+
