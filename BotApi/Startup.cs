@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrary.Data;
 
 namespace BotApi
 {
@@ -32,6 +33,7 @@ namespace BotApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BotApi", Version = "v1" });
             });
+            services.AddScoped<ApplicationDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

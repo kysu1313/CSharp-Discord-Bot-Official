@@ -24,10 +24,19 @@ namespace BotApi.Controllers
         }
         // GET: api/HelperApi
         [HttpGet]
+        [Route("api/getservers")]
         public async Task<List<ServerModel>> GetTotalServers()
         {
             var servers = await _helper.getAllServerModels();
             return servers;
+        }
+        // GET: api/HelperApi
+        [HttpGet]
+        [Route("api/getusers")]
+        public async Task<List<UserExperience>> GetTotalUsers()
+        {
+            var users = await _helper.getAllUserExperiences();
+            return users;
         }
 
         // GET: api/HelperApi/5

@@ -59,6 +59,14 @@ namespace BotApi.Helpers
             return user;
         }
 
+        public  async Task<List<UserExperience>> getAllUserExperiences()
+        {
+            var userExperienceDTO = new UserExperienceDTO(_context, _service);
+            var users = await userExperienceDTO.GetAllUserExperiences();
+            
+            return users;
+        }
+
         public async Task<UserExperience> getUserNameExperienceInServer(string username, ulong serverId)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
