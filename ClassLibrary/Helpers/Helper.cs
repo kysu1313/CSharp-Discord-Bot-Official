@@ -1,4 +1,4 @@
-﻿using BotApi.ModelDTOs;
+﻿using ClassLibrary.ModelDTOs;
 using ClassLibrary.Data;
 using ClassLibrary.DataContext;
 using ClassLibrary.Models;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BotApi.Helpers
+namespace ClassLibrary.Helpers
 {
     public class Helper : ModuleBase
     {
@@ -57,6 +57,14 @@ namespace BotApi.Helpers
             user = await userExperienceDTO.GetUserExperience(userId, serverId);
             
             return user;
+        }
+
+        public  async Task<List<UserExperience>> getAllUserExperiences()
+        {
+            var userExperienceDTO = new UserExperienceDTO(_context, _service);
+            var users = await userExperienceDTO.GetAllUserExperiences();
+            
+            return users;
         }
 
         public async Task<UserExperience> getUserNameExperienceInServer(string username, ulong serverId)

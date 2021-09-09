@@ -1,4 +1,4 @@
-﻿using BotApi.Helpers;
+﻿using ClassLibrary.Helpers;
 using ClassLibrary.Data;
 using ClassLibrary.Models;
 using Discord;
@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.Helpers;
 
 namespace DiscBotConsole.Modules
 {
@@ -57,13 +58,19 @@ namespace DiscBotConsole.Modules
         [RequireNsfw]
         [Command("r34", RunMode = RunMode.Async)]
         [RequireContext(ContextType.Guild)]
-        [Summary("Pulls a random NSFW rule34 image. Optional tag parameter can be added, i.e. 'girl+boy'.")]
-        public async Task Rule34(int count = 1, string tags = "")
+        [Summary("Pulls a random NSFW rule34 image. Optional tag parameter can be added for count and tags, i.e. '5 girl+boy'.")]
+        public async Task Rule34([Remainder] string tags = null)
         {
             try
             {
                 var user = Context.User;
                 var guild = Context.Guild;
+
+                tags = string.IsNullOrEmpty(tags) ? "" : tags;
+                var tmpTags = tags.Split(" ");
+                int.TryParse(tmpTags[0], out int exists);
+                tags = exists == 0 ? tags : tmpTags[1];
+                int count = exists == 0 ? 1 : exists > 15 ? 15 : exists;
 
                 var results = await _apis.Rule34Api(count, tags);
                 var embed = new EmbedBuilder();

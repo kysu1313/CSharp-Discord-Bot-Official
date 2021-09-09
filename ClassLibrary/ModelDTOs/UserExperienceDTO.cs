@@ -1,4 +1,4 @@
-﻿using BotApi.Helpers;
+﻿using ClassLibrary.Helpers;
 using ClassLibrary.Data;
 using Discord;
 using Discord.WebSocket;
@@ -52,7 +52,12 @@ namespace ClassLibrary.Models
         {
             _context.UserExperiences.Update(user);
             await _context.SaveChangesAsync();
+        }
 
+        public async Task<List<UserExperience>> GetAllUserExperiences()
+        {
+            var users = await _context.UserExperiences.ToListAsync();
+            return users;
         }
 
         public async Task<List<UserExperience>> GetAllUserExperiencesInServer(ulong serverId)

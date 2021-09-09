@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BotApi.ModelDTOs
+namespace ClassLibrary.ModelDTOs
 {
     public class ServerModelDTO
     {

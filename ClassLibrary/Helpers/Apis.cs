@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ClassLibrary.Data;
-using BotApi.ModelDTOs;
+using ClassLibrary.ModelDTOs;
 using RedditSharp;
 using RedditSharp.Things;
 using ClassLibrary.Models;
@@ -20,7 +20,7 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 
-namespace BotApi.Helpers
+namespace ClassLibrary.Helpers
 {
     public class Apis
     {

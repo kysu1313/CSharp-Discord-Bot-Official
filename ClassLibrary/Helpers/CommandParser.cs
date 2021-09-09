@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BotApi.Helpers
+namespace ClassLibrary.Helpers
 {
     public class CommandParser
     {

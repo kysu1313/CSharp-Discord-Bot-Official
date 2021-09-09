@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using ClassLibrary.Data;
-using BotApi.Helpers;
+using ClassLibrary.Helpers;
 using DiscBotConsole;
 
 namespace ClassLibrary.Models.GeneralCommands
