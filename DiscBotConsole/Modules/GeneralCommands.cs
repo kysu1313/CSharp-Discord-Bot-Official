@@ -1,22 +1,19 @@
 ﻿
 
 using Discord;
-using Discord.Net;
 using Discord.WebSocket;
 using Discord.Commands;
 using System;
-using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using ClassLibrary.Data;
-using BotApi.Helpers;
+using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Discord.Rest;
 using Humanizer;
-using BotApi.Helpers.Crypto;
+using ClassLibrary.Helpers.Crypto;
 
 namespace DiscBotConsole.Modules
 {

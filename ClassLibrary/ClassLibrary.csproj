@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlockchainAPI" Version="4.0.0" />
+    <PackageReference Include="Coinbase" Version="6.0.1" />
     <PackageReference Include="Discord.Net" Version="2.4.0" />
     <PackageReference Include="Discord.Net.Commands" Version="2.4.0" />
     <PackageReference Include="Discord.Net.Rest" Version="2.4.0" />

@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
-using BotApi.Helpers;
+using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using System.Text.RegularExpressions;
+using ClassLibrary.Helpers;
 
 namespace DiscBotConsole.Modules
 {

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrary.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BotApi
 {
@@ -13,7 +15,22 @@ namespace BotApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            // CreateHostBuilder(args).Build().Run();
+            
+            var host = CreateHostBuilder(args).Build(); 
+            using (var scope = host.Services.CreateScope()) 
+            { 
+                var services = scope.ServiceProvider; 
+                try 
+                { 
+                    var context = services.GetRequiredService<ApplicationDbContext>(); 
+                } catch (Exception) 
+                { 
+                    Console.WriteLine("An error occurred while seeding the database."); 
+                } 
+            } 
+            host.Run();
+            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

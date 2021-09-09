@@ -1,5 +1,5 @@
 ﻿using ClassLibrary.Data;
-using BotApi.Helpers;
+using ClassLibrary.Helpers;
 using Discord;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Models;
 
-namespace BotApi.ModelDTOs
+namespace ClassLibrary.ModelDTOs
 {
     public class UserDashDTO : IDisposable
     {

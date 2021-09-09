@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BotApi
 {
@@ -29,6 +30,8 @@ namespace BotApi
         {
 
             services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultDb"))); 
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BotApi", Version = "v1" });

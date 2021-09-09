@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Blazorise.Charts;
-using BotApi.Helpers;
 using ClassLibrary.Data;
+using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using ClassLibrary.Models.Utility;
 using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using static Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace BotDash.ComponentModels
@@ -21,19 +23,50 @@ namespace BotDash.ComponentModels
         private Helper _helper;
         public LineChart<double> _userLineChart;
         public LineChart<double> _serverLineChart;
+        public int _userCount;
+        public int _serverCount;
+        private readonly string _baseUrl = "https://localhost:5003/api/";
         
         protected override async Task OnInitializedAsync()
         {
-            var serverStream = new HttpRequestMessage(HttpMethod.Get, "http://localhost:52466/api/getservers");
-            
-            var userStream = new HttpRequestMessage(HttpMethod.Get, "http://localhost:52466/api/getservers");
-            
-            _servers = serverStream.Content == null ? new List<ServerModel>() : await JsonSerializer.DeserializeAsync
-                <List<ServerModel>>(await serverStream.Content.ReadAsStreamAsync());
-            _users = userStream.Content == null ? new List<UserExperience>() : await JsonSerializer.DeserializeAsync
-                <List<UserExperience>>(await userStream.Content.ReadAsStreamAsync());
-            // _userLineChart = new LineChart<double>();
-            // _serverLineChart = new LineChart<double>();
+            await InitializeVars();
+        }
+
+        private async Task InitializeVars()
+        {
+            // var serverStream = new HttpRequestMessage(HttpMethod.Get, "HelperApi/api/getservers");
+            //
+            // var userStream = new HttpRequestMessage(HttpMethod.Get, "HelperApi/api/getusers");
+            //
+            // _servers = serverStream.Content == null ? new List<ServerModel>() : await JsonSerializer.DeserializeAsync
+            //     <List<ServerModel>>(await serverStream.Content.ReadAsStreamAsync());
+            // _users = userStream.Content == null ? new List<UserExperience>() : await JsonSerializer.DeserializeAsync
+            //     <List<UserExperience>>(await userStream.Content.ReadAsStreamAsync());
+            _users = await GetUsers();
+            _userLineChart = new LineChart<double>();
+            _serverLineChart = new LineChart<double>();
+        }
+
+        private async Task<List<UserExperience>> GetUsers()
+        {
+            List<UserExperience> usrs = new List<UserExperience>();  
+
+            using (var client = new HttpClient())  
+            {  
+                //Passing service base url  
+                client.BaseAddress = new Uri(_baseUrl);
+                client.DefaultRequestHeaders.Clear();  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+
+                //Sending request to find web api REST service resource GetDepartments using HttpClient  
+                HttpResponseMessage res = await client.GetAsync("HelperApi/api/getusers");  
+                if (res.IsSuccessStatusCode)  
+                {
+                    var objResponse = res.Content.ReadAsStringAsync().Result;  
+                    usrs = JsonConvert.DeserializeObject<List<UserExperience>>(objResponse);
+                }
+                return usrs;
+            }  
         }
 
         protected override async Task OnAfterRenderAsync( bool firstRender )
@@ -46,6 +79,8 @@ namespace BotDash.ComponentModels
 
         public async Task HandleRedraw()
         {
+            
+            await InitializeVars();
             await _userLineChart.Clear();
             await _userLineChart.AddLabelsDatasetsAndUpdate( _labels, GetUserDataset() );
             await _serverLineChart.Clear();
@@ -73,7 +108,9 @@ namespace BotDash.ComponentModels
         private List<double> ParseUserData(List<UserExperience> users)
         {
             var list = new List<double>();
-            users.Sort((x, y) => DateTime.Compare(x.dateUpdated, y.dateUpdated));
+            if (users.Count > 0)
+                users.Sort((x, y) => DateTime.Compare(x.dateUpdated, y.dateUpdated));
+            
             foreach (var user in users)
             {
                 var date = user.dateUpdated;

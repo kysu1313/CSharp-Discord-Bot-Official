@@ -2,7 +2,7 @@ using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.Material;
 using BotApi.Controllers;
-using BotApi.Helpers;
+using ClassLibrary.Helpers;
 using BotDash.Areas.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;

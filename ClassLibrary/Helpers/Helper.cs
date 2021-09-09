@@ -1,4 +1,4 @@
-﻿using BotApi.ModelDTOs;
+﻿using ClassLibrary.ModelDTOs;
 using ClassLibrary.Data;
 using ClassLibrary.DataContext;
 using ClassLibrary.Models;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BotApi.Helpers
+namespace ClassLibrary.Helpers
 {
     public class Helper : ModuleBase
     {

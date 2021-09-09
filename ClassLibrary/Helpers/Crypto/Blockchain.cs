@@ -19,7 +19,7 @@ using Money = NBitcoin.Money;
 using Network = NBitcoin.Network;
 using System.Linq;
 
-namespace BotApi.Helpers.Crypto
+namespace ClassLibrary.Helpers.Crypto
 {
     public class Blockchain
     {

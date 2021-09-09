@@ -1,4 +1,4 @@
-﻿using BotApi.Helpers;
+﻿using ClassLibrary.Helpers;
 using ClassLibrary.Data;
 using Discord;
 using Discord.WebSocket;
