@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ClassLibrary.Helpers;
 using ClassLibrary.Data;
 using ClassLibrary.Models;
+using ClassLibrary.Models.ContextModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotApi.Api

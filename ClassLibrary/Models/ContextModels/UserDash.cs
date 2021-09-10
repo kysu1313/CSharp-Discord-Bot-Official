@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Models
+namespace ClassLibrary.Models.ContextModels
 {
     public class UserDash
     {

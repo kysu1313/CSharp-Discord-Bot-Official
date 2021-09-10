@@ -7,6 +7,7 @@ using Blazorise.Charts;
 using ClassLibrary.Data;
 using ClassLibrary.Helpers;
 using ClassLibrary.Models;
+using ClassLibrary.Models.ContextModels;
 using ClassLibrary.Models.Utility;
 using Microsoft.AspNetCore.Components;
 using Newtonsoft.Json;
@@ -21,10 +22,6 @@ namespace BotDash.ComponentModels
         private List<ServerModel> _servers;
         private List<UserExperience> _users;
         private Helper _helper;
-        public LineChart<double> _userLineChart;
-        public LineChart<double> _serverLineChart;
-        public int _userCount;
-        public int _serverCount;
         private readonly string _baseUrl = "https://localhost:5003/api/";
         
         protected override async Task OnInitializedAsync()
@@ -34,17 +31,19 @@ namespace BotDash.ComponentModels
 
         private async Task InitializeVars()
         {
-            // var serverStream = new HttpRequestMessage(HttpMethod.Get, "HelperApi/api/getservers");
-            //
-            // var userStream = new HttpRequestMessage(HttpMethod.Get, "HelperApi/api/getusers");
-            //
-            // _servers = serverStream.Content == null ? new List<ServerModel>() : await JsonSerializer.DeserializeAsync
-            //     <List<ServerModel>>(await serverStream.Content.ReadAsStreamAsync());
-            // _users = userStream.Content == null ? new List<UserExperience>() : await JsonSerializer.DeserializeAsync
-            //     <List<UserExperience>>(await userStream.Content.ReadAsStreamAsync());
             _users = await GetUsers();
-            _userLineChart = new LineChart<double>();
-            _serverLineChart = new LineChart<double>();
+            _servers = await GetServers();
+            
+        }
+
+        public string GetUserCount()
+        {
+            return _users == null ? "No users currently" : $"Total Users: {_users.Count}";
+        }
+
+        public string GetServerCount()
+        {
+            return _servers == null ? "No servers currently" : $"Total Servers: {_servers.Count}";
         }
 
         private async Task<List<UserExperience>> GetUsers()
@@ -69,69 +68,26 @@ namespace BotDash.ComponentModels
             }  
         }
 
-        protected override async Task OnAfterRenderAsync( bool firstRender )
+        private async Task<List<ServerModel>> GetServers()
         {
-            if ( firstRender )
-            {
-                await HandleRedraw();
-            }
-        }
+            List<ServerModel> svrs = new List<ServerModel>();  
 
-        public async Task HandleRedraw()
-        {
-            
-            await InitializeVars();
-            await _userLineChart.Clear();
-            await _userLineChart.AddLabelsDatasetsAndUpdate( _labels, GetUserDataset() );
-            await _serverLineChart.Clear();
-            await _serverLineChart.AddLabelsDatasetsAndUpdate( _labels, GetUserDataset() );
-        }
+            using (var client = new HttpClient())  
+            {  
+                //Passing service base url  
+                client.BaseAddress = new Uri(_baseUrl);
+                client.DefaultRequestHeaders.Clear();  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
 
-        LineChartDataset<double> GetUserDataset()
-        {
-            return new LineChartDataset<double>
-            {
-                Label = "# of randoms",
-                Data = ParseUserData(_users),
-                BackgroundColor = _backgroundColors,
-                BorderColor = _borderColors,
-                Fill = true,
-                PointRadius = 2,
-                BorderDash = new List<int> { }
-            };
-        }
-
-        string[] _labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
-        List<string> _backgroundColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 0.2f ), ChartColor.FromRgba( 54, 162, 235, 0.2f ), ChartColor.FromRgba( 255, 206, 86, 0.2f ), ChartColor.FromRgba( 75, 192, 192, 0.2f ), ChartColor.FromRgba( 153, 102, 255, 0.2f ), ChartColor.FromRgba( 255, 159, 64, 0.2f ) };
-        List<string> _borderColors = new List<string> { ChartColor.FromRgba( 255, 99, 132, 1f ), ChartColor.FromRgba( 54, 162, 235, 1f ), ChartColor.FromRgba( 255, 206, 86, 1f ), ChartColor.FromRgba( 75, 192, 192, 1f ), ChartColor.FromRgba( 153, 102, 255, 1f ), ChartColor.FromRgba( 255, 159, 64, 1f ) };
-
-        private List<double> ParseUserData(List<UserExperience> users)
-        {
-            var list = new List<double>();
-            if (users.Count > 0)
-                users.Sort((x, y) => DateTime.Compare(x.dateUpdated, y.dateUpdated));
-            
-            foreach (var user in users)
-            {
-                var date = user.dateUpdated;
-                double count = 0;
-                foreach (var u in users)
+                //Sending request to find web api REST service resource GetDepartments using HttpClient  
+                HttpResponseMessage res = await client.GetAsync("HelperApi/api/getservers");  
+                if (res.IsSuccessStatusCode)  
                 {
-                    if (u.dateUpdated.Day.Equals(date.Day))
-                    {
-                        count++;
-                    }
-                    list.Add(count);
+                    var objResponse = res.Content.ReadAsStringAsync().Result;  
+                    svrs = JsonConvert.DeserializeObject<List<ServerModel>>(objResponse);
                 }
-            }
-
-            return list;
-        }
-        List<double> RandomizeData()
-        {
-            var r = new Random( DateTime.Now.Millisecond );
-
-            return new List<double> { r.Next( 3, 50 ) * r.NextDouble(), r.Next( 3, 50 ) * r.NextDouble(), r.Next( 3, 50 ) * r.NextDouble(), r.Next( 3, 50 ) * r.NextDouble(), r.Next( 3, 50 ) * r.NextDouble(), r.Next( 3, 50 ) * r.NextDouble() };
+                return svrs;
+            }  
         }
     }
 }

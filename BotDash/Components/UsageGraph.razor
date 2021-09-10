@@ -7,7 +7,15 @@
 
 <h3>UsageGraph</h3>
 
-<Button Clicked="@(async () => await HandleRedraw())">Redraw</Button>
+<style>
+    .app-fab--absolute {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+    }
+</style>
 
-<LineChart @ref="_userLineChart" TItem="double" Responsive="true" size="500" />
+<MatFAB Icon="@MatIconNames.People" Label="@GetUserCount()" ></MatFAB>
+
+<MatFAB Icon="@MatIconNames.Computer" Label="@GetServerCount()"></MatFAB>
 
