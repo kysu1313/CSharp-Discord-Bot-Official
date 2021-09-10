@@ -14,6 +14,7 @@ using ClassLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Humanizer;
 using ClassLibrary.Helpers.Crypto;
+using ClassLibrary.Models.ContextModels;
 
 namespace DiscBotConsole.Modules
 {

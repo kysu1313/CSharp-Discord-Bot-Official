@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Models;
+using ClassLibrary.Models.ContextModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

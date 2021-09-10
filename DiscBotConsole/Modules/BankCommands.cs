@@ -9,6 +9,7 @@ using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using System.Text.RegularExpressions;
 using ClassLibrary.Helpers;
+using ClassLibrary.Models.ContextModels;
 
 namespace DiscBotConsole.Modules
 {

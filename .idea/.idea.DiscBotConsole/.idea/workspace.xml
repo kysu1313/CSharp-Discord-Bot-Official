@@ -11,33 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Controllers/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Helpers/Apis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Apis.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Helpers/CommandParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/CommandParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Helpers/Crypto/Blockchain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Crypto/Blockchain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Helpers/Reminder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Reminder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/CryptoModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/CryptoModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/ReminderModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/ReminderModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/ServerModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/ServerModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/StatModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/StatModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/UserDashDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserDashDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/UserExperienceDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserExperienceDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/ModelDTOs/UserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Shared/MainLayout.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/ApiCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/ApiCommands.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CryptoModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CryptoModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" afterDir="false" />
     </list>
@@ -86,7 +71,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.31134352" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.30937147" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -95,7 +80,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.DiscBotConsole">
+  <component name="RunManager" selected="Compound.All-Projects">
     <configuration name="All-Projects" type="CompoundRunConfigurationType">
       <toRun name="BotApi" type="LaunchSettings" />
       <toRun name="DiscBotConsole" type="LaunchSettings" />
@@ -195,7 +180,7 @@
       <deployment type="dockerfile">
         <settings>
           <option name="imageTag" value="dev1.8" />
-          <option name="containerName" value="discbotconsole" />
+          <option name="containerName" value="botcontainer" />
           <option name="sourceFilePath" value="Dockerfile" />
         </settings>
       </deployment>
@@ -256,10 +241,10 @@
           <line>312</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Helpers\Helper.cs" initialLine="303" containingFunctionPresentation="method 'SendReminder'">
             <startOffsets>
-              <option value="11437" />
+              <option value="11478" />
             </startOffsets>
             <endOffsets>
-              <option value="11522" />
+              <option value="11563" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -269,10 +254,10 @@
           <line>300</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Helpers\Helper.cs" initialLine="291" containingFunctionPresentation="method 'SendReminder'">
             <startOffsets>
-              <option value="11002" />
+              <option value="11043" />
             </startOffsets>
             <endOffsets>
-              <option value="11069" />
+              <option value="11110" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
@@ -318,58 +303,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs</url>
-          <line>108</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\ComponentModels\UsageGraphModel.cs" initialLine="104" containingFunctionPresentation="method 'ParseUserData'">
-            <startOffsets>
-              <option value="4708" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4709" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs</url>
-          <line>127</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\ComponentModels\UsageGraphModel.cs" initialLine="127" containingFunctionPresentation="method 'ParseUserData'">
-            <startOffsets>
-              <option value="5296" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5308" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DiscBotConsole/Modules/ApiCommands.cs</url>
-          <line>74</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\DiscBotConsole\Modules\ApiCommands.cs" initialLine="72" containingFunctionPresentation="method 'Rule34'">
-            <startOffsets>
-              <option value="2390" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2439" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/Apis.cs</url>
-          <line>158</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\Apis.cs" initialLine="158" containingFunctionPresentation="method 'Rule34Api'">
-            <startOffsets>
-              <option value="5976" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5977" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

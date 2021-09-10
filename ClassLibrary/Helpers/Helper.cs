@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Helpers
 {

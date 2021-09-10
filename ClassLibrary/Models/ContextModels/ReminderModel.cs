@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Models
+namespace ClassLibrary.Models.ContextModels
 {
     public class ReminderModel
     {
