@@ -11,20 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/IdentityDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CryptoModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CryptoModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,23 +274,23 @@
           <line>29</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Controllers\HelperApiController.cs" initialLine="29" containingFunctionPresentation="method 'GetTotalServers'">
             <startOffsets>
-              <option value="749" />
+              <option value="790" />
             </startOffsets>
             <endOffsets>
-              <option value="798" />
+              <option value="839" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs</url>
-          <line>26</line>
+          <line>27</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Api\HelperApiController.cs" initialLine="26" containingFunctionPresentation="method 'GetTotalServers'">
             <startOffsets>
-              <option value="735" />
+              <option value="776" />
             </startOffsets>
             <endOffsets>
-              <option value="736" />
+              <option value="777" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="27" />
