@@ -33,10 +33,12 @@ namespace DiscBotConsole
 
         public Program()
         {
-            // create the configuration
+            // Replace connection string with below for testing
+            // Server=(localdb)\mssqllocaldb;Database=aspnet-53bc9b9d-9d6a-45d4-8429-2a2761773502;Tru
+            // Test DB name: 20210910022534_testDb
             var _builder = new ConfigurationBuilder()
-                //.SetBasePath(AppContext.BaseDirectory) //   <---- UNCOMMENT FOR MIGRATIONS
-                .SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
+                .SetBasePath(AppContext.BaseDirectory) //   <---- UNCOMMENT FOR MIGRATIONS
+                // .SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
                 .AddJsonFile(path: "appsettings.json")
                 .AddUserSecrets<Program>();
 

@@ -13,11 +13,11 @@ namespace ClassLibrary.Models.ContextModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public int userEntryId { get; set; }
 
         public Guid userGuid { get; set; }
         public ulong userId { get; set; }
-        public string userName { get; set; }
+        public string userNameEntry { get; set; }
         public bool slowModeEnabled { get; set; }
         public int slowModeTime { get; set; }
     }

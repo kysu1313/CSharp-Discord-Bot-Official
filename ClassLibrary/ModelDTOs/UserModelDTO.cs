@@ -27,7 +27,7 @@ namespace ClassLibrary.DataContext
             UserModel newUser = new UserModel()
             {
                 userId = user.Id,
-                userName = user.Username,
+                userNameEntry = user.Username,
                 slowModeEnabled = false,
                 slowModeTime = 0
             };

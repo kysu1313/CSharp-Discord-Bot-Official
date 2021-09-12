@@ -17,7 +17,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Helpers
 {
-    public class Helper : ModuleBase
+    public class Helper : IDisposable
     {
         public int STARTING_MONEY = 500;
         public int MAX_USER_LEVEL = 100;
@@ -31,6 +31,7 @@ namespace ClassLibrary.Helpers
         private readonly UserModelDTO _userModelDTO;
         private readonly ServerModelDTO _serverModelDTO;
         private ReminderModelDTO _reminderModelDTO;
+        private List<ServerCommands> _commands;
 
         public Helper(ApplicationDbContext context, IServiceProvider services, ICommandContext commandContext = null)
         {
@@ -40,6 +41,7 @@ namespace ClassLibrary.Helpers
             _staticCommandContext = commandContext;
             //__commandContext = services.GetRequiredService<ICommandContext>();
             _staticService = services;
+            _commands = _context.ServerCommandModels.ToList();
         }
 
         public  async Task<UserModel> getUser(ulong userId)
@@ -68,12 +70,18 @@ namespace ClassLibrary.Helpers
             return users;
         }
 
-        public async Task<UserExperience> getUserNameExperienceInServer(string username, ulong serverId)
+        public async Task<UserExperience> getUserNameExperienceInServer(IUser user, IGuild guild)
         {
             var userExperienceDTO = new UserExperienceDTO(_context, _service);
-            var users = await userExperienceDTO.GetAllUserExperiencesInServer(serverId);
-            var user = users.Where(usr => usr.userName == username).FirstOrDefault();
-            return user;
+            var users = await userExperienceDTO.GetAllUserExperiencesInServer(guild.Id);
+            var usr = users.FirstOrDefault(usr => usr.userName == user.Username);
+            if (usr == null)
+            {
+                await AddNewUser(user, guild);
+                usr = users.FirstOrDefault(u => u.userName == user.Username);
+            }
+             
+            return usr;
         }
 
         public async Task<string> CleanUserAtString(string userId)
@@ -196,7 +204,7 @@ namespace ClassLibrary.Helpers
             var currUser = new UserExperience();
             if (user == null)
             {
-                currUser = await getUserNameExperienceInServer(iusr.Username, guild.Id);
+                currUser = await getUserNameExperienceInServer(iusr, guild);
             }
             else
             {
@@ -327,5 +335,20 @@ namespace ClassLibrary.Helpers
             //await Discord.UserExtensions.SendMessageAsync(user, sb.ToString());
         }
 
+        public void Dispose()
+        {
+            _userExperienceDTO?.Dispose();
+            _userModelDTO?.Dispose();
+        }
+
+        public async Task<List<ServerCommands>> GetCommandStatuses()
+        {
+            if (_commands == null)
+            {
+                _commands = await _context.ServerCommandModels.ToListAsync();
+            }
+
+            return _commands;
+        }
     }
 }
