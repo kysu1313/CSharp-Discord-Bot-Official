@@ -37,6 +37,22 @@ namespace BotApi.Api
             var users = await _helper.getAllUserExperiences();
             return users;
         }
+        // GET: api/HelperApi
+        [HttpGet]
+        [Route("api/getusersinserver{string}")]
+        public async Task<List<UserExperience>> GetUsersInServer(string userId)
+        {
+            var users = await _helper.getAllUserExperiences();
+            return users;
+        }
+        // GET: api/HelperApi
+        [HttpGet]
+        [Route("api/getcommandsinserver{string}")]
+        public async Task<List<ServerModel>> GetCommandsInServers(string userId)
+        {
+            var servers = await _helper.getAllServerModels();
+            return servers;
+        }
 
         // GET: api/HelperApi/5
         [HttpGet("{id}", Name = "Get")]

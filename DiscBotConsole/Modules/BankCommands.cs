@@ -482,7 +482,7 @@ namespace DiscBotConsole.Modules
                 }
             }
             
-            var victim = await _helper.getUserNameExperienceInServer(username, guild.Id);
+            var victim = await _helper.getUserNameExperienceInServer(user, guild);
             
             if (victim == null)
             {

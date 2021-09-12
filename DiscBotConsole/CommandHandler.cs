@@ -3,12 +3,17 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using ClassLibrary.Data;
 using ClassLibrary.Helpers;
+using ClassLibrary.ModelDTOs;
 using DiscBotConsole;
+using DiscBotConsole.Modules;
+using k8s.KubeConfigModels;
 
 namespace ClassLibrary.Models.GeneralCommands
 {
@@ -48,6 +53,7 @@ namespace ClassLibrary.Models.GeneralCommands
         }
 
         // this class is where the magic starts, and takes actions upon receiving messages
+        [RequireContext(ContextType.Guild)]
         public async Task MessageReceivedAsync(SocketMessage rawMessage)
         {
             // ensures we don't process system/other bot messages
@@ -59,6 +65,37 @@ namespace ClassLibrary.Models.GeneralCommands
             if (message.Source != MessageSource.User)
             {
                 return;
+            }
+
+            // This is a hack to get the current guild ID
+            var guilds = _client.Guilds.ToList();
+            SocketGuildChannel server = null;
+            SocketGuild currGuild = null;
+            bool runCommand = true;
+            
+            foreach (var g in guilds)
+            {
+                server = g.Channels.FirstOrDefault(x => x.Id == message.Channel.Id);
+                currGuild = g;
+                if (server != null)
+                    break;
+            }
+            // Check for disabled commands
+            await using (var dto = new CommandModelDTO(_context, _services))
+            {
+                var allCmds = new List<string>();
+                allCmds.AddRange(_commands.Commands.ToList().Select(x => x.Name));
+                var currCmds = (await dto.GetCommands(currGuild.Id).ConfigureAwait(false));
+                var existingCmds = currCmds.Select(x => x.commandName);
+                var tmpLst = allCmds.Except(existingCmds).ToList();
+                if (tmpLst.Count > 0)
+                {
+                    await dto.AddCommands(tmpLst, message.Author, currGuild);
+                }
+
+                var tmpCmd = currCmds.FirstOrDefault(x => 
+                    x.commandName == message.Content.ToString().Substring(1));
+                runCommand = tmpCmd != null ? tmpCmd.enabled : true;
             }
 
             // sets the argument position away from the prefix
@@ -77,12 +114,10 @@ namespace ClassLibrary.Models.GeneralCommands
                 return;
             }
 
-            await _commands.ExecuteAsync(context, argPos, _services);
-            // execute command if one is found that matches
-            //using (var scope = _services.CreateScope())
-            //{
-            //    await _commands.ExecuteAsync(context, argPos, scope.ServiceProvider);
-            //}
+            if (runCommand)
+            {
+                await _commands.ExecuteAsync(context, argPos, _services);    
+            }
         }
 
         public async Task CommandExecutedAsync(Optional<CommandInfo> command, ICommandContext context, IResult result)
@@ -115,7 +150,20 @@ namespace ClassLibrary.Models.GeneralCommands
                 $"Cause: {result.ErrorReason}" +
                 $"!");
         }
+    
+        private async Task<IEnumerable<string>> GetMethods(Type type)
+        {
+            var list = new List<string>();
+            foreach (var method in type.GetMethods())
+            {
+                if (method.IsPublic)
+                    list.Add(method.Name);
+            }
+            return list;
+        }
     }
+    
+    
 
 
 

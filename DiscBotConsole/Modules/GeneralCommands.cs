@@ -8,13 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using ClassLibrary.Data;
 using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Humanizer;
 using ClassLibrary.Helpers.Crypto;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
+using k8s.KubeConfigModels;
 
 namespace DiscBotConsole.Modules
 {
@@ -27,7 +32,8 @@ namespace DiscBotConsole.Modules
         private readonly Helper _helper;
         private DiscordSocketClient _client;
         private Reminder _reminder;
-
+        private List<ServerCommands> _commandStatuses;
+        
         public GeneralCommands(ApplicationDbContext context, IServiceProvider services)
         {
             _context = context;
@@ -35,15 +41,17 @@ namespace DiscBotConsole.Modules
             _helper = new Helper(context, services);
             _reminder = new Reminder(context, services);
             _commands = services.GetRequiredService<CommandService>();
+            _commandStatuses = _helper.GetCommandStatuses().Result;
         }
 
         [Command("ping")]
         [Summary("Simple check to make sure bot is running.\n !ping")]
-        public async Task PingPong()
+        public async Task Ping()
         {
+            
             // initialize empty string builder for reply
             var sb = new StringBuilder();
-
+            
             // get user info from the Context
             var user = Context.User;
 
@@ -57,6 +65,7 @@ namespace DiscBotConsole.Modules
 
         [Command("test")]
         [Summary("test")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task Test()
         {
             // initialize empty string builder for reply
@@ -76,6 +85,31 @@ namespace DiscBotConsole.Modules
             }
 
             // send simple string reply
+            await ReplyAsync(sb.ToString());
+        }
+        
+        [Command("disable")]
+        [Summary("disable specified command\n" +
+                 "1 = ENABLE, 0 = DISABLE\n" +
+                 "i.e to DISABLE the joke command: !joke 0")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task Disable(string command, int set = 1)
+        {
+            
+            // TODO: Fix command id / add disable check for all commands
+            
+            var sb = new StringBuilder();
+            // Context.Channel
+            var user = Context.User;
+            var guild = Context.Guild;
+
+            await using (var dto = new CommandModelDTO(_context, _service))
+            {
+                command = Regex.Replace(command, "[^a-zA-Z0-9]", String.Empty).ToLower();
+                await dto.UpdateCommandStatus(command, set == 1, guild.Id);
+            }
+            var msg = set == 1 ? "enabled" : "disabled";
+            sb.AppendLine($"{command} has been {msg}");
             await ReplyAsync(sb.ToString());
         }
 
@@ -193,7 +227,7 @@ namespace DiscBotConsole.Modules
 
         [Command("hello")]
         [Summary("Say hello")]
-        public async Task HelloCommand()
+        public async Task Hello()
         {
             // initialize empty string builder for reply
             var sb = new StringBuilder();
@@ -262,11 +296,12 @@ namespace DiscBotConsole.Modules
             var sb = new StringBuilder();
             var sbTitle = new StringBuilder();
             var guild = Context.Guild;
+            var contextUsr = Context.User;
             var user = new UserExperience();
 
             if (userName != "")
             {
-                user = await _helper.getUserNameExperienceInServer(userName, guild.Id);
+                user = await _helper.getUserNameExperienceInServer(contextUsr, guild);
                 sbTitle.AppendLine($"{user.userName}'s Stats");
             }
             else
@@ -347,6 +382,14 @@ namespace DiscBotConsole.Modules
                 }
             }
 
+        }
+        
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public string GetCurrentCommandName()
+        {
+            var st = new StackTrace();
+            var sf = st.GetFrame(1);
+            return sf == null ? "" : sf.GetMethod().Name;
         }
 
     }

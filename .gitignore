@@ -381,3 +381,5 @@ appsettings.json
 .idea/.idea.DiscBotConsole/.idea/workspace.xml
 *.xml
 .idea/.idea.DiscBotConsole/.idea/workspace.xml
+*.txt
+*.xml

@@ -21,6 +21,7 @@
     <PackageReference Include="Discord.Net.Commands" Version="2.4.0" />
     <PackageReference Include="Discord.Net.Rest" Version="2.4.0" />
     <PackageReference Include="Humanizer" Version="2.11.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -42,6 +43,7 @@
     <PackageReference Include="NBitcoin" Version="6.0.8" />
     <PackageReference Include="NBitcoin.Altcoins" Version="3.0.4" />
     <PackageReference Include="QBitNinja.Client" Version="1.0.4" />
+    <PackageReference Include="Radzen.Blazor" Version="3.9.9" />
     <PackageReference Include="RedditSharp" Version="2.0.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
   </ItemGroup>

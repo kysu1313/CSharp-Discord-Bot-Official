@@ -1,11 +1,12 @@
 ﻿using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace ClassLibrary.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<UserModel>
     {
 
         private static IConfiguration _config { get; set; }
@@ -45,6 +46,8 @@ namespace ClassLibrary.Data
             modelBuilder.Entity<StatModel>().HasKey(s => s.id); 
             modelBuilder.Entity<UserStatsModel>().HasKey(s => s.id);
             modelBuilder.Entity<ReminderModel>().HasKey(s => s.id);
+            modelBuilder.Entity<CommandModel>().HasKey(s => s.commandId);
+            modelBuilder.Entity<ServerCommands>().HasKey(s => s.id);
             base.OnModelCreating(modelBuilder);
         }
 
@@ -57,6 +60,8 @@ namespace ClassLibrary.Data
         public DbSet<StatModel> StatModels { get; set; }
         public DbSet<UserStatsModel> UserStatModels { get; set; }
         public DbSet<ReminderModel> ReminderModels { get; set; }
+        public DbSet<CommandModel> CommandModels { get; set; }
+        public DbSet<ServerCommands> ServerCommandModels { get; set; }
 
     }
 }
