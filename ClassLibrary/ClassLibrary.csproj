@@ -43,6 +43,7 @@
     <PackageReference Include="NBitcoin" Version="6.0.8" />
     <PackageReference Include="NBitcoin.Altcoins" Version="3.0.4" />
     <PackageReference Include="QBitNinja.Client" Version="1.0.4" />
+    <PackageReference Include="Radzen.Blazor" Version="3.9.9" />
     <PackageReference Include="RedditSharp" Version="2.0.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
   </ItemGroup>

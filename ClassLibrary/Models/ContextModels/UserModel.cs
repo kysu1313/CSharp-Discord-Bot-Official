@@ -11,10 +11,6 @@ namespace ClassLibrary.Models.ContextModels
 {
     public class UserModel : IdentityUser
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int userEntryId { get; set; }
-
         public Guid userGuid { get; set; }
         public ulong userId { get; set; }
         public string userNameEntry { get; set; }

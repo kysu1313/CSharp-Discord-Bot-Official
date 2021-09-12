@@ -11,24 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/CommandModelDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CommandModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerCommands.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotDash/Pages/Setup/LinkAccount.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/LogOut.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/LogOut.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Shared/_LoginPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/BotDash.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/BotDash.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/ComponentModels/AddToDiscordModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/ComponentModels/AddToDiscordModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/ComponentModels/BottomButtonsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/ComponentModels/BottomButtonsModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/_Imports.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/AppDataContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/AppDataContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/IdentityDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/IdentityDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiscBotConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +70,7 @@
     <setting file="file://$PROJECT_DIR$/BotDash/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotApi/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BotDash/ComponentModels/UsageGraphModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClassLibrary/Models/Utility/ApiCall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6e3212d57d1d4cfc9914680fd43feb3856790/73/Check.cs" root0="SKIP_HIGHLIGHTING" />
@@ -96,7 +93,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3090701" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.30906212" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
