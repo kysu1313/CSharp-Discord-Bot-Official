@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,5 +16,7 @@ namespace ClassLibrary.Models.ContextModels
         public int id { get; set; }
         public ulong serverId { get; set; }
         public string serverName { get; set; }
+        public virtual UserModel? botAdmin { get; set; }
+        
     }
 }

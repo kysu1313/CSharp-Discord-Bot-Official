@@ -41,6 +41,7 @@ namespace BotDash
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddMatBlazor();
+            services.AddHttpContextAccessor();
             services
                 .AddBlazorise( options =>
                 {

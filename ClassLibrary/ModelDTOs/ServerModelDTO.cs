@@ -10,7 +10,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class ServerModelDTO
+    public class ServerModelDTO : IAsyncDisposable
     {
 
         private readonly ApplicationDbContext _context;
@@ -37,6 +37,23 @@ namespace ClassLibrary.ModelDTOs
             return list;
         }
 
+        protected virtual async ValueTask DisposeAsyncCore()
+        {
+            Dispose();
+            return;
+        }
+
+        private void Dispose()
+        {
+            GC.Collect();
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            Dispose();
+            GC.Collect();
+            return new ValueTask();
+        }
     }
 
 }

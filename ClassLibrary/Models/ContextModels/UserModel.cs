@@ -12,6 +12,8 @@ namespace ClassLibrary.Models.ContextModels
     public class UserModel : IdentityUser
     {
         public Guid userGuid { get; set; }
+        public bool isBotAdmin { get; set; }
+        public bool hasLinkedAccount { get; set; }
         public ulong userId { get; set; }
         public string userNameEntry { get; set; }
         public bool slowModeEnabled { get; set; }

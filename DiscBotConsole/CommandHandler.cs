@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ClassLibrary.Data;
 using ClassLibrary.Helpers;
 using ClassLibrary.ModelDTOs;
+using ClassLibrary.Models.ContextModels;
 using DiscBotConsole;
 using DiscBotConsole.Modules;
 using k8s.KubeConfigModels;
@@ -37,11 +38,9 @@ namespace ClassLibrary.Models.GeneralCommands
             _context = services.GetRequiredService<ApplicationDbContext>();
             _services = services;
             _parser = new CommandParser(_context, services);
-
             // take action when we execute a command
             _commands.CommandExecuted += CommandExecutedAsync;
-
-            // take action when we receive a message (so we can process it, and see if it is a valid command)
+            // take action when we receive a message
             _client.MessageReceived += MessageReceivedAsync;
 
         }
@@ -50,6 +49,35 @@ namespace ClassLibrary.Models.GeneralCommands
         {
             // register modules that are public and inherit ModuleBase<T>.
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            
+            List<UserExperience> users;
+            List<ServerModel> currSevers;
+
+            await using (var dto = new ServerModelDTO(_context)) 
+            { currSevers = (await dto.GetAllServers()).ToList(); }
+            await using (var dto = new UserExperienceDTO(_context, _services)) 
+            { users = (await dto.GetAllUserExperiences()).ToList(); }
+            var distinctLst = users.Select(x => x.serverId)
+                .Distinct()
+                .ToList()
+                .Except(currSevers.Select(x => x.serverId))
+                .ToList();
+
+            if (distinctLst.Count > 0)
+            {
+                await using (var dto = new ServerModelDTO(_context))
+                {
+                    foreach (var svr in distinctLst)
+                    {
+                        var svrName = _client.GetGuild(svr).Name;
+                        dto.AddServer(new ServerModel()
+                        {
+                            serverId = svr,
+                            serverName = string.IsNullOrEmpty(svrName) ? "None" : svrName,
+                        });
+                    }
+                }
+            }
         }
 
         // this class is where the magic starts, and takes actions upon receiving messages
@@ -80,7 +108,8 @@ namespace ClassLibrary.Models.GeneralCommands
                 if (server != null)
                     break;
             }
-            // Check for disabled commands
+            
+            // Check for disabled commands. This needs to run for every command.
             await using (var dto = new CommandModelDTO(_context, _services))
             {
                 var allCmds = new List<string>();
@@ -97,6 +126,7 @@ namespace ClassLibrary.Models.GeneralCommands
                     x.commandName == message.Content.ToString().Substring(1));
                 runCommand = tmpCmd != null ? tmpCmd.enabled : true;
             }
+            
 
             // sets the argument position away from the prefix
             var argPos = 0;
