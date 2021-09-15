@@ -5,11 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    /// <summary>
+    /// ServerCommands link a group of commands to a server.
+    /// This is used for the dashboard.
+    /// </summary>
     public class ServerCommands
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
         public ulong serverId { get; set; }
         public virtual IEnumerable<CommandModel> commands { get; set; }
         public ulong modifiedById { get; set; }
@@ -17,3 +19,4 @@ namespace ClassLibrary.Models.ContextModels
         public DateTime? dateModified { get; set; }
     }
 }
+

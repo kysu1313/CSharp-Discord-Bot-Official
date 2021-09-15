@@ -42,16 +42,20 @@ namespace ClassLibrary.ModelDTOs
             List<UserModel> list;
             list = await _context.UserModels
                 .ToListAsync();
-            
             return list;
         }
 
         public async Task<UserModel> GetUser(ulong userId)
         {
-            UserModel user;
-            user = await _context.UserModels
+            var user = await _context.UserModels
                 .FirstOrDefaultAsync(x => x.userId == userId);
-            
+            return user;
+        }
+
+        public async Task<UserModel> GetUser(string userName)
+        {
+            var user = await _context.UserModels
+                .FirstOrDefaultAsync(x => x.UserName == userName);
             return user;
         }
 

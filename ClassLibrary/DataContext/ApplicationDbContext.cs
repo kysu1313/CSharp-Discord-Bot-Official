@@ -47,7 +47,7 @@ namespace ClassLibrary.Data
             modelBuilder.Entity<UserStatsModel>().HasKey(s => s.id);
             modelBuilder.Entity<ReminderModel>().HasKey(s => s.id);
             modelBuilder.Entity<CommandModel>().HasKey(s => s.commandId);
-            modelBuilder.Entity<ServerCommands>().HasKey(s => s.id);
+            modelBuilder.Entity<ServerCommands>().HasKey(s => s.serverId);
             base.OnModelCreating(modelBuilder);
         }
 

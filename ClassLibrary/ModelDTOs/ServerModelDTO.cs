@@ -10,7 +10,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class ServerModelDTO : IAsyncDisposable
+    public class ServerModelDTO : IAsyncDisposable, IDisposable
     {
 
         private readonly ApplicationDbContext _context;
@@ -43,7 +43,7 @@ namespace ClassLibrary.ModelDTOs
             return;
         }
 
-        private void Dispose()
+        public void Dispose()
         {
             GC.Collect();
         }

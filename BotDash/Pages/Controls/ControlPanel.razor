@@ -1,0 +1,59 @@
+﻿@page "/controlpanel"
+
+@inherits BotDash.Models.PageModels.ControlPanelModel
+@using ClassLibrary.Data
+@inject ApplicationDbContext _context
+
+
+@if (!_isLoggedIn)
+{
+    <LoggedIn></LoggedIn>
+}
+else
+{
+    <div class="control-container">
+        <div class="server-select">
+            @if (_servers != null)
+            {
+                <RadzenDropDown AllowClear="true" TValue="string" Style="width:300px" 
+                                Data=@(_servers.Select(x => new {x.serverId, x.serverName}))
+                                TextProperty="serverName"
+                                Change=@(args => OnDdChange(args, "DropDown")) />
+                
+                <MatSelect Label="Select Server" @bind-Value="@_selectedServer">
+                    @foreach (var server in _servers)
+                    {
+                        <MatOption TValue="ServerModel?" Value="@(server)">@server.serverName</MatOption>
+                    }
+                </MatSelect>
+            }
+            
+        </div>
+        
+        <div class="controls">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Temp. (C)</th>
+                        <th>Temp. (F)</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @* @foreach (var forecast in forecasts) *@
+                    @* { *@
+                    @*     <tr> *@
+                    @*         <td>@forecast.Date.ToShortDateString()</td> *@
+                    @*         <td>@forecast.TemperatureC</td> *@
+                    @*         <td>@forecast.TemperatureF</td> *@
+                    @*         <td>@forecast.Summary</td> *@
+                    @*     </tr> *@
+                    @* } *@
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+ 
+
