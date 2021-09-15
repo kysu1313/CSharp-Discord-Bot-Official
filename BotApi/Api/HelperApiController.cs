@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ClassLibrary.Helpers;
 using ClassLibrary.Data;
+using ClassLibrary.DataContext;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BotApi.Api
 {
@@ -15,11 +18,14 @@ namespace BotApi.Api
     {
 
         private ApplicationDbContext _context;
+        private IServiceProvider _services;
         private Helper _helper;
         
-        public HelperApiController(ApplicationDbContext _context, IServiceProvider services)
+        public HelperApiController(ApplicationDbContext context, IServiceProvider services)
         {
-            _helper = new Helper(_context, services);
+            _helper = new Helper(context, services);
+            _context = context;
+            _services = services;
         }
         // GET: api/HelperApi
         [HttpGet]
@@ -56,26 +62,31 @@ namespace BotApi.Api
 
         // GET: api/HelperApi/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<string> Get(int id)
         {
             return "value";
         }
 
         // POST: api/HelperApi
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("api/postuserid")]
+        public async Task PostUserId([FromBody] string discId)
         {
+            await using (var dto = new UserModelDTO(_context))
+            {
+                
+            }
         }
 
         // PUT: api/HelperApi/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/HelperApi/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
         }
     }

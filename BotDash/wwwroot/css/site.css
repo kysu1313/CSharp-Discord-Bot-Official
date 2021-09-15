@@ -4,6 +4,14 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.page {
+    background-color: #282C34;
+}
+
+nav {
+    background-color: #1B1B1B;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -16,6 +24,7 @@ a, .btn-link {
 
 .content {
     padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
 }
 
 .valid.modified:not([type=checkbox]) {

@@ -15,8 +15,8 @@ namespace ClassLibrary.DataContext
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             var config = new ConfigurationBuilder()
-                // .SetBasePath(AppContext.BaseDirectory) //   <---- UNCOMMENT FOR MIGRATIONS
-                .SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)) // <-- COMMENT THIS LINE FOR MIGRATIONS
+                .SetBasePath(AppContext.BaseDirectory) //   <---- UNCOMMENT FOR MIGRATIONS
+                // .SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)) // <-- COMMENT THIS LINE FOR MIGRATIONS
                 .AddJsonFile(path: "appsettings.json")
                 .Build();
 

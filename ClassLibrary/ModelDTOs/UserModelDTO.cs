@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.DataContext
+namespace ClassLibrary.ModelDTOs
 {
-    public class UserModelDTO : IDisposable
+    public class UserModelDTO : IDisposable, IAsyncDisposable
     {
 
         private readonly ApplicationDbContext _context;
@@ -39,25 +39,29 @@ namespace ClassLibrary.DataContext
 
         public async Task<List<UserModel>> GetAllUsers()
         {
-            List<UserModel> list = new List<UserModel>();
+            List<UserModel> list;
             list = await _context.UserModels
                 .ToListAsync();
-            
             return list;
         }
 
         public async Task<UserModel> GetUser(ulong userId)
         {
-            UserModel user = new UserModel();
-            user = await _context.UserModels
+            var user = await _context.UserModels
                 .FirstOrDefaultAsync(x => x.userId == userId);
-            
+            return user;
+        }
+
+        public async Task<UserModel> GetUser(string userName)
+        {
+            var user = await _context.UserModels
+                .FirstOrDefaultAsync(x => x.UserName == userName);
             return user;
         }
 
         public async Task<UserExperience> GetUserExperience(ulong userId, ulong serverId)
         {
-            UserExperience userExp = new UserExperience();
+            UserExperience userExp;
             userExp = await _context.UserExperiences
                 .FirstOrDefaultAsync(x => 
                     x.userId == userId && 
@@ -69,34 +73,11 @@ namespace ClassLibrary.DataContext
         public void Dispose()
         {
         }
-
-        //~UserModelDTO() => Dispose(false);
-
-        //// Public implementation of Dispose pattern callable by consumers.
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
-
-        //// Protected implementation of Dispose pattern.
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (_disposed)
-        //    {
-        //        return;
-        //    }
-
-        //    if (disposing)
-        //    {
-        //        // TODO: dispose managed state (managed objects).
-        //        //Dispose();
-        //    }
-
-        //    // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-        //    // TODO: set large fields to null.
-
-        //    _disposed = true;
-        //}
+        public virtual ValueTask DisposeAsync()
+        {
+            Dispose();
+            GC.SuppressFinalize(this);
+            return new ValueTask();
+        }
     }
 }

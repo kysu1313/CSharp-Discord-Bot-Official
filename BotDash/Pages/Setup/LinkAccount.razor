@@ -25,13 +25,29 @@
 
 <div class="row">
     <div class="col-xl-6">
-        <h3>Link your Discord account.</h3>
-        <div class="mat-layout-grid">
-            <MatTextField @bind-Value="@_userId" Label="Discord ID"></MatTextField>
-            <br/>
-            <MatButton OnClick="@Submit" Raised="true">Enter your Discord ID</MatButton>
-            <RadzenImage Path="img/discid.jpg" Style="height:300px"/>
-        </div>
+        <MatHeadline6 id="sub-header-id" class="main-header" style="color: white;">Link your Discord account</MatHeadline6>
+        @if (!_isLoggedIn)
+        {
+            <LoggedIn></LoggedIn>
+        }
+        else if (_success)
+        {
+            <MatFAB Icon="@MatIconNames.Favorite" Label="Success!"></MatFAB>
+            <div>
+                <br />
+                <MatSubtitle2 style="color: white;">You have successfully connected your bot's dashboard!</MatSubtitle2>
+            </div>
+        }
+        else
+        {
+            <div class="mat-layout-grid">
+                <MatTextField @bind-Value="@_userId" Label="Discord ID"></MatTextField>
+                <br/>
+                <MatButton OnClick="@Submit" Raised="true">Submit Discord ID</MatButton>
+                <RadzenImage Path="img/discid.jpg" Style="height:300px"/>
+            </div>
+        }
+        
     </div>
 </div>
 

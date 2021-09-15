@@ -13,7 +13,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Models
 {
-    public class UserExperienceDTO : IDisposable
+    public class UserExperienceDTO : IDisposable, IAsyncDisposable
     {
 
         private readonly ApplicationDbContext _context;
@@ -90,6 +90,12 @@ namespace ClassLibrary.Models
         public void Dispose()
         {
             //((IDisposable)_helper).Dispose();
+        }
+
+        public virtual async  ValueTask DisposeAsync()
+        {
+            _helper.Dispose();
+            return;
         }
     }
 }

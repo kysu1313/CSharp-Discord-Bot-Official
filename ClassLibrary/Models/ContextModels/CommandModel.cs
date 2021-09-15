@@ -6,6 +6,9 @@ namespace ClassLibrary.Models.ContextModels
 {
     public class CommandModel
     {
+        /// <summary>
+        /// CommandModel is the general model of all commands.
+        /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int commandId { get; set; }
