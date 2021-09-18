@@ -1,7 +1,9 @@
 ﻿using Discord;
 using Discord.Commands;
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
@@ -9,6 +11,7 @@ using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using System.Text.RegularExpressions;
 using ClassLibrary.Helpers;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 
 namespace DiscBotConsole.Modules
@@ -17,6 +20,7 @@ namespace DiscBotConsole.Modules
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly IServiceProvider _service;
         private readonly Helper _helper;
         private double _defaultExpGain = 3.0;
         private readonly string _diamond = "💎";
@@ -59,7 +63,24 @@ namespace DiscBotConsole.Modules
         public BankCommands(ApplicationDbContext context, IServiceProvider services)
         {
             _context = context;
+            _service = services;
             _helper = new Helper(_context, services);
+        }
+
+        private async Task UpdateCommands(string name, int num, ulong serverId)
+        {
+            await using (var dto = new CommandModelDTO(_context, _service))
+            {
+                await dto.UpdateCommandUses(name, num, serverId);
+            }
+        }
+        
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public string GetCurrentCommandName()
+        {
+            var st = new StackTrace();
+            var sf = st.GetFrame(1);
+            return sf == null ? "" : sf.GetMethod().Name;
         }
 
         private string GetRandomEmoji()
@@ -83,6 +104,8 @@ namespace DiscBotConsole.Modules
         [RequireContext(ContextType.Guild)]
         public async Task ViewBank(string userName = "")
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var sb = new StringBuilder();
 
             string bankAmount = "";
@@ -140,6 +163,8 @@ namespace DiscBotConsole.Modules
         [Summary("Pay a user some amount.\n !pay <username> <amount to pay>")]
         public async Task PayMember(string userName, int amount = 0)
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var sb = new StringBuilder();
 
             string bankAmount = "";
@@ -226,6 +251,8 @@ namespace DiscBotConsole.Modules
             " !adjust <username> <amount to set>")]
         public async Task AdjustMoney(string userName = "", int amount = 0)
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+
             var sb = new StringBuilder();
 
             int bankAmount = 0;
@@ -275,6 +302,8 @@ namespace DiscBotConsole.Modules
         [RequireContext(ContextType.Guild)]
         public async Task PlaySlots()
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+
             var sb = new StringBuilder();
             var embed = new EmbedBuilder();
 
@@ -395,6 +424,8 @@ namespace DiscBotConsole.Modules
         [RequireContext(ContextType.Guild)]
         public async Task HighLow(string betStr = "", int betAmt = 0)
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+
             var sb = new StringBuilder();
 
             if (betStr == "" || betAmt == 0)
@@ -461,6 +492,8 @@ namespace DiscBotConsole.Modules
         [RequireContext(ContextType.Guild)]
         public async Task Steal(string username = "", int amount = 0)
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+
             var sb = new StringBuilder();
 
             var user = Context.User;

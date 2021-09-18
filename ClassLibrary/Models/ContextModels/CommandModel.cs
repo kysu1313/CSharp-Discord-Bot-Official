@@ -19,6 +19,7 @@ namespace ClassLibrary.Models.ContextModels
         public ulong modifiedById { get; set; }
         public DateTime dateAdded { get; set; }
         public DateTime? dateModified { get; set; }
+        public int totalUses { get; set; }
         
     }
 }

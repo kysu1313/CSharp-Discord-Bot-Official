@@ -4,7 +4,6 @@
 @using ClassLibrary.Data
 @inject ApplicationDbContext _context
 
-
 @if (!_isLoggedIn)
 {
     <LoggedIn></LoggedIn>
@@ -15,43 +14,34 @@ else
         <div class="server-select">
             @if (_servers != null)
             {
-                <RadzenDropDown AllowClear="true" TValue="string" Style="width:300px" 
-                                Data=@(_servers.Select(x => new {x.serverId, x.serverName}))
-                                TextProperty="serverName"
-                                Change=@(args => OnDdChange(args, "DropDown")) />
+                <RadzenDropDownDataGrid TValue="ulong" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                                        AllowFiltering="true" AllowClear="true"
+                                        Data="@_severNames"
+                                        EmptyText="Select a server"
+                                        TextProperty="Key"
+                                        ValueProperty="Value"
+                                        Change="@(args => OnDdChange(args, "DropDown"))" Style="width:80%" />
                 
-                <MatSelect Label="Select Server" @bind-Value="@_selectedServer">
-                    @foreach (var server in _servers)
-                    {
-                        <MatOption TValue="ServerModel?" Value="@(server)">@server.serverName</MatOption>
-                    }
-                </MatSelect>
+                <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Advanced" 
+                                PageSize="50" AllowPaging="true" AllowSorting="true" Style="width:80%"
+                                Data="@_selectedCommands" TItem="CommandModel"
+                                LogicalFilterOperator="LogicalFilterOperator.Or">
+                    <Columns>
+                        <RadzenDataGridColumn TItem="CommandModel" Property="commandName" Title="Command Name" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="enabled" Title="Enabled">
+                            <Template Context="data">
+                                <RadzenSwitch  @bind-Value=@data.enabled Change=@(args => OnSwitchChange(args, data, "Switch")) />
+                            </Template>
+                        </RadzenDataGridColumn>
+                        <RadzenDataGridColumn TItem="CommandModel" Property="modifiedById" Title="Last Modified By" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="serverId" Title="Server ID" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="dateAdded" Title="Date Added" FormatString="{0:d}" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="dateModified" Title="Date Modified" FormatString="{0:d}" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="commandId" Title="Command ID" />
+                    </Columns>
+                </RadzenDataGrid>
             }
             
-        </div>
-        
-        <div class="controls">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @* @foreach (var forecast in forecasts) *@
-                    @* { *@
-                    @*     <tr> *@
-                    @*         <td>@forecast.Date.ToShortDateString()</td> *@
-                    @*         <td>@forecast.TemperatureC</td> *@
-                    @*         <td>@forecast.TemperatureF</td> *@
-                    @*         <td>@forecast.Summary</td> *@
-                    @*     </tr> *@
-                    @* } *@
-                </tbody>
-            </table>
         </div>
     </div>
 }
