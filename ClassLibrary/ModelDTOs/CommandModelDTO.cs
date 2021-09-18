@@ -66,9 +66,9 @@ namespace ClassLibrary.ModelDTOs
         {
             var svr = (await _context.ServerCommandModels.ToListAsync())
                 .FirstOrDefault(x => x.serverId == serverId);
-            var cmds = svr == null || svr.commands == null ? 
-                new List<CommandModel>() : svr.commands;
-
+            var cmds = svr == null ? new List<CommandModel>() : 
+                (await _context.CommandModels.ToListAsync())
+                .FindAll(x => x.serverId == svr.serverId);
             return cmds;
         }
 
@@ -87,7 +87,18 @@ namespace ClassLibrary.ModelDTOs
             return false;
         }
 
-        public async Task UpdateCommandStatus(string name, bool enabled, ulong serverId)
+        public async Task UpdateCommandUses(string name, int newUses, ulong serverId)
+        {
+            var cmds = await GetCommands(serverId);
+            var cmd = cmds.FirstOrDefault(x => x.commandName == name);
+            if (cmd == null)
+            {
+                return;
+            }
+            cmd.totalUses += newUses;
+        }
+
+        public async Task UpdateCommandStatus(string name, bool enabled, ulong serverId, ulong userId)
         {
             var cmdSvr = await _context.ServerCommandModels
                 .FirstOrDefaultAsync(x => 
@@ -97,6 +108,8 @@ namespace ClassLibrary.ModelDTOs
             if (cmd != null)
             {
                 cmd.enabled = enabled;
+                cmd.dateModified = DateTime.Now;
+                cmd.modifiedById = userId;
             }
 
             await _context.SaveChangesAsync();

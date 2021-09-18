@@ -44,11 +44,19 @@ namespace DiscBotConsole.Modules
             _commandStatuses = _helper.GetCommandStatuses().Result;
         }
 
+        private async Task UpdateCommands(string name, int num, ulong serverId)
+        {
+            await using (var dto = new CommandModelDTO(_context, _service))
+            {
+                await dto.UpdateCommandUses(name, num, serverId);
+            }
+        }
+
         [Command("ping")]
         [Summary("Simple check to make sure bot is running.\n !ping")]
         public async Task Ping()
         {
-            
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
             // initialize empty string builder for reply
             var sb = new StringBuilder();
             
@@ -68,6 +76,7 @@ namespace DiscBotConsole.Modules
         [RequireUserPermission(GuildPermission.Administrator)]
         public async Task Test()
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
             // initialize empty string builder for reply
             var sb = new StringBuilder();
 
@@ -96,7 +105,7 @@ namespace DiscBotConsole.Modules
         public async Task Disable(string command, int set = 1)
         {
             
-            // TODO: Fix command id / add disable check for all commands
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
             
             var sb = new StringBuilder();
             // Context.Channel
@@ -106,7 +115,7 @@ namespace DiscBotConsole.Modules
             await using (var dto = new CommandModelDTO(_context, _service))
             {
                 command = Regex.Replace(command, "[^a-zA-Z0-9]", String.Empty).ToLower();
-                await dto.UpdateCommandStatus(command, set == 1, guild.Id);
+                await dto.UpdateCommandStatus(command, set == 1, guild.Id, user.Id);
             }
             var msg = set == 1 ? "enabled" : "disabled";
             sb.AppendLine($"{command} has been {msg}");
@@ -124,10 +133,8 @@ namespace DiscBotConsole.Modules
             string increment,
             [Remainder] string task)
         {
-            // !remindme 3:00pm daily "this is a test"
-
-
-
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var user = Context.User;
             var guild = Context.Guild;
             var exTime = DateTime.Parse(time);
@@ -167,6 +174,8 @@ namespace DiscBotConsole.Modules
         )]
         public async Task MyReminders()
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var user = Context.User;
             var guild = Context.Guild;
             var reminders = await _helper.GetUserReminders(user.Id, guild.Id);
@@ -194,6 +203,8 @@ namespace DiscBotConsole.Modules
         [Summary("View info about all commands and usages.\n !help")]
         public async Task Help()
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             List<CommandInfo> commands = _commands.Commands.ToList();
             EmbedBuilder embedBuilder = new EmbedBuilder();
             var ch = Context.Channel;
@@ -229,6 +240,8 @@ namespace DiscBotConsole.Modules
         [Summary("Say hello")]
         public async Task Hello()
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             // initialize empty string builder for reply
             var sb = new StringBuilder();
 
@@ -248,6 +261,8 @@ namespace DiscBotConsole.Modules
         [Summary("Ask a question and get a classig 8ball answer.\n !8ball <question>")]
         public async Task AskEightBall([Remainder] string args = null)
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             // StringBuilder to build out the reply
             var sb = new StringBuilder();
             var embed = new EmbedBuilder();
@@ -292,6 +307,8 @@ namespace DiscBotConsole.Modules
         [Summary("Show stats for user or username.\n !stats <?username>")]
         public async Task ViewStats(string userName = "")
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             // StringBuilder to build out the reply
             var sb = new StringBuilder();
             var sbTitle = new StringBuilder();
@@ -335,6 +352,8 @@ namespace DiscBotConsole.Modules
         [Summary("Add element to user dashboard. NOT FULLY IMPLEMENTED")]
         public async Task AddToDash(string command = "", string value = "")
         {
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var user = Context.User;
             var guild = Context.Guild;
 
@@ -346,6 +365,8 @@ namespace DiscBotConsole.Modules
         public async Task ViewDashboard()
         {
 
+            await UpdateCommands(GetCurrentCommandName(), 1, Context.Guild.Id);
+            
             var sb = new StringBuilder();
             var embed = new EmbedBuilder();
             Image img = new Image();

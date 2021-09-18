@@ -13,7 +13,7 @@ namespace ClassLibrary.Models.ContextModels
     {
         [Key]
         public ulong serverId { get; set; }
-        public virtual IEnumerable<CommandModel> commands { get; set; }
+        public IEnumerable<CommandModel> commands { get; set; }
         public ulong modifiedById { get; set; }
         public DateTime dateAdded { get; set; }
         public DateTime? dateModified { get; set; }
