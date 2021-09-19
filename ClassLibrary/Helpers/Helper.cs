@@ -335,12 +335,6 @@ namespace ClassLibrary.Helpers
             //await Discord.UserExtensions.SendMessageAsync(user, sb.ToString());
         }
 
-        public void Dispose()
-        {
-            _userExperienceDTO?.Dispose();
-            _userModelDTO?.Dispose();
-        }
-
         public async Task<List<ServerCommands>> GetCommandStatuses()
         {
             if (_commands == null)
@@ -349,6 +343,12 @@ namespace ClassLibrary.Helpers
             }
 
             return _commands;
+        }
+
+        public void Dispose()
+        {
+            _userExperienceDTO?.Dispose();
+            _userModelDTO?.Dispose();
         }
     }
 }

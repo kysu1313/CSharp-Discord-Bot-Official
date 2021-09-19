@@ -30,7 +30,7 @@ namespace BotDash.Models.PageModels
         {
             var authState = await AuthenticationStateTask.ConfigureAwait(false);
 
-            if (authState.User != null && authState.User.Identity.IsAuthenticated)
+            if (authState.User is { Identity: { IsAuthenticated: true } })
             {
                 _isLoggedIn = true;
                 using (var dto = new UserModelDTO(Context))
@@ -51,7 +51,7 @@ namespace BotDash.Models.PageModels
             _buttonState = "Clicked";
             var authState = await AuthenticationStateTask.ConfigureAwait(false);
 
-            if (authState.User != null && authState.User.Identity.IsAuthenticated)
+            if (authState.User is { Identity: { IsAuthenticated: true } })
             {
                 await using (var dto = new UserModelDTO(Context))
                 {
@@ -59,10 +59,7 @@ namespace BotDash.Models.PageModels
                     var userModel = await dto.GetUser(name);
                     if (!userModel.hasLinkedAccount)
                     {
-                        userModel.userId = ulong.TryParse(_userId, out ulong id) == false ? 0 : id;
-                        userModel.hasLinkedAccount = true;
-                        userModel.isBotAdmin = true;
-                        await Context.SaveChangesAsync();
+                        await dto.RegisterUser(name, ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
                     }
                     _success = true;
                 }
