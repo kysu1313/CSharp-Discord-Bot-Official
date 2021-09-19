@@ -106,10 +106,10 @@ namespace BotDash.Models.PageModels
         protected async Task GetServerCommands(ulong serverId)
         {
             _isLoggedIn = true;
-            using (var dto = new CommandModelDTO(Context, Services))
+            await using (var dto = new CommandModelDTO(Context, Services))
             {
                 _commands = await dto.GetCommands(serverId).ConfigureAwait(false) as List<CommandModel>;
-                if (_commands != null && _commands.Count > 0)
+                if (_commands is { Count: > 0 })
                 {
                     foreach (var c in _commands)
                     {

@@ -40,13 +40,13 @@ namespace ClassLibrary.ModelDTOs
             }
 
             var serverCmds = await _context.ServerCommandModels
-                .FirstOrDefaultAsync(x => x.serverId == guild.Id);
+                .FirstOrDefaultAsync(x => x.serverCommandId == guild.Id);
 
             if (serverCmds == null)
             {
                 ServerCommands svcmd = new ServerCommands()
                 {
-                    serverId = guild.Id,
+                    serverCommandId = guild.Id,
                     commands = cmdLst,
                     modifiedById = user.Id,
                     dateAdded = DateTime.Now,
@@ -65,10 +65,10 @@ namespace ClassLibrary.ModelDTOs
         public async Task<IEnumerable<CommandModel>> GetCommands(ulong serverId)
         {
             var svr = (await _context.ServerCommandModels.ToListAsync())
-                .FirstOrDefault(x => x.serverId == serverId);
+                .FirstOrDefault(x => x.serverCommandId == serverId);
             var cmds = svr == null ? new List<CommandModel>() : 
                 (await _context.CommandModels.ToListAsync())
-                .FindAll(x => x.serverId == svr.serverId);
+                .FindAll(x => x.serverId == svr.serverCommandId);
             return cmds;
         }
 
@@ -76,7 +76,7 @@ namespace ClassLibrary.ModelDTOs
         {
             var svr = (await _context.ServerCommandModels.ToListAsync())
                 .FirstOrDefault(x => 
-                    x.serverId == serverId);
+                    x.serverCommandId == serverId);
             if (svr != null)
             {
                 var exists = svr.commands.FirstOrDefault(x => 
@@ -102,7 +102,7 @@ namespace ClassLibrary.ModelDTOs
         {
             var cmdSvr = await _context.ServerCommandModels
                 .FirstOrDefaultAsync(x => 
-                    x.serverId == serverId);
+                    x.serverCommandId == serverId);
             var cmd = cmdSvr.commands.FirstOrDefault(x => 
                 x.commandName.ToLower() == name.ToLower());
             if (cmd != null)

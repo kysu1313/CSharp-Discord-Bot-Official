@@ -15,12 +15,13 @@
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/CommandModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/CommandModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CommandModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CommandModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/BankCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/GeneralCommands.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/BotApi/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5341e7d9751d48faaa1844a17b4809201f600/1c/c256677d/ModuleBase`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/2C2/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e7bd73da3c6440fbb258d36855a3f9401bfb78/14B/InternalDbSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/matblazor/2.8.0/contentFiles/any/netstandard2.1/Properties/launchSettings.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/15/LayoutComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Properties/serviceDependencies.local.json" root0="FORCE_HIGHLIGHTING" />
@@ -92,7 +94,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlserver" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.30895644" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.30881196" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -266,7 +268,7 @@
       <workItem from="1630881293196" duration="11261000" />
       <workItem from="1631493422233" duration="19251000" />
       <workItem from="1631920569593" duration="2092000" />
-      <workItem from="1631923515474" duration="10621000" />
+      <workItem from="1631923515474" duration="15339000" />
     </task>
     <servers />
   </component>
