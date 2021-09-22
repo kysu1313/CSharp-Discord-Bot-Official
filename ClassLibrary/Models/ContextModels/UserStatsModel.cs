@@ -7,7 +7,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Models
 {
-    public class UserStatsModel
+    public class UserStatsModel : IUserStatsModel
     {
         public int id { get; set; }
         public ulong userId { get; set; }

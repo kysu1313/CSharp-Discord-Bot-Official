@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class UserDash
+    public class UserDash : IUserDash
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

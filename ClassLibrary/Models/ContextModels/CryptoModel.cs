@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class CryptoModel
+    public class CryptoModel : ICryptoModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

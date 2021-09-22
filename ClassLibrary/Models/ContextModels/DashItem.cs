@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class DashItem
+    public class DashItem : IDashItem
     {
         public int id { get; set; }
         public ulong userId { get; set; }

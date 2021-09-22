@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class UserExperience
+    public class UserExperience : IUserExperience
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

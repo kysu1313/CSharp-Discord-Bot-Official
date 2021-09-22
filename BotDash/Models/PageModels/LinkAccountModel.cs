@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
+using ClassLibrary.Helpers;
 using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 using Coinbase.Models;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 
 namespace BotDash.Models.PageModels
@@ -23,6 +25,7 @@ namespace BotDash.Models.PageModels
         protected bool _isLoggedIn = false;
         [Inject] private IHttpContextAccessor  HttpContextAccessor { get; set; }
         [Inject] protected ApplicationDbContext Context { get; set; }
+        [Inject] protected IServiceProvider Service { get; set; }
         [CascadingParameter]
         private Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
@@ -57,9 +60,11 @@ namespace BotDash.Models.PageModels
                 {
                     var name = authState.User.Identity.Name;
                     var userModel = await dto.GetUser(name);
+                    await using var helpDto = new Helper(Context, Service);
                     if (!userModel.hasLinkedAccount)
                     {
                         await dto.RegisterUser(name, ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
+                        await helpDto.RegisterUsersOwnServers(id);
                     }
                     _success = true;
                 }

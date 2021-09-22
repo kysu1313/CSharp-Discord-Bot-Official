@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class ReminderModel
+    public class ReminderModel : IReminderModel
     {
 
         private DateTime _added;

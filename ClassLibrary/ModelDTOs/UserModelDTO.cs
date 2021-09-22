@@ -11,7 +11,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class UserModelDTO : IDisposable, IAsyncDisposable
+    public class UserModelDTO : IDisposable, IAsyncDisposable, IUserModelDTO
     {
 
         private readonly ApplicationDbContext _context;

@@ -9,7 +9,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class ReminderModelDTO
+    public class ReminderModelDTO : IReminderModelDTO
     {
 
         private readonly ApplicationDbContext _context;

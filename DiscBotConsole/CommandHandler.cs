@@ -85,12 +85,10 @@ namespace ClassLibrary.Models.GeneralCommands
         private async Task LinkUserServers()
         {
             var svrs = _client.Guilds.ToList();
-            Dictionary<ulong, string> svrDict = new Dictionary<ulong, string>();
             await using var dto = new ServerModelDTO(_context);
 
             foreach (var sv in svrs)
             {
-                svrDict.Add(sv.Id, sv.Name);
                 dto.AddServer(new ServerModel()
                 {
                     serverId = sv.Id,

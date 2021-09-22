@@ -9,7 +9,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class CryptoModelDTO
+    public class CryptoModelDTO : ICryptoModelDTO
     {
 
         private readonly ApplicationDbContext _context;
