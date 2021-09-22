@@ -3,15 +3,16 @@ using ClassLibrary.Helpers;
 using Discord;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+// using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class UserDashDTO : IDisposable
+    public class UserDashDTO : IDisposable, IUserDashDTO
     {
 
         private readonly ApplicationDbContext _context;
@@ -40,7 +41,7 @@ namespace ClassLibrary.ModelDTOs
         // Allow user to add things like statistics / crypto prices / images to their dashboard.
         public async Task AddToDash(IUser user, IGuild guild, DashCommand command, string value)
         {
-            var result = await _context.UserDashes.FirstOrDefaultAsync(x =>
+            var result = await _context.UserDashes.AsNoTracking().FirstOrDefaultAsync(x =>
                         x.userId == user.Id && x.serverId == guild.Id);
 
             if (result != null)
@@ -62,7 +63,7 @@ namespace ClassLibrary.ModelDTOs
 
         public async Task<UserDash> GetUserDash(IUser user, IGuild guild)
         {
-            var result = await _context.UserDashes.FirstOrDefaultAsync(x => 
+            var result = await _context.UserDashes.AsNoTracking().FirstOrDefaultAsync(x => 
                         x.userId == user.Id && x.serverId == guild.Id);
             return result;
         }

@@ -10,7 +10,7 @@ using Discord.WebSocket;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class CommandModelDTO : IAsyncDisposable, IDisposable
+    public class CommandModelDTO : IAsyncDisposable, IDisposable, ICommandModelDTO
     {
         private readonly ApplicationDbContext _context;
         private readonly Helper _helper;

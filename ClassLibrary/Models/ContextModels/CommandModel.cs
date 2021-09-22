@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class CommandModel
+    public class CommandModel : ICommandModel
     {
         /// <summary>
         /// CommandModel is the general model of all commands.

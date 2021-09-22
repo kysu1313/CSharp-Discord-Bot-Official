@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class ServerModel
+    public class ServerModel : IServerModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

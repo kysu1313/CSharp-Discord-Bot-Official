@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class UserCrypto
+    public class UserCrypto : IUserCrypto
     {
         public int id { get; set; }
         public Guid userId { get; set; }

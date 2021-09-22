@@ -9,7 +9,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class StatModelDTO
+    public class StatModelDTO : IStatModelDTO
     {
 
         private readonly ApplicationDbContext _context;

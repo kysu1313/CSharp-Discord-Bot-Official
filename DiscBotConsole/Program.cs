@@ -87,24 +87,6 @@ namespace DiscBotConsole
             return Task.CompletedTask;
         }
 
-        private async Task<SqliteConnection> CreateConnectionAsync()
-        {
-
-            SqliteConnection sqlite_conn;
-            // Create a new database connection:
-            sqlite_conn = new SqliteConnection("Data Source=database.db; Version = 3; New = True; Compress = True; ");
-         // Open the connection:
-            try
-            {
-                sqlite_conn.Open();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return sqlite_conn;
-        }
-
         // this method handles the ServiceCollection creation/configuration
         private ServiceProvider ConfigureServices()
         {
@@ -119,7 +101,7 @@ namespace DiscBotConsole
             // returns a ServiceProvider that is used later to call for those services
             return new ServiceCollection()
                 .AddSingleton(_config)
-                .AddSingleton<DiscordSocketClient>()
+                .AddScoped<DiscordSocketClient>()
                 .AddSingleton<CommandService>()
                 .AddTransient<CommandContext>()
                 .AddSingleton<CommandHandler>()

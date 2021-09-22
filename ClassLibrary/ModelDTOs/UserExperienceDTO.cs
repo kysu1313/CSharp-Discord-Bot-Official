@@ -13,7 +13,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Models
 {
-    public class UserExperienceDTO : IDisposable, IAsyncDisposable
+    public class UserExperienceDTO : IDisposable, IAsyncDisposable, IUserExperienceDTO
     {
 
         private readonly ApplicationDbContext _context;

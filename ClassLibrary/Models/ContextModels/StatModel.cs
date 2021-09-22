@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class StatModel
+    public class StatModel : IStatModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -17,7 +17,7 @@ using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.Helpers
 {
-    public class Helper : IDisposable
+    public class Helper : IDisposable, IAsyncDisposable
     {
         public int STARTING_MONEY = 500;
         public int MAX_USER_LEVEL = 100;
@@ -313,6 +313,21 @@ namespace ClassLibrary.Helpers
             return reminders;
         }
 
+        public async Task RegisterUsersOwnServers(ulong userId)
+        {
+            var socket = _service.GetRequiredService<DiscordSocketClient>();
+            var user = socket.GetUser(userId);
+            var servers = user.MutualGuilds.ToList();
+            foreach (var svr in servers)
+            {
+                await using var dto = new UserModelDTO(_context);
+                if (svr.Owner == user)
+                {
+                    await dto.RegisterUser(user.Username, userId);
+                }
+            }
+        }
+
         public async Task SendReminder(ReminderModel model)
         {
             var commandContext = _service.GetRequiredService<CommandContext>();
@@ -349,6 +364,13 @@ namespace ClassLibrary.Helpers
         {
             _userExperienceDTO?.Dispose();
             _userModelDTO?.Dispose();
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            _userExperienceDTO?.Dispose();
+            _userModelDTO?.Dispose();
+            return new ValueTask();
         }
     }
 }

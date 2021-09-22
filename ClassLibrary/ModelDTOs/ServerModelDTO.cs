@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+// using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Models.ContextModels;
 
 namespace ClassLibrary.ModelDTOs
 {
-    public class ServerModelDTO : IAsyncDisposable, IDisposable
+    public class ServerModelDTO : IAsyncDisposable, IDisposable, IServerModelDTO
     {
 
         private readonly ApplicationDbContext _context;
@@ -23,16 +24,19 @@ namespace ClassLibrary.ModelDTOs
 
         public ServerModel AddServer(ServerModel s)
         {
-            _context.ServerModels.Add(s);
-            _context.SaveChanges();
-            
+            var svrs = _context.ServerModels.AsNoTracking().ToList();
+            if (svrs.All(x => x.serverId != s.serverId))
+            {
+                _context.ServerModels.Add(s);
+                _context.SaveChanges();
+            }
             return s;
         }
 
         public async Task<List<ServerModel>> GetAllServers()
         {
             var list = new List<ServerModel>();
-            list = await _context.ServerModels.AsQueryable().ToListAsync();
+            list = await _context.ServerModels.AsNoTracking().AsQueryable().ToListAsync();
             
             return list;
         }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ClassLibrary.Models.ContextModels
 {
-    public class UserModel : IdentityUser
+    public class UserModel : IdentityUser, IUserModel
     {
         public Guid userGuid { get; set; }
         public bool isBotAdmin { get; set; }
