@@ -313,9 +313,8 @@ namespace ClassLibrary.Helpers
             return reminders;
         }
 
-        public async Task RegisterUsersOwnServers(ulong userId)
+        public async Task RegisterUsersOwnServers(DiscordSocketClient socket, ulong userId)
         {
-            var socket = _service.GetRequiredService<DiscordSocketClient>();
             var user = socket.GetUser(userId);
             var servers = user.MutualGuilds.ToList();
             foreach (var svr in servers)

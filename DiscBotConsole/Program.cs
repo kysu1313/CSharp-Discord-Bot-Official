@@ -14,6 +14,7 @@ using System.Reflection;
 using Microsoft.Data.Sqlite;
 using ClassLibrary.Data;
 using ClassLibrary.Models;
+using ClassLibrary.Models.Utility;
 
 namespace DiscBotConsole
 {
@@ -99,9 +100,10 @@ namespace DiscBotConsole
                 );
 
             // returns a ServiceProvider that is used later to call for those services
+            // return new ServiceCollectionExtension.AddServices()
             return new ServiceCollection()
                 .AddSingleton(_config)
-                .AddScoped<DiscordSocketClient>()
+                .AddSingleton<DiscordSocketClient>()
                 .AddSingleton<CommandService>()
                 .AddTransient<CommandContext>()
                 .AddSingleton<CommandHandler>()

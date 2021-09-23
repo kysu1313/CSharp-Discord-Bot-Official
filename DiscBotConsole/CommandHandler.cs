@@ -95,9 +95,8 @@ namespace ClassLibrary.Models.GeneralCommands
                     serverName = sv.Name
                 });
             }
-
-            
         }
+
 
         // this class is where the magic starts, and takes actions upon receiving messages
         [RequireContext(ContextType.Guild)]
