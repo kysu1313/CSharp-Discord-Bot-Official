@@ -70,39 +70,35 @@ namespace ClassLibrary.ModelDTOs
             return userExp;
         }
 
-        public async Task RegisterUser(string name, ulong userId)
+        public async Task RegisterUser(ulong userId, ulong serverId)
         {
-            var userModel = await GetUser(name);
+            var userModel = await GetUser(userId);
+            var svr = _context.ServerModels.FirstOrDefault(x => x.serverId == serverId);
+            if (svr != null)
+            {
+                svr.botAdmin = userModel;
+                // svr.botAdminId = userId;
+            }
             userModel.userId = userId;
             userModel.hasLinkedAccount = true;
             userModel.isBotAdmin = true;
             await _context.SaveChangesAsync();
         }
 
-        public async Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds)
+        public Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds)
         {
-            var user = await GetUser(userId);
-            await using var dto = new ServerModelDTO(_context);
-            var servers = await dto.GetAllServers();
-            foreach (var svr in serverIds)
-            {
-                var exists = servers.FirstOrDefault(x => x.serverId == svr.Key);
-                if (exists == null)
-                {
-                    dto.AddServer(new ServerModel()
-                    {
-                        serverId = svr.Key,
-                        serverName = svr.Value,
-                        botAdmin = user
-                    });
-                }
-                else
-                {
-                    exists.botAdmin = user;
-                }
-                await RegisterUser(user.UserName, userId);
-            }
+            throw new NotImplementedException();
+        }
 
+        public async Task LinkUserToServers(ulong userId, ServerModel server)
+        {
+            var user = _context.UserModels.FirstOrDefault(x => x.userId == userId);
+            if (user != null)
+            {
+                server.botAdmin = user;
+                user.isBotAdmin = true;    
+            }
+            // server.botAdminId = userId;
             await _context.SaveChangesAsync();
         }
 

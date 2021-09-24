@@ -12,8 +12,8 @@ namespace ClassLibrary.ModelDTOs
         Task<UserModel> GetUser(ulong userId);
         Task<UserModel> GetUser(string userName);
         Task<UserExperience> GetUserExperience(ulong userId, ulong serverId);
-        Task RegisterUser(string name, ulong userId);
-        Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds);
+        Task RegisterUser(ulong userId, ulong serverId);
+        Task LinkUserToServers(ulong userId, ServerModel server);
         void Dispose();
         ValueTask DisposeAsync();
     }

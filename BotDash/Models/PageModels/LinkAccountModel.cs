@@ -45,12 +45,11 @@ namespace BotDash.Models.PageModels
                     {
                         _success = true;
                     }
-                    
-                    var socket = Service.GetService<DiscordSocketClient>();
-                    
+
                     await using var helpDto = new Helper(Context, Service);
-                    await dto.RegisterUser(name, ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
-                    await helpDto.RegisterUsersOwnServers(socket, id);
+                    var uid = ulong.TryParse(_userId, out ulong id) == false ? 0 : id;
+                    await dto.RegisterUser(userModel.userId, id);
+                    await helpDto.RegisterUsersOwnServers(uid);
                     
                     
                 }
@@ -67,15 +66,15 @@ namespace BotDash.Models.PageModels
             {
                 await using (var dto = new UserModelDTO(Context))
                 {
-                    var socket = Service.GetService<DiscordSocketClient>();
-                    
                     var name = authState.User.Identity.Name;
                     var userModel = await dto.GetUser(name);
                     await using var helpDto = new Helper(Context, Service);
                     if (!userModel.hasLinkedAccount)
                     {
-                        await dto.RegisterUser(name, ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
-                        await helpDto.RegisterUsersOwnServers(socket, id);
+                        await dto.RegisterUser(
+                            userModel.userId, 
+                            ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
+                        await helpDto.RegisterUsersOwnServers(id);
                     }
                     _success = true;
                 }
