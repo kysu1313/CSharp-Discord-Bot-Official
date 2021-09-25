@@ -28,13 +28,30 @@ namespace ClassLibrary.ModelDTOs
             {
                 userId = user.Id,
                 userNameEntry = user.Username,
+                isBotAdmin = false,
+                hasLinkedAccount = false,
                 slowModeEnabled = false,
                 slowModeTime = 0
             };
 
             await _context.UserModels.AddAsync(newUser);
             await _context.SaveChangesAsync();
-            
+        }
+
+        public async Task<UserModel> AddUser(ulong userId)
+        {
+            UserModel newUser = new UserModel()
+            {
+                userId = userId,
+                slowModeEnabled = false,
+                isBotAdmin = false,
+                hasLinkedAccount = false,
+                slowModeTime = 0
+            };
+
+            await _context.UserModels.AddAsync(newUser);
+            await _context.SaveChangesAsync();
+            return newUser;
         }
 
         public async Task<List<UserModel>> GetAllUsers()
@@ -45,19 +62,37 @@ namespace ClassLibrary.ModelDTOs
             return list;
         }
 
-        public async Task<UserModel> GetUser(ulong userId)
+        // public async Task<UserModel> GetUser(ulong userId)
+        // {
+        //     var user = await _context.UserModels
+        //         .FirstOrDefaultAsync(x => x.userId == userId);
+        //     if (null == user)
+        //     {
+        //         return await AddUser(userId);
+        //     }
+        //     return user;
+        // }
+
+        public async Task<UserModel> GetUser(string? userName, ulong? userId)
         {
-            var user = await _context.UserModels
-                .FirstOrDefaultAsync(x => x.userId == userId);
+            
+            var user = userName != null ? await _context.UserModels
+                .FirstOrDefaultAsync(x => x.UserName == userName) : 
+                    userId != null ? await _context.UserModels
+                        .FirstOrDefaultAsync(x => x.userId == userId) : null;
+            if (null == user)
+            {
+                if (userId != null) return await AddUser((ulong)userId);
+            }
             return user;
         }
 
-        public async Task<UserModel> GetUser(string userName)
-        {
-            var user = await _context.UserModels
-                .FirstOrDefaultAsync(x => x.UserName == userName);
-            return user;
-        }
+        // public async Task<UserModel> GetUser(string userName)
+        // {
+        //     var user = await _context.UserModels
+        //         .FirstOrDefaultAsync(x => x.UserName == userName);
+        //     return user;
+        // }
 
         public async Task<UserExperience> GetUserExperience(ulong userId, ulong serverId)
         {
@@ -70,39 +105,35 @@ namespace ClassLibrary.ModelDTOs
             return userExp;
         }
 
-        public async Task RegisterUser(string name, ulong userId)
+        public async Task RegisterUser(string userName, ulong userId)
         {
-            var userModel = await GetUser(name);
+            var userModel = await GetUser(userName, userId);
+            // var svr = _context.ServerModels.FirstOrDefault(x => x.userIdent == userId);
+            // if (svr != null)
+            // {
+            //     // svr.botAdmin = userModel;
+            //     svr.userIdent = userId;
+            // }
             userModel.userId = userId;
             userModel.hasLinkedAccount = true;
             userModel.isBotAdmin = true;
             await _context.SaveChangesAsync();
         }
 
-        public async Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds)
+        public Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds)
         {
-            var user = await GetUser(userId);
-            await using var dto = new ServerModelDTO(_context);
-            var servers = await dto.GetAllServers();
-            foreach (var svr in serverIds)
-            {
-                var exists = servers.FirstOrDefault(x => x.serverId == svr.Key);
-                if (exists == null)
-                {
-                    dto.AddServer(new ServerModel()
-                    {
-                        serverId = svr.Key,
-                        serverName = svr.Value,
-                        botAdmin = user
-                    });
-                }
-                else
-                {
-                    exists.botAdmin = user;
-                }
-                await RegisterUser(user.UserName, userId);
-            }
+            throw new NotImplementedException();
+        }
 
+        public async Task LinkUserToServers(ulong userId, ServerModel server)
+        {
+            var user = _context.UserModels.FirstOrDefault(x => x.userId == userId);
+            if (user != null)
+            {
+                server.userIdent = user.userId;
+                user.isBotAdmin = true;    
+            }
+            // server.botAdminId = userId;
             await _context.SaveChangesAsync();
         }
 

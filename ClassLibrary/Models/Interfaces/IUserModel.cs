@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary.Models.ContextModels
 {
@@ -11,6 +12,7 @@ namespace ClassLibrary.Models.ContextModels
         string userNameEntry { get; set; }
         bool slowModeEnabled { get; set; }
         int slowModeTime { get; set; }
+        
         string Id { get; set; }
         string UserName { get; set; }
         string NormalizedUserName { get; set; }

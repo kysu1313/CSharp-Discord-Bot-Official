@@ -37,9 +37,11 @@ namespace ClassLibrary.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserModel>().HasKey(s => s.userId);
+            modelBuilder.Entity<UserModel>()
+                .HasKey(s => s.userId);
             modelBuilder.Entity<UserExperience>().HasKey(s => s.id);
-            modelBuilder.Entity<ServerModel>().HasKey(s => s.serverId);
+            modelBuilder.Entity<ServerModel>()
+                .HasKey(p => p.id);
             modelBuilder.Entity<CryptoModel>().HasKey(s => s.id);
             modelBuilder.Entity<UserDash>().HasKey(s => s.id);
             modelBuilder.Entity<DashItem>().HasKey(s => s.id);

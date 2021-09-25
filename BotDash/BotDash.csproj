@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BotApi\BotApi.csproj" />
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+    <ProjectReference Include="..\DiscBotConsole\DiscBotConsole.csproj" />
   </ItemGroup>
 
 </Project>

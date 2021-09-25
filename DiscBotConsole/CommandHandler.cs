@@ -42,6 +42,7 @@ namespace ClassLibrary.Models.GeneralCommands
             _commands.CommandExecuted += CommandExecutedAsync;
             // take action when we receive a message
             _client.MessageReceived += MessageReceivedAsync;
+            Helper._socket = _client;
 
         }
 
@@ -69,11 +70,12 @@ namespace ClassLibrary.Models.GeneralCommands
                 {
                     foreach (var svr in distinctLst)
                     {
-                        var svrName = _client.GetGuild(svr).Name;
+                        var server = _client.GetGuild(svr);
                         dto.AddServer(new ServerModel()
                         {
                             serverId = svr,
-                            serverName = string.IsNullOrEmpty(svrName) ? "None" : svrName,
+                            serverName = string.IsNullOrEmpty(server.Name) ? "None" : server.Name,
+                            userIdent = server.Owner.Id
                         });
                     }
                 }
@@ -86,18 +88,24 @@ namespace ClassLibrary.Models.GeneralCommands
         {
             var svrs = _client.Guilds.ToList();
             await using var dto = new ServerModelDTO(_context);
+            await using var userDto = new UserModelDTO(_context);
+            var users = await userDto.GetAllUsers();
 
             foreach (var sv in svrs)
             {
-                dto.AddServer(new ServerModel()
+                var newSvr = new ServerModel()
                 {
                     serverId = sv.Id,
-                    serverName = sv.Name
-                });
+                    serverName = sv.Name,
+                    userIdent = sv.Owner.Id
+                };
+                dto.AddServer(newSvr);
+                var usr = users.FirstOrDefault(x => x.userId == sv.Owner.Id);
+                await userDto.LinkUserToServers(sv.Owner.Id, newSvr);
             }
-
             
         }
+
 
         // this class is where the magic starts, and takes actions upon receiving messages
         [RequireContext(ContextType.Guild)]
@@ -142,7 +150,7 @@ namespace ClassLibrary.Models.GeneralCommands
                 }
 
                 var tmpCmd = currCmds.FirstOrDefault(x => 
-                    x.commandName == message.Content.ToString().Substring(1));
+                    x.commandName.ToLower() == message.Content.ToString().Substring(1).ToLower());
                 runCommand = tmpCmd != null ? tmpCmd.enabled : true;
             }
             

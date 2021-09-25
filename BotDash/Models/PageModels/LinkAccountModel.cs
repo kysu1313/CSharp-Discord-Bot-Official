@@ -7,6 +7,7 @@ using ClassLibrary.Helpers;
 using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 using Coinbase.Models;
+using Discord.WebSocket;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -39,17 +40,24 @@ namespace BotDash.Models.PageModels
                 using (var dto = new UserModelDTO(Context))
                 {
                     var name = authState.User.Identity.Name;
-                    var userModel = await dto.GetUser(name);
+                    var userModel = await dto.GetUser(name, null);
                     if (userModel.hasLinkedAccount)
                     {
                         _success = true;
                     }
+
+                    // await using var helpDto = new Helper(Context, Service);
+                    // var uid = ulong.TryParse(_userId, out ulong id) == false ? 0 : id;
+                    // await dto.RegisterUser(userModel.userId, id);
+                    // await helpDto.RegisterUsersOwnServers(uid); 
+                    
+                    
                 }
             }
             base.OnInitialized();
         }
 
-        protected async Task Submit(MouseEventArgs e)
+        protected async Task SubmitUsr(MouseEventArgs e)
         {
             _buttonState = "Clicked";
             var authState = await AuthenticationStateTask.ConfigureAwait(false);
@@ -59,12 +67,13 @@ namespace BotDash.Models.PageModels
                 await using (var dto = new UserModelDTO(Context))
                 {
                     var name = authState.User.Identity.Name;
-                    var userModel = await dto.GetUser(name);
                     await using var helpDto = new Helper(Context, Service);
+                    var uid = UInt64.Parse(_userId);
+                    var userModel = await dto.GetUser(name, uid);
                     if (!userModel.hasLinkedAccount)
                     {
-                        await dto.RegisterUser(name, ulong.TryParse(_userId, out ulong id) == false ? 0 : id);
-                        await helpDto.RegisterUsersOwnServers(id);
+                        await dto.RegisterUser(name, uid);
+                        await helpDto.RegisterUsersOwnServers(name, uid);
                     }
                     _success = true;
                 }

@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ClassLibrary.Models.ContextModels;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace ClassLibrary.Helpers
 {
@@ -32,6 +33,7 @@ namespace ClassLibrary.Helpers
         private readonly ServerModelDTO _serverModelDTO;
         private ReminderModelDTO _reminderModelDTO;
         private List<ServerCommands> _commands;
+        public static DiscordSocketClient _socket { get; set; }
 
         public Helper(ApplicationDbContext context, IServiceProvider services, ICommandContext commandContext = null)
         {
@@ -43,12 +45,14 @@ namespace ClassLibrary.Helpers
             _staticService = services;
             _commands = _context.ServerCommandModels.ToList();
         }
+        
+        
 
         public  async Task<UserModel> getUser(ulong userId)
         {
             UserModel user = new UserModel();
             var userModelDTO = new UserModelDTO(_context);
-            user = await userModelDTO.GetUser(userId);
+            user = await userModelDTO.GetUser(null, userId);
             
             return user;
         }
@@ -313,19 +317,18 @@ namespace ClassLibrary.Helpers
             return reminders;
         }
 
-        public async Task RegisterUsersOwnServers(ulong userId)
+        public async Task RegisterUsersOwnServers(string name, ulong userId)
         {
-            var socket = _service.GetRequiredService<DiscordSocketClient>();
-            var user = socket.GetUser(userId);
-            var servers = user.MutualGuilds.ToList();
-            foreach (var svr in servers)
+            await using var dto = new UserModelDTO(_context);
+            var svrs = (await getAllServerModels()).FindAll(x => x.userIdent == userId);
+            
+            foreach (var svr in svrs)
             {
-                await using var dto = new UserModelDTO(_context);
-                if (svr.Owner == user)
-                {
-                    await dto.RegisterUser(user.Username, userId);
-                }
+                await dto.RegisterUser(name, userId);
+                svr.userIdent = userId;
             }
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task SendReminder(ReminderModel model)
@@ -338,7 +341,7 @@ namespace ClassLibrary.Helpers
             StringBuilder sb = new StringBuilder();
 
             var id = model.createdInServerId;
-            sb.Append("\n");
+            sb.Append('\n');
             sb.AppendLine($"{model.value}");
             sb.AppendLine($"{model.additionalInfo}");
 

@@ -9,11 +9,11 @@ namespace ClassLibrary.ModelDTOs
     {
         Task AddUser(IUser user);
         Task<List<UserModel>> GetAllUsers();
-        Task<UserModel> GetUser(ulong userId);
-        Task<UserModel> GetUser(string userName);
+        // Task<UserModel> GetUser(ulong userId);
+        Task<UserModel> GetUser(string? userName, ulong? userId);
         Task<UserExperience> GetUserExperience(ulong userId, ulong serverId);
-        Task RegisterUser(string name, ulong userId);
-        Task LinkUserToServers(ulong userId, Dictionary<ulong, string> serverIds);
+        Task RegisterUser(string userName, ulong userId);
+        Task LinkUserToServers(ulong userId, ServerModel server);
         void Dispose();
         ValueTask DisposeAsync();
     }

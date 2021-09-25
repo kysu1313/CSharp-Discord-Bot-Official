@@ -16,7 +16,7 @@ using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Humanizer;
-using ClassLibrary.Helpers.Crypto;
+// using ClassLibrary.Helpers.Crypto;
 using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 using k8s.KubeConfigModels;
@@ -83,15 +83,15 @@ namespace DiscBotConsole.Modules
             // get user info from the Context
             var user = Context.User;
 
-            Blockchain bc = new Blockchain(_context, _service);
-            var items = await bc.Testing();
-            await bc.QbitTest();
+            // Blockchain bc = new Blockchain(_context, _service);
+            // var items = await bc.Testing();
+            // await bc.QbitTest();
 
             // build out the reply
-            foreach (var item in items)
-            {
-                sb.AppendLine(item);
-            }
+            // foreach (var item in items)
+            // {
+            //     sb.AppendLine(item);
+            // }
 
             // send simple string reply
             await ReplyAsync(sb.ToString());
@@ -287,7 +287,7 @@ namespace DiscBotConsole.Modules
             }
             else
             {
-                var answer = replies[new Random().Next(replies.Count - 1)];
+                var answer = replies[(new Random().Next(replies.Count - 1))];
 
                 sb.AppendLine($"You asked: " + args);
                 sb.AppendLine();

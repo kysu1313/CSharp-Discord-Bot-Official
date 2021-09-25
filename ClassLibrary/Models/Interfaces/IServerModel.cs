@@ -5,6 +5,7 @@ namespace ClassLibrary.Models.ContextModels
         int id { get; set; }
         ulong serverId { get; set; }
         string serverName { get; set; }
-        UserModel? botAdmin { get; set; }
+        ulong userIdent { get; set; }
+        // UserModel? botAdmin { get; set; }
     }
 }

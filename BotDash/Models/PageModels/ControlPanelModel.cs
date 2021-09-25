@@ -40,7 +40,6 @@ namespace BotDash.Models.PageModels
             _severNames = new Dictionary<string, ulong>();
             _commandNames = new Dictionary<string, int>();
             _selectedCommands = new List<CommandModel>();
-            await GetServers();
             
             if (_currAuth.User.Identity != null && _currAuth.User != null && _currAuth.User.Identity.IsAuthenticated)
             {
@@ -48,7 +47,7 @@ namespace BotDash.Models.PageModels
                 using (var dto = new UserModelDTO(Context))
                 {
                     var name = _currAuth.User.Identity.Name;
-                    var userModel = await dto.GetUser(name);
+                    var userModel = await dto.GetUser(name, null);
                     if (userModel.hasLinkedAccount)
                     {
                         _hasLinkedAccount = true;
@@ -62,15 +61,28 @@ namespace BotDash.Models.PageModels
                     _selectedServer = _servers.First();
                     await GetServerCommands(_selectedServer.serverId);
                 }
+                await GetServers();
             }
             base.OnInitialized();
         }
 
-        protected void OnDdChange(object servId, string val)
+        protected async Task OnDdChange(object servId, string val)
         {
             _selectedServer = _servers.FirstOrDefault(x => 
                 x.serverId == (ulong)servId);
-            _selectedCommands = _commands.FindAll(x => x.serverId == (ulong)servId);
+            if (_selectedServer is not null)
+            {
+                await GetServerCommands(_selectedServer.serverId);
+                _selectedCommands = _commands;
+            }
+        }
+
+        /// <summary>
+        /// Refresh the current servers and commands.
+        /// </summary>
+        protected async Task RefreshClick()
+        {
+            await GetServers();
         }
 
         protected async Task OnSwitchChange(object enabled, object cmd, string val)
@@ -92,7 +104,7 @@ namespace BotDash.Models.PageModels
             await using (var dto = new ServerModelDTO(Context))
             {
                 var svrs = await dto.GetAllServers();
-                _servers = svrs.FindAll(x => x.botAdmin == _currUser);
+                _servers = svrs.FindAll(x => x.userIdent == _currUser.userId);
                 if (_servers.Count > 0)
                 {
                     foreach (var s in _servers)
@@ -108,6 +120,11 @@ namespace BotDash.Models.PageModels
             _isLoggedIn = true;
             await using (var dto = new CommandModelDTO(Context, Services))
             {
+                if (_commands is not null)
+                {
+                    _commands.Clear();
+                    _commandNames.Clear();
+                }
                 _commands = await dto.GetCommands(serverId).ConfigureAwait(false) as List<CommandModel>;
                 if (_commands is { Count: > 0 })
                 {
