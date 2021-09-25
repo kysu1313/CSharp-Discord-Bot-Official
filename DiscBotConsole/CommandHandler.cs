@@ -150,7 +150,7 @@ namespace ClassLibrary.Models.GeneralCommands
                 }
 
                 var tmpCmd = currCmds.FirstOrDefault(x => 
-                    x.commandName == message.Content.ToString().Substring(1));
+                    x.commandName.ToLower() == message.Content.ToString().Substring(1).ToLower());
                 runCommand = tmpCmd != null ? tmpCmd.enabled : true;
             }
             

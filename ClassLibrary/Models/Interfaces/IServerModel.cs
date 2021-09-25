@@ -6,6 +6,6 @@ namespace ClassLibrary.Models.ContextModels
         ulong serverId { get; set; }
         string serverName { get; set; }
         ulong userIdent { get; set; }
-        UserModel? botAdmin { get; set; }
+        // UserModel? botAdmin { get; set; }
     }
 }

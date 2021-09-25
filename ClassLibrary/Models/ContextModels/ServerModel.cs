@@ -17,6 +17,6 @@ namespace ClassLibrary.Models.ContextModels
         public ulong serverId { get; set; }
         public string serverName { get; set; }
         public ulong userIdent { get; set; }
-        public virtual UserModel? botAdmin { get; set; }
+        // public virtual UserModel? botAdmin { get; set; }
     }
 }

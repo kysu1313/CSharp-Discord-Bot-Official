@@ -52,7 +52,7 @@ namespace ClassLibrary.Helpers
         {
             UserModel user = new UserModel();
             var userModelDTO = new UserModelDTO(_context);
-            user = await userModelDTO.GetUser(userId);
+            user = await userModelDTO.GetUser(null, userId);
             
             return user;
         }
@@ -317,19 +317,18 @@ namespace ClassLibrary.Helpers
             return reminders;
         }
 
-        public async Task RegisterUsersOwnServers(ulong userId)
+        public async Task RegisterUsersOwnServers(string name, ulong userId)
         {
             await using var dto = new UserModelDTO(_context);
             var svrs = (await getAllServerModels()).FindAll(x => x.userIdent == userId);
             
             foreach (var svr in svrs)
             {
-                if (svr.userIdent == userId)
-                {
-                    await dto.RegisterUser(userId, svr.serverId);
-                    
-                }
+                await dto.RegisterUser(name, userId);
+                svr.userIdent = userId;
             }
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task SendReminder(ReminderModel model)

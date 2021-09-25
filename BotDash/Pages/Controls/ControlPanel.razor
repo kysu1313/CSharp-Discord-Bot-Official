@@ -14,13 +14,18 @@ else
         <div class="server-select">
             @if (_servers != null)
             {
+                <div class="col-xl-6" style="display: inline-flex;">
                 <RadzenDropDownDataGrid TValue="ulong" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
                                         AllowFiltering="true" AllowClear="true"
                                         Data="@_severNames"
                                         EmptyText="Select a server"
+                                        SearchText="Select a server"
                                         TextProperty="Key"
                                         ValueProperty="Value"
-                                        Change="@(args => OnDdChange(args, "DropDown"))" Style="width:80%" />
+                                        Change="@(args => OnDdChange(args, "DropDown"))" Style="width:20%" />
+                
+                <RadzenButton Click=@(args => RefreshClick()) Style="margin-bottom: 20px; margin-left: 5px" Icon="refresh" />
+                </div>
                 
                 <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Advanced" 
                                 PageSize="50" AllowPaging="true" AllowSorting="true" Style="width:80%"
@@ -37,6 +42,7 @@ else
                         <RadzenDataGridColumn TItem="CommandModel" Property="serverId" Title="Server ID" />
                         <RadzenDataGridColumn TItem="CommandModel" Property="dateAdded" Title="Date Added" FormatString="{0:d}" />
                         <RadzenDataGridColumn TItem="CommandModel" Property="dateModified" Title="Date Modified" FormatString="{0:d}" />
+                        <RadzenDataGridColumn TItem="CommandModel" Property="totalUses" Title="Total Uses" />
                         <RadzenDataGridColumn TItem="CommandModel" Property="commandId" Title="Command ID" />
                     </Columns>
                 </RadzenDataGrid>

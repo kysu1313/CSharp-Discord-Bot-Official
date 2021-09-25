@@ -14,14 +14,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IServerModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModelDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
     </list>
@@ -60,12 +60,15 @@
     <setting file="file://$PROJECT_DIR$/BotDash/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0ccbaccd851b467b87b67e44c229d3ae1bcd78/57/HttpMethod.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/3F/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/F3/UInt64.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DiscBotConsole/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotApi/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5341e7d9751d48faaa1844a17b4809201f600/1c/c256677d/ModuleBase`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/2C2/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e7bd73da3c6440fbb258d36855a3f9401bfb78/14B/InternalDbSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/matblazor/2.8.0/contentFiles/any/netstandard2.1/Properties/launchSettings.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/B2/Nullable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/41A/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/15/LayoutComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Properties/serviceDependencies.local.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/5341e7d9751d48faaa1844a17b4809201f600/50/77ef4188/0200002B.il" root0="SKIP_HIGHLIGHTING" />
@@ -97,7 +100,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlserver" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.30165288" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32260692" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -273,7 +276,7 @@
       <workItem from="1631920569593" duration="2092000" />
       <workItem from="1631923515474" duration="15388000" />
       <workItem from="1632268180048" duration="7250000" />
-      <workItem from="1632354435754" duration="19171000" />
+      <workItem from="1632354435754" duration="32102000" />
     </task>
     <servers />
   </component>
@@ -309,39 +312,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>39</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="38" containingFunctionPresentation="method 'OnInitialized'">
-            <startOffsets>
-              <option value="1391" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1434" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>76</line>
+          <line>75</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="66" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2963" />
+              <option value="2918" />
             </startOffsets>
             <endOffsets>
-              <option value="3005" />
+              <option value="2967" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>71</line>
+          <line>72</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="63" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2703" />
+              <option value="2780" />
             </startOffsets>
             <endOffsets>
-              <option value="2735" />
+              <option value="2812" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
@@ -351,10 +341,10 @@
           <line>64</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="56" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2324" />
+              <option value="2343" />
             </startOffsets>
             <endOffsets>
-              <option value="2386" />
+              <option value="2405" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
@@ -364,104 +354,65 @@
           <line>62</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="54" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2242" />
+              <option value="2261" />
             </startOffsets>
             <endOffsets>
-              <option value="2310" />
+              <option value="2329" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>34</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="33" containingFunctionPresentation="method 'OnInitialized'">
-            <startOffsets>
-              <option value="1180" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1248" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>51</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="50" containingFunctionPresentation="method 'OnInitialized'">
-            <startOffsets>
-              <option value="1962" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2005" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs</url>
           <line>306</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\Helper.cs" initialLine="303" containingFunctionPresentation="method 'GetServerReminders'">
             <startOffsets>
-              <option value="11207" />
+              <option value="11213" />
             </startOffsets>
             <endOffsets>
-              <option value="11208" />
+              <option value="11214" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs</url>
-          <line>103</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\DiscBotConsole\CommandHandler.cs" initialLine="104" containingFunctionPresentation="method 'LinkUserServers'">
-            <startOffsets>
-              <option value="4005" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4057" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs</url>
-          <line>101</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\ModelDTOs\UserModelDTO.cs" initialLine="85" containingFunctionPresentation="method 'LinkUserToServers'">
+          <line>111</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\ModelDTOs\UserModelDTO.cs" initialLine="76" containingFunctionPresentation="method 'RegisterUser'">
             <startOffsets>
-              <option value="3100" />
+              <option value="3510" />
             </startOffsets>
             <endOffsets>
-              <option value="3134" />
+              <option value="3526" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>48</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="48" containingFunctionPresentation="method 'OnInitialized'">
+          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs</url>
+          <line>122</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\ControlPanelModel.cs" initialLine="122" containingFunctionPresentation="method 'GetServerCommands'">
             <startOffsets>
-              <option value="1733" />
+              <option value="4323" />
             </startOffsets>
             <endOffsets>
-              <option value="1788" />
+              <option value="4349" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs</url>
-          <line>88</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\DiscBotConsole\CommandHandler.cs" initialLine="87" containingFunctionPresentation="method 'LinkUserServers'">
+          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs</url>
+          <line>133</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\ControlPanelModel.cs" initialLine="133" containingFunctionPresentation="method 'GetServerCommands'">
             <startOffsets>
-              <option value="3393" />
+              <option value="4796" />
             </startOffsets>
             <endOffsets>
-              <option value="3428" />
+              <option value="4797" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -470,5 +421,10 @@
         <PinnedItemInfo parentTag="Type#Discord.Commands.SocketCommandContext" memberName="Client" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="LaunchSettings">
+        <watch expression="ulong.TryParse(_userId, out ulong id)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
