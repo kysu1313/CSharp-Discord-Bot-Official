@@ -13,17 +13,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassLibrary/Models/HelperModels/AudioModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassLibrary/lib/opus.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassLibrary/lib/opus.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IServerModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/Interfaces/IUserModelDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/DiscBotConsole.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/DiscBotConsole.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/MusicCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/MusicCommands.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +82,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6e3212d57d1d4cfc9914680fd43feb3856790/73/Check.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/23/a0db9a67/SocketVoiceChannel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/d3/4fc87f03/SocketCommandContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/8/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/65/b47af76e/SocketGuild.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0ccbaccd851b467b87b67e44c229d3ae1bcd78/59/HttpRequestMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2b4decd3f84b4073b653232dad2dde4da2c00/6c/3b63dcd6/CoreMatSelect`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/4d/e96b13bf/SocketGuildUser.cs" root0="SKIP_HIGHLIGHTING" />
@@ -100,7 +102,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlserver" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32260692" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32288828" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -276,7 +278,8 @@
       <workItem from="1631920569593" duration="2092000" />
       <workItem from="1631923515474" duration="15388000" />
       <workItem from="1632268180048" duration="7250000" />
-      <workItem from="1632354435754" duration="32102000" />
+      <workItem from="1632354435754" duration="45581000" />
+      <workItem from="1632618739666" duration="1977000" />
     </task>
     <servers />
   </component>
@@ -376,43 +379,43 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClassLibrary/ModelDTOs/UserModelDTO.cs</url>
-          <line>111</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\ModelDTOs\UserModelDTO.cs" initialLine="76" containingFunctionPresentation="method 'RegisterUser'">
+          <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
+          <line>123</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="67" containingFunctionPresentation="method 'CreateProcess'">
             <startOffsets>
-              <option value="3510" />
+              <option value="5145" />
             </startOffsets>
             <endOffsets>
-              <option value="3526" />
+              <option value="5146" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs</url>
-          <line>122</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\ControlPanelModel.cs" initialLine="122" containingFunctionPresentation="method 'GetServerCommands'">
+          <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
+          <line>102</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="46" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="4323" />
+              <option value="4266" />
             </startOffsets>
             <endOffsets>
-              <option value="4349" />
+              <option value="4267" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="68" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs</url>
-          <line>133</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\ControlPanelModel.cs" initialLine="133" containingFunctionPresentation="method 'GetServerCommands'">
+          <url>file://$PROJECT_DIR$/DiscBotConsole/Modules/MusicCommands.cs</url>
+          <line>45</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\DiscBotConsole\Modules\MusicCommands.cs" initialLine="45" containingFunctionPresentation="method 'PlayCmd'">
             <startOffsets>
-              <option value="4796" />
+              <option value="1522" />
             </startOffsets>
             <endOffsets>
-              <option value="4797" />
+              <option value="1590" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="69" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -103,6 +103,9 @@ namespace BotDash.Models.PageModels
             _isLoggedIn = true;
             await using (var dto = new ServerModelDTO(Context))
             {
+                if (_commands != null) _commands.Clear();
+                if (_commandNames != null) _commandNames.Clear();
+                if (_severNames != null) _severNames.Clear();
                 var svrs = await dto.GetAllServers();
                 _servers = svrs.FindAll(x => x.userIdent == _currUser.userId);
                 if (_servers.Count > 0)
@@ -120,17 +123,16 @@ namespace BotDash.Models.PageModels
             _isLoggedIn = true;
             await using (var dto = new CommandModelDTO(Context, Services))
             {
-                if (_commands is not null)
-                {
-                    _commands.Clear();
-                    _commandNames.Clear();
-                }
+                if (_commands != null) _commands.Clear();
+                if (_commandNames != null) _commandNames.Clear();
+                if (_severNames != null) _severNames.Clear();
                 _commands = await dto.GetCommands(serverId).ConfigureAwait(false) as List<CommandModel>;
                 if (_commands is { Count: > 0 })
                 {
                     foreach (var c in _commands)
                     {
-                        _commandNames.Add(c.commandName, c.commandId);   
+                        if (_commandNames != null) 
+                            _commandNames.Add(c.commandName, c.commandId);
                     }                
                 }
             }
