@@ -1,45 +1,50 @@
 using System;
+using System.Threading.Tasks;
 using ClassLibrary.Data;
+using ClassLibrary.Helpers;
+using Discord;
+using Discord.Audio;
+using Discord.Commands;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DiscBotConsole.Modules
 {
-    public class MusicCommands
+    public class AudioModule : ModuleBase<ICommandContext>
     {
-        private ApplicationDbContext _context;
-        private IServiceProvider _services;
+        // Scroll down further for the AudioService.
+        // Like, way down
+        private readonly AudioService _service;
 
-        public MusicCommands(ApplicationDbContext context, IServiceProvider services)
+        // Remember to add an instance of the AudioService
+        // to your IServiceCollection when you initialize your bot
+        public AudioModule(AudioService service)
         {
-            _context = context;
-            _services = services;
+            _service = service;
         }
-        
-        // public void SendAudio(string filePath)
-        // {
-        //     var channelCount = _client.GetService<AudioService>().Config.Channels; // Get the number of AudioChannels our AudioService has been configured to use.
-        //     var OutFormat = new WaveFormat(48000, 16, channelCount); // Create a new Output Format, using the spec that Discord will accept, and with the number of channels that our client supports.
-        //     using (var MP3Reader = new Mp3FileReader(filePath)) // Create a new Disposable MP3FileReader, to read audio from the filePath parameter
-        //     using (var resampler = new MediaFoundationResampler(MP3Reader, OutFormat)) // Create a Disposable Resampler, which will convert the read MP3 data to PCM, using our Output Format
-        //     {
-        //         resampler.ResamplerQuality = 60; // Set the quality of the resampler to 60, the highest quality
-        //         int blockSize = OutFormat.AverageBytesPerSecond / 50; // Establish the size of our AudioBuffer
-        //         byte[] buffer = new byte[blockSize];
-        //         int byteCount;
-        //
-        //         while((byteCount = resampler.Read(buffer, 0, blockSize)) > 0) // Read audio into our buffer, and keep a loop open while data is present
-        //         {
-        //             if (byteCount < blockSize)
-        //             {
-        //                 // Incomplete Frame
-        //                 for (int i = byteCount; i < blockSize; i++)
-        //                     buffer[i] = 0;
-        //             }
-        //             _vClient.Send(buffer, 0, blockSize); // Send the buffer to Discord
-        //         }
-        //     }
-        //
-        // }
-        
+
+        // You *MUST* mark these commands with 'RunMode.Async'
+        // otherwise the bot will not respond until the Task times out.
+        [Command("join", RunMode = RunMode.Async)]
+        public async Task JoinCmd()
+        {
+            await _service.JoinAudio(Context.Guild, (Context.User as IVoiceState).VoiceChannel);
+            // _service.SendAudioAsync()
+        }
+
+        // Remember to add preconditions to your commands,
+        // this is merely the minimal amount necessary.
+        // Adding more commands of your own is also encouraged.
+        [Command("leave", RunMode = RunMode.Async)]
+        public async Task LeaveCmd()
+        {
+            await _service.LeaveAudio(Context.Guild);
+        }
+    
+        [Command("play", RunMode = RunMode.Async)]
+        public async Task PlayCmd([Remainder] string song)
+        {
+            await _service.SendAudioAsync(Context.Guild, Context.Channel, song);
+        }
     }
+
 }

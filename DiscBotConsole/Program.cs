@@ -13,6 +13,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Data.Sqlite;
 using ClassLibrary.Data;
+using ClassLibrary.Helpers;
 using ClassLibrary.Models;
 using ClassLibrary.Models.Utility;
 
@@ -107,6 +108,7 @@ namespace DiscBotConsole
                 .AddSingleton<CommandService>()
                 .AddTransient<CommandContext>()
                 .AddSingleton<CommandHandler>()
+                .AddScoped<AudioService>()
                 .AddDbContext<ApplicationDbContext>()
                 .AddSingleton(redditBot)
                 .BuildServiceProvider();

@@ -62,17 +62,6 @@ namespace ClassLibrary.ModelDTOs
             return list;
         }
 
-        // public async Task<UserModel> GetUser(ulong userId)
-        // {
-        //     var user = await _context.UserModels
-        //         .FirstOrDefaultAsync(x => x.userId == userId);
-        //     if (null == user)
-        //     {
-        //         return await AddUser(userId);
-        //     }
-        //     return user;
-        // }
-
         public async Task<UserModel> GetUser(string? userName, ulong? userId)
         {
             
@@ -86,13 +75,6 @@ namespace ClassLibrary.ModelDTOs
             }
             return user;
         }
-
-        // public async Task<UserModel> GetUser(string userName)
-        // {
-        //     var user = await _context.UserModels
-        //         .FirstOrDefaultAsync(x => x.UserName == userName);
-        //     return user;
-        // }
 
         public async Task<UserExperience> GetUserExperience(ulong userId, ulong serverId)
         {
@@ -108,12 +90,6 @@ namespace ClassLibrary.ModelDTOs
         public async Task RegisterUser(string userName, ulong userId)
         {
             var userModel = await GetUser(userName, userId);
-            // var svr = _context.ServerModels.FirstOrDefault(x => x.userIdent == userId);
-            // if (svr != null)
-            // {
-            //     // svr.botAdmin = userModel;
-            //     svr.userIdent = userId;
-            // }
             userModel.userId = userId;
             userModel.hasLinkedAccount = true;
             userModel.isBotAdmin = true;
@@ -133,7 +109,6 @@ namespace ClassLibrary.ModelDTOs
                 server.userIdent = user.userId;
                 user.isBotAdmin = true;    
             }
-            // server.botAdminId = userId;
             await _context.SaveChangesAsync();
         }
 

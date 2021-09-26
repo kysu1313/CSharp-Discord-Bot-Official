@@ -15,11 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="opus">
+      <HintPath>lib\opus.dll</HintPath>
+    </Reference>
+    <Reference Include="libsodium">
+      <HintPath>lib\libsodium.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="BlockchainAPI" Version="4.0.0" />
     <PackageReference Include="Coinbase" Version="6.0.1" />
     <PackageReference Include="Discord.Net" Version="2.4.0" />
     <PackageReference Include="Discord.Net.Commands" Version="2.4.0" />
     <PackageReference Include="Discord.Net.Rest" Version="2.4.0" />
+    <PackageReference Include="Frapper" Version="1.0.5" />
     <PackageReference Include="Humanizer" Version="2.11.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
@@ -46,6 +56,7 @@
     <PackageReference Include="Radzen.Blazor" Version="3.9.9" />
     <PackageReference Include="RedditSharp" Version="2.0.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="YoutubeExtractor" Version="0.10.11" />
   </ItemGroup>
 
   <ItemGroup>
