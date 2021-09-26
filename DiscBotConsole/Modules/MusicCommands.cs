@@ -43,6 +43,7 @@ namespace DiscBotConsole.Modules
         [Command("play", RunMode = RunMode.Async)]
         public async Task PlayCmd([Remainder] string song)
         {
+            
             await _service.SendAudioAsync(Context.Guild, Context.Channel, song);
         }
     }
