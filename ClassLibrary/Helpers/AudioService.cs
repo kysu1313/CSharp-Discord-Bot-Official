@@ -118,6 +118,51 @@ namespace ClassLibrary.Helpers
                 //await Log(LogSeverity.Info, $"Disconnected from voice on {guild.Name}.");
             }
         }
+
+        public async Task Test()
+        {
+            // var pc = Process.Start(new ProcessStartInfo { 
+            //     FileName = "ffmpeg"
+            // });
+            // Thread.Sleep(500);
+            
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+
+            startInfo.CreateNoWindow = false;
+            startInfo.UseShellExecute = false;
+            startInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpeg\\ffmpeg-new-location\\bin\\ffmpeg.exe");
+            startInfo.Arguments = "-f s16le -ar 48000 -ac 2 pipe:1";
+            startInfo.RedirectStandardOutput = true;
+            
+            Console.WriteLine(string.Format(
+                "Executing \"{0}\" with arguments \"{1}\".\r\n", 
+                startInfo.FileName, 
+                startInfo.Arguments));
+
+            try
+            {
+                using (Process process = Process.Start(startInfo))
+                {
+                    while (!process.StandardOutput.EndOfStream)
+                    {
+                        string line = process.StandardOutput.ReadLine();
+                        Console.WriteLine(line);
+                    }
+
+                    process.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.ReadKey();
+        }
+        
+        
         
         public async Task SendAudioAsync(IGuild guild, IMessageChannel channel, string link)
         {
@@ -125,16 +170,12 @@ namespace ClassLibrary.Helpers
             IAudioClient client;
             if (ConnectedChannels.TryGetValue(guild.Id, out client))
             {
-                
-                var audio = await CallYoutube(GetVideoId(link));
-                var audioLength = audio.Length;
-                var bytes = streamToByteArray(audio);
                 using (var output = client.CreatePCMStream(AudioApplication.Mixed))
                 {
                     var process = Process.Start(new ProcessStartInfo { // FFmpeg requires us to spawn a process and hook into its stdout, so we will create a Process
-                        FileName = "ffmpeg",
-                        Arguments = $"-i {link} " + // Here we provide a list of arguments to feed into FFmpeg. -i means the location of the file/URL it will read from
-                                    "-f s16le -ar 48000 -ac 2 pipe:1", // Next, we tell it to output 16-bit 48000Hz PCM, over 2 channels, to stdout.
+                        FileName = "ffmpeg\\ffmpeg-new-location\\bin\\ffmpeg.exe",
+                        Arguments = $"-hide_banner -loglevel panic -i {link} " + // Here we provide a list of arguments to feed into FFmpeg. -i means the location of the file/URL it will read from
+                                    "-f s16le -ar 48000 -ac 2 pipe:0", // Next, we tell it to output 16-bit 48000Hz PCM, over 2 channels, to stdout.
                         UseShellExecute = false,
                         RedirectStandardOutput = true // Capture the stdout of the process
                     });
@@ -144,16 +185,24 @@ namespace ClassLibrary.Helpers
                     byte[] buffer = new byte[blockSize];
                     int byteCount;
 
+                    
+                    Console.WriteLine(process.StandardOutput.Peek());
+                    Console.WriteLine(process.StandardOutput.Peek());
+                    Console.WriteLine(process.StandardOutput.Peek());
+                    Console.WriteLine(process.StandardOutput.Peek());
+                    
                     while (true) // Loop forever, so data will always be read
                     {
+                        Console.WriteLine(process.StandardOutput.Peek());
                         byteCount = process.StandardOutput.BaseStream // Access the underlying MemoryStream from the stdout of FFmpeg
                             .Read(buffer, 0, blockSize); // Read stdout into the buffer
 
                         if (byteCount == 0) // FFmpeg did not output anything
                             break; // Break out of the while(true) loop, since there was nothing to read.
 
-                        output.WriteAsync(buffer, 0, byteCount);
-                        // client.Send(buffer, 0, byteCount); // Send our data to Discord
+                        // output.WriteAsync(buffer, 0, byteCount);
+                        output.WriteAsync(buffer, 0, byteCount); // Send our data to Discord
+                        // await output.WriteAsync(bytes, 0, bytes.Length);
                     }
 
                     // output..Wait(); 

@@ -16,6 +16,10 @@
 # Mono auto generated files
 mono_crash.*
 
+ClassLibrary/lib/*
+DiscBotConsole/lib/*
+
+ffmpeg_location/doc/*
 
 
 appsettings.json
@@ -415,3 +419,8 @@ old/old-test-db-migrations/20210919033119_aluses.cs
 old/old-test-db-migrations/20210919033119_aluses.Designer.cs
 old/old-test-db-migrations/20210924014700_hmmm.cs
 old/old-test-db-migrations/20210924014700_hmmm.Designer.cs
+ClassLibrary/lib/ffmpeg-4.3.1-win32-shared.zip
+lib/ffmpeg-4.2.1-win32-shared.zip
+lib/ffmpeg-n4.4-154-g79c114e1b2-win64-gpl-4.4.zip
+lib/ffmpeg-new-location/doc/bootstrap.min.css
+lib/ffmpeg-new-location/doc/default.css
