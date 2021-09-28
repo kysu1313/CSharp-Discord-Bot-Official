@@ -28,7 +28,6 @@ namespace DiscBotConsole.Modules
         public async Task JoinCmd()
         {
             await _service.JoinAudio(Context.Guild, (Context.User as IVoiceState).VoiceChannel);
-            // _service.SendAudioAsync()
         }
 
         // Remember to add preconditions to your commands,
