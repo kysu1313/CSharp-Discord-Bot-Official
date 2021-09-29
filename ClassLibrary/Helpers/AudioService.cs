@@ -167,15 +167,22 @@ namespace ClassLibrary.Helpers
         public async Task SendAudioAsync(IGuild guild, IMessageChannel channel, string link)
         {
             // !play https://www.youtube.com/watch?v=aIHF7u9Wwiw
+
+            // var adm = new AudioModel("aIHF7u9Wwiw", "mmiller");
+            // var vfm = adm.GetFormats();
+            
             IAudioClient client;
             if (ConnectedChannels.TryGetValue(guild.Id, out client))
             {
                 using (var output = client.CreatePCMStream(AudioApplication.Mixed))
                 {
                     var process = Process.Start(new ProcessStartInfo { // FFmpeg requires us to spawn a process and hook into its stdout, so we will create a Process
+                        // FileName = "ffmpeg\\youtube-play",
                         FileName = "ffmpeg\\ffmpeg-new-location\\bin\\ffmpeg.exe",
-                        Arguments = $"-hide_banner -loglevel panic -i {link} " + // Here we provide a list of arguments to feed into FFmpeg. -i means the location of the file/URL it will read from
-                                    "-f s16le -ar 48000 -ac 2 pipe:0", // Next, we tell it to output 16-bit 48000Hz PCM, over 2 channels, to stdout.
+                        Arguments = $" -f {link} " + // Here we provide a list of arguments to feed into FFmpeg. -i means the location of the file/URL it will read from
+                                    "-f s16le -ar 48000 -ac 2 pipe:1",
+                        // Arguments = $"-hide_banner -loglevel panic -i {link} " + // Here we provide a list of arguments to feed into FFmpeg. -i means the location of the file/URL it will read from
+                        //             "-f s16le -ar 48000 -ac 2 pipe:0", // Next, we tell it to output 16-bit 48000Hz PCM, over 2 channels, to stdout.
                         UseShellExecute = false,
                         RedirectStandardOutput = true // Capture the stdout of the process
                     });

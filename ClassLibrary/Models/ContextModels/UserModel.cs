@@ -6,9 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class UserModel : IdentityUser, IUserModel
     {
         public Guid userGuid { get; set; }

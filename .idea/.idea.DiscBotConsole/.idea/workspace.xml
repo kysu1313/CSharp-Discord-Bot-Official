@@ -13,10 +13,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/UserPanel.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotApi/BotApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/BotApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/BotDash.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/BotDash.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Modules/MusicCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Modules/MusicCommands.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +52,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/46/ComponentState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9e077754256d480394530bd8f06454e612a70/20/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e3165900917e40118f4d75e6cec1ae1e3b388/13/Process.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d01ea799e9c94f77a043c8ecb5387e2f66578/26/Select.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e6e6b40b308c4fe19c937c26c144c8658f5388/2C4/AsyncValueTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
@@ -95,7 +102,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlserver" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32324028" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32304525" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -274,7 +281,7 @@
       <workItem from="1632354435754" duration="45581000" />
       <workItem from="1632618739666" duration="9908000" />
       <workItem from="1632701286663" duration="4847000" />
-      <workItem from="1632706867507" duration="3605000" />
+      <workItem from="1632706867507" duration="12310000" />
     </task>
     <servers />
   </component>
@@ -375,13 +382,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>253</line>
+          <line>260</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="67" containingFunctionPresentation="method 'CreateProcess'">
             <startOffsets>
-              <option value="10643" />
+              <option value="11075" />
             </startOffsets>
             <endOffsets>
-              <option value="10644" />
+              <option value="11076" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="20" />
@@ -401,13 +408,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>181</line>
+          <line>188</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="145" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="7593" />
+              <option value="8025" />
             </startOffsets>
             <endOffsets>
-              <option value="7676" />
+              <option value="8108" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="32" />
@@ -531,55 +538,81 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>203</line>
+          <line>210</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="212" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="8863" />
+              <option value="9295" />
             </startOffsets>
             <endOffsets>
-              <option value="8931" />
+              <option value="9363" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>199</line>
+          <line>206</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="208" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="8610" />
+              <option value="9042" />
             </startOffsets>
             <endOffsets>
-              <option value="8629" />
+              <option value="9061" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>194</line>
+          <line>201</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="8287" />
+              <option value="8719" />
             </startOffsets>
             <endOffsets>
-              <option value="8288" />
+              <option value="8720" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
-          <line>188</line>
+          <line>195</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'">
             <startOffsets>
-              <option value="7908" />
+              <option value="8340" />
             </startOffsets>
             <endOffsets>
-              <option value="7957" />
+              <option value="8389" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
+          <line>171</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="171" containingFunctionPresentation="method 'SendAudioAsync'">
+            <startOffsets>
+              <option value="6679" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6706" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
+          <line>170</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="170" containingFunctionPresentation="method 'SendAudioAsync'">
+            <startOffsets>
+              <option value="6609" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6663" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
