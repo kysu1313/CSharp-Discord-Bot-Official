@@ -15,7 +15,7 @@ using YoutubeExplode;
 using YoutubeExplode.Videos.Streams;
 using YoutubeExtractor;
 
-namespace ClassLibrary.Helpers
+namespace BusinessLogic.Helpers
 {
     public class AudioService
     {

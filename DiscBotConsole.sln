@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotDash", "BotDash\BotDash.csproj", "{2626B206-E179-4742-952B-4E4AAAE15CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{77999219-D699-4BCA-A27A-768D6B9D7366}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{2626B206-E179-4742-952B-4E4AAAE15CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2626B206-E179-4742-952B-4E4AAAE15CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2626B206-E179-4742-952B-4E4AAAE15CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77999219-D699-4BCA-A27A-768D6B9D7366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77999219-D699-4BCA-A27A-768D6B9D7366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77999219-D699-4BCA-A27A-768D6B9D7366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77999219-D699-4BCA-A27A-768D6B9D7366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

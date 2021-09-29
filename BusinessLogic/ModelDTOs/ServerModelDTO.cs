@@ -7,9 +7,10 @@ using System.Linq;
 // using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.ModelDTOs
+namespace BusinessLogic.ModelDTOs
 {
     public class ServerModelDTO : IAsyncDisposable, IDisposable, IServerModelDTO
     {

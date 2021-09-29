@@ -1,13 +1,15 @@
-﻿using ClassLibrary.Helpers;
+﻿using BusinessLogic.Helpers;
 using ClassLibrary.Data;
 using ClassLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLogic.Helpers;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.ModelDTOs
+namespace BusinessLogic.ModelDTOs
 {
     public class ReminderModelDTO : IReminderModelDTO
     {

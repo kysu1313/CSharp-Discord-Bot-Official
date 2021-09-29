@@ -7,11 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
-using ClassLibrary.Models;
-using System.Text.RegularExpressions;
-using ClassLibrary.Helpers;
-using ClassLibrary.ModelDTOs;
+using BusinessLogic.Helpers;
+using BusinessLogic.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 
 namespace DiscBotConsole.Modules

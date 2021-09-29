@@ -20,7 +20,7 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 
-namespace ClassLibrary.Helpers
+namespace BusinessLogic.Helpers
 {
     public class Apis
     {

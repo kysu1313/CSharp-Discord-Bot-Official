@@ -13,10 +13,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BusinessLogic.ModelDTOs;
+using BusinessLogic.Models;
 using ClassLibrary.Models.ContextModels;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace ClassLibrary.Helpers
+namespace BusinessLogic.Helpers
 {
     public class Helper : IDisposable, IAsyncDisposable
     {

@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Helpers;
+﻿using BusinessLogic.Helpers;
 using ClassLibrary.Data;
 using ClassLibrary.Models;
 using Discord;
@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary.Helpers;
 
 namespace DiscBotConsole.Modules
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
 using Discord;
 using Discord.Audio;
 using Discord.Commands;

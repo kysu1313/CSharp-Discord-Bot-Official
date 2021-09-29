@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.Helpers
+namespace BusinessLogic.Helpers
 {
     public class CommandParser
     {

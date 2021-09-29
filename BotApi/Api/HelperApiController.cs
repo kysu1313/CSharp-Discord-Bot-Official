@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
 using ClassLibrary.Data;
 using ClassLibrary.DataContext;
-using ClassLibrary.ModelDTOs;
-using ClassLibrary.Models;
+using BusinessLogic.ModelDTOs;
+using BusinessLogic.Models;
 using ClassLibrary.Models.ContextModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;

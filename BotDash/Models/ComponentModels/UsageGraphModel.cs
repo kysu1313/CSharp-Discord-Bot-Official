@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Blazorise.Charts;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
 using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
 using ClassLibrary.Models.Utility;

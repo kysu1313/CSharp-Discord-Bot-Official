@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.Helpers
+namespace BusinessLogic.Helpers
 {
 
     class TimerState
