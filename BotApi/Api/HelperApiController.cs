@@ -45,10 +45,11 @@ namespace BotApi.Api
         }
         // GET: api/HelperApi
         [HttpGet]
-        [Route("api/getusersinserver{string}")]
-        public async Task<List<UserExperience>> GetUsersInServer(string userId)
+        [Route("api/getusersinserver{serverId}")]
+        public async Task<List<UserExperience>> GetUsersInServer(string serverId)
         {
-            var users = await _helper.getAllUserExperiences();
+            var sid = ulong.TryParse(serverId, out var id) == false ? 0 : id;
+            var users = await _helper.getAllUserInServer(sid);
             return users;
         }
         // GET: api/HelperApi
