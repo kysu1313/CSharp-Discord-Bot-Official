@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using ClassLibrary.Helpers;
 using ClassLibrary.Data;
@@ -8,7 +9,10 @@ using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace BotApi.Api
 {
@@ -30,34 +34,39 @@ namespace BotApi.Api
         // GET: api/HelperApi
         [HttpGet]
         [Route("api/getservers")]
-        public async Task<List<ServerModel>> GetTotalServers()
+        public async Task<string> GetTotalServers()
         {
             var servers = await _helper.getAllServerModels();
-            return servers;
+            var jsonStr = JsonConvert.SerializeObject(servers);
+            return jsonStr;
         }
         // GET: api/HelperApi
         [HttpGet]
         [Route("api/getusers")]
-        public async Task<List<UserExperience>> GetTotalUsers()
+        public async Task<string> GetTotalUsers()
         {
             var users = await _helper.getAllUserExperiences();
-            return users;
+            var jsonStr = JsonConvert.SerializeObject(users);
+            return jsonStr;
         }
         // GET: api/HelperApi
         [HttpGet]
-        [Route("api/getusersinserver{string}")]
-        public async Task<List<UserExperience>> GetUsersInServer(string userId)
+        [Route("api/getusersinserver{serverId}")]
+        public async Task<string> GetUsersInServer(string serverId)
         {
-            var users = await _helper.getAllUserExperiences();
-            return users;
+            var servId = ulong.TryParse(serverId, out ulong sid) == false ? 0 : sid;
+            var users = await _helper.getAllUserInServer(servId);
+            var jsonStr = JsonConvert.SerializeObject(users);
+            return jsonStr;
         }
         // GET: api/HelperApi
         [HttpGet]
         [Route("api/getcommandsinserver{string}")]
-        public async Task<List<ServerModel>> GetCommandsInServers(string userId)
+        public async Task<string> GetCommandsInServers(string userId)
         {
             var servers = await _helper.getAllServerModels();
-            return servers;
+            var jsonStr = JsonConvert.SerializeObject(servers);
+            return jsonStr;
         }
 
         // GET: api/HelperApi/5

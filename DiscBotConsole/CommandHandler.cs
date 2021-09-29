@@ -124,9 +124,30 @@ namespace ClassLibrary.Models.GeneralCommands
 
             // This is a hack to get the current guild ID
             var guilds = _client.Guilds.ToList();
+            var savedGuilds = _context.ServerModels.ToList();
             SocketGuildChannel server = null;
             SocketGuild currGuild = null;
             bool runCommand = true;
+
+            if (guilds.Count != savedGuilds.Count)
+            {
+                var guildIds = guilds.Select(x => x.Id);
+                var savedGuildIds = savedGuilds.Select(x => x.serverId);
+                var tmpIdLst = guildIds.Except(savedGuildIds).ToList();
+                foreach (var id in tmpIdLst)
+                {
+                    var newServ = guilds.FirstOrDefault(x => x.Id == id);
+                    await using (var sdto = new ServerModelDTO(_context))
+                    {
+                        sdto.AddServer(new ServerModel()
+                        {
+                            serverId = newServ.Id,
+                            serverName = newServ.Name,
+                            userIdent = newServ.Owner.Id
+                        });
+                    }
+                }
+            }
             
             foreach (var g in guilds)
             {
