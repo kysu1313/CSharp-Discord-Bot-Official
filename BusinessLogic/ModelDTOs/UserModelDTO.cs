@@ -1,15 +1,13 @@
 ﻿using ClassLibrary.Data;
-using ClassLibrary.Models;
 using Discord;
-using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.ModelDTOs
+namespace BusinessLogic.ModelDTOs
 {
     public class UserModelDTO : IDisposable, IAsyncDisposable, IUserModelDTO
     {

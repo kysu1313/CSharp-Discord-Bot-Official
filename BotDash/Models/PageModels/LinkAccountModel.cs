@@ -1,19 +1,12 @@
 using System;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
-using ClassLibrary.ModelDTOs;
-using ClassLibrary.Models.ContextModels;
-using Coinbase.Models;
-using Discord.WebSocket;
+using BusinessLogic.Helpers;
+using BusinessLogic.ModelDTOs;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 
 
 namespace BotDash.Models.PageModels

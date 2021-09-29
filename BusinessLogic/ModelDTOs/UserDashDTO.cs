@@ -1,16 +1,18 @@
 ﻿using ClassLibrary.Data;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
 using Discord;
 using System;
 using System.Collections.Generic;
 // using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLogic.Helpers;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassLibrary.ModelDTOs
+namespace BusinessLogic.ModelDTOs
 {
     public class UserDashDTO : IDisposable, IUserDashDTO
     {

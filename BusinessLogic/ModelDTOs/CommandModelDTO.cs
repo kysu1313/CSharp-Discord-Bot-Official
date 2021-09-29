@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
+using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 using Discord;
 using Discord.WebSocket;
 
-namespace ClassLibrary.ModelDTOs
+namespace BusinessLogic.ModelDTOs
 {
     public class CommandModelDTO : IAsyncDisposable, IDisposable, ICommandModelDTO
     {

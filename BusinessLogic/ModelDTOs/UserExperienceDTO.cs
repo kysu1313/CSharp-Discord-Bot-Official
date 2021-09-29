@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Helpers;
+﻿using BusinessLogic.Helpers;
 using ClassLibrary.Data;
 using Discord;
 using Discord.WebSocket;
@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassLibrary.Models;
 using ClassLibrary.Models.ContextModels;
 
 
-namespace ClassLibrary.Models
+namespace BusinessLogic.Models
 {
     public class UserExperienceDTO : IDisposable, IAsyncDisposable, IUserExperienceDTO
     {

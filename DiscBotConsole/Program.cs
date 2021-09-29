@@ -6,16 +6,9 @@ using ClassLibrary.Models.GeneralCommands;
 using Discord.Commands;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
-using System.Reflection;
-using Microsoft.Data.Sqlite;
 using ClassLibrary.Data;
-using ClassLibrary.Helpers;
+using BusinessLogic.Helpers;
 using ClassLibrary.Models;
-using ClassLibrary.Models.Utility;
 
 namespace DiscBotConsole
 {
