@@ -30,14 +30,14 @@ namespace BotDash.Models.PageModels
             if (authState.User is { Identity: { IsAuthenticated: true } })
             {
                 _isLoggedIn = true;
-                using (var dto = new UserModelDTO(Context))
-                {
-                    var name = authState.User.Identity.Name;
-                    var userModel = await dto.GetUser(name, null);
-                    if (userModel.hasLinkedAccount)
-                    {
-                        _success = true;
-                    }
+                // using (var dto = new UserModelDTO(Context))
+                // {
+                //     var name = authState.User.Identity.Name;
+                //     var userModel = await dto.GetUser(name, null);
+                //     if (userModel.hasLinkedAccount)
+                //     {
+                //         _success = true;
+                //     }
 
                     // await using var helpDto = new Helper(Context, Service);
                     // var uid = ulong.TryParse(_userId, out ulong id) == false ? 0 : id;
@@ -45,7 +45,7 @@ namespace BotDash.Models.PageModels
                     // await helpDto.RegisterUsersOwnServers(uid); 
                     
                     
-                }
+                // }
             }
             base.OnInitialized();
         }
@@ -57,19 +57,19 @@ namespace BotDash.Models.PageModels
 
             if (authState.User is { Identity: { IsAuthenticated: true } })
             {
-                await using (var dto = new UserModelDTO(Context))
-                {
-                    var name = authState.User.Identity.Name;
-                    await using var helpDto = new Helper(Context, Service);
-                    var uid = UInt64.Parse(_userId);
-                    var userModel = await dto.GetUser(name, uid);
-                    if (!userModel.hasLinkedAccount)
-                    {
-                        await dto.RegisterUser(name, uid);
-                        await helpDto.RegisterUsersOwnServers(name, uid);
-                    }
-                    _success = true;
-                }
+                // await using (var dto = new UserModelDTO(Context))
+                // {
+                //     var name = authState.User.Identity.Name;
+                //     await using var helpDto = new Helper(Context, Service);
+                //     var uid = UInt64.Parse(_userId);
+                //     var userModel = await dto.GetUser(name, uid);
+                //     if (!userModel.hasLinkedAccount)
+                //     {
+                //         await dto.RegisterUser(name, uid);
+                //         await helpDto.RegisterUsersOwnServers(name, uid);
+                //     }
+                //     _success = true;
+                // }
             }
             
             // Console.WriteLine(user);
