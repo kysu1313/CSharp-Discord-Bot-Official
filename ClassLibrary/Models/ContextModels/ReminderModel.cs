@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class ReminderModel : IReminderModel
     {
 

@@ -13,16 +13,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/UserPanel.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BotDash/Logic/ApiHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/BotApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/BotApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/BotDash.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/BotDash.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Helpers/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/ModelDTOs/CommandModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/ModelDTOs/CommandModelDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CommandModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/CommandModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/DashItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ReminderModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerCommands.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/ServerModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/StatModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserCrypto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserCrypto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserDash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserExperience.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserStatsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserStatsModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,16 +81,17 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/15/LayoutComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Properties/serviceDependencies.local.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/5341e7d9751d48faaa1844a17b4809201f600/50/77ef4188/0200002B.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BotDash/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/63d1c272ec9c4d38887eeeec7c73a2a4186378/10F/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotApi/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BotDash/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClassLibrary/Models/Utility/ApiCall.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdd96c5f630a45298dacc07d80deb23b11d78/9/ServiceCollectionContainerBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7ca8898b690a4181a32a9cf767cedb1ea9c28/28/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7ca8898b690a4181a32a9cf767cedb1ea9c28/39/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6e3212d57d1d4cfc9914680fd43feb3856790/73/Check.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/23/a0db9a67/SocketVoiceChannel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/d3/4fc87f03/SocketCommandContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/714572da983048b1bf3a8c1360a6a2c46c978/8/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
@@ -102,7 +112,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlserver" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.32304525" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3231511" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -282,6 +292,7 @@
       <workItem from="1632618739666" duration="9908000" />
       <workItem from="1632701286663" duration="4847000" />
       <workItem from="1632706867507" duration="12310000" />
+      <workItem from="1633049124799" duration="315000" />
     </task>
     <servers />
   </component>
@@ -317,52 +328,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>75</line>
+          <line>68</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="66" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2918" />
+              <option value="2697" />
             </startOffsets>
             <endOffsets>
-              <option value="2967" />
+              <option value="2746" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>72</line>
+          <line>65</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="63" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2780" />
+              <option value="2559" />
             </startOffsets>
             <endOffsets>
-              <option value="2812" />
+              <option value="2591" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>64</line>
+          <line>57</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="56" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2343" />
+              <option value="2122" />
             </startOffsets>
             <endOffsets>
-              <option value="2405" />
+              <option value="2184" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs</url>
-          <line>62</line>
+          <line>55</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\PageModels\LinkAccountModel.cs" initialLine="54" containingFunctionPresentation="method 'Submit'">
             <startOffsets>
-              <option value="2261" />
+              <option value="2040" />
             </startOffsets>
             <endOffsets>
-              <option value="2329" />
+              <option value="2108" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />
@@ -370,27 +381,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/Helper.cs</url>
           <line>306</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\Helper.cs" initialLine="303" containingFunctionPresentation="method 'GetServerReminders'">
-            <startOffsets>
-              <option value="11213" />
-            </startOffsets>
-            <endOffsets>
-              <option value="11214" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\Helper.cs" initialLine="303" containingFunctionPresentation="method 'GetServerReminders'" />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>260</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="67" containingFunctionPresentation="method 'CreateProcess'">
-            <startOffsets>
-              <option value="11075" />
-            </startOffsets>
-            <endOffsets>
-              <option value="11076" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="67" containingFunctionPresentation="method 'CreateProcess'" />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
@@ -398,10 +395,10 @@
           <line>45</line>
           <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\DiscBotConsole\Modules\MusicCommands.cs" initialLine="45" containingFunctionPresentation="method 'PlayCmd'">
             <startOffsets>
-              <option value="1494" />
+              <option value="1495" />
             </startOffsets>
             <endOffsets>
-              <option value="1562" />
+              <option value="1563" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />
@@ -409,209 +406,97 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>188</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="145" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="8025" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8108" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="145" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>122</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="122" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="4962" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4963" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="122" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>128</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="128" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="5143" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5200" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="128" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>130</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="130" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="5226" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5278" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="130" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>144</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="144" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="5858" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5859" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="144" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>148</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="148" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="6029" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6030" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="148" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>150</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="150" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="6128" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6152" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="150" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>153</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="153" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="6196" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6218" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="153" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>157</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="157" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="6296" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6297" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="157" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>161</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="161" containingFunctionPresentation="method 'Test'">
-            <startOffsets>
-              <option value="6372" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6390" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="161" containingFunctionPresentation="method 'Test'" />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>210</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="212" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="9295" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9363" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="212" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>206</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="208" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="9042" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9061" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="208" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>201</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="8719" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8720" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>195</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="8340" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8389" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="204" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>171</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="171" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="6679" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6706" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="171" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClassLibrary/Helpers/AudioService.cs</url>
           <line>170</line>
-          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="170" containingFunctionPresentation="method 'SendAudioAsync'">
-            <startOffsets>
-              <option value="6609" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6663" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\ClassLibrary\Helpers\AudioService.cs" initialLine="170" containingFunctionPresentation="method 'SendAudioAsync'" />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>

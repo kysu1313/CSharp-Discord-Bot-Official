@@ -2,11 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BotDash.Logic;
+using BusinessLogic.ModelDTOs;
 using ClassLibrary.Data;
 using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
+using ClassLibrary.Models.Utility;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace BotDash.Models.PageModels
 {
@@ -23,8 +28,11 @@ namespace BotDash.Models.PageModels
         protected List<CommandModel> _selectedCommands;
         private AuthenticationState _currAuth;
         private UserModel _currUser;
+        private string _baseUrl;
         [Inject] protected ApplicationDbContext Context { get; set; }
         [Inject] protected IServiceProvider Services { get; set; }
+        [Inject] private IConfiguration config { get; set; }
+        
         [CascadingParameter]
         private Task<AuthenticationState> AuthenticationStateTask { get; set; }
         
@@ -35,11 +43,15 @@ namespace BotDash.Models.PageModels
 
         protected override async Task OnInitializedAsync()
         {
+            
+            _baseUrl = config.GetValue<string>("ApiUrl");
             _currAuth = await AuthenticationStateTask.ConfigureAwait(false);
             _selectedServer = new ServerModel();
             _severNames = new Dictionary<string, ulong>();
             _commandNames = new Dictionary<string, int>();
             _selectedCommands = new List<CommandModel>();
+            
+
             
             if (_currAuth.User.Identity != null && _currAuth.User != null && _currAuth.User.Identity.IsAuthenticated)
             {
@@ -106,13 +118,23 @@ namespace BotDash.Models.PageModels
                 if (_commands != null) _commands.Clear();
                 if (_commandNames != null) _commandNames.Clear();
                 if (_severNames != null) _severNames.Clear();
-                var svrs = await dto.GetAllServers();
-                _servers = svrs.FindAll(x => x.userIdent == _currUser.userId);
-                if (_servers.Count > 0)
+                
+                // Get user model
+                var apiResp = await ApiHelper.CallApi(_baseUrl, "HelperApi/api/getuser", _currUser.userId.ToString());
+                var user = JsonConvert.DeserializeObject<UserModel>(apiResp);
+
+                if (user != null)
                 {
-                    foreach (var s in _servers)
+                    // From userId get all servers owned by user
+                    apiResp = await ApiHelper.CallApi(_baseUrl, "HelperApi/api/getusersservers", user.userId.ToString());
+                    var svrs = JsonConvert.DeserializeObject<List<ServerModel>>(apiResp);
+                    
+                    if (svrs is { Count: > 0 })
                     {
-                        _severNames.Add(s.serverName, s.serverId);   
+                        foreach (var s in _servers)
+                        {
+                            if (_severNames != null) _severNames.Add(s.serverName, s.serverId);
+                        }
                     }
                 }
             }
@@ -121,20 +143,21 @@ namespace BotDash.Models.PageModels
         protected async Task GetServerCommands(ulong serverId)
         {
             _isLoggedIn = true;
-            await using (var dto = new CommandModelDTO(Context, Services))
+            
+            if (_commands != null) _commands.Clear();
+            if (_commandNames != null) _commandNames.Clear();
+            if (_severNames != null) _severNames.Clear();
+            
+            var apiResp = await ApiHelper.CallApi(_baseUrl, "HelperApi/api/getcommandsinserver", serverId.ToString());
+            _commands = JsonConvert.DeserializeObject<List<CommandModel>>(apiResp);
+            
+            if (_commands is { Count: > 0 })
             {
-                if (_commands != null) _commands.Clear();
-                if (_commandNames != null) _commandNames.Clear();
-                if (_severNames != null) _severNames.Clear();
-                _commands = await dto.GetCommands(serverId).ConfigureAwait(false) as List<CommandModel>;
-                if (_commands is { Count: > 0 })
+                foreach (var c in _commands)
                 {
-                    foreach (var c in _commands)
-                    {
-                        if (_commandNames != null) 
-                            _commandNames.Add(c.commandName, c.commandId);
-                    }                
-                }
+                    if (_commandNames != null) 
+                        _commandNames.Add(c.commandName, c.commandId);
+                }                
             }
         } 
     }

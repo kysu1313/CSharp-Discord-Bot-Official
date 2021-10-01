@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class CommandModel : ICommandModel
     {
         /// <summary>

@@ -113,6 +113,21 @@ namespace BusinessLogic.Helpers
             return user;
         }
 
+        public async Task<List<ServerModel>> GetUsersServers(ulong usrId)
+        {
+            List<ServerModel> serverModels = new List<ServerModel>();
+            await using (var dto = new ServerModelDTO(_context))
+            {
+                var svrs = await dto.GetAllServers();
+                serverModels.AddRange(svrs.FindAll(x => x.userIdent == usrId));
+            }
+            
+            // TODO: Finish this method.
+            
+
+            return serverModels;
+        }
+
         public async Task<(int, int)> GetUserMoney(IUser user, IGuild guild)
         {
             var getUser = await getUserExperienceInServer(user.Id, guild.Id);
