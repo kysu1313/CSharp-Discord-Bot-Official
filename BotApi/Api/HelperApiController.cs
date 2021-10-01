@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BusinessLogic.Helpers;
@@ -160,19 +161,24 @@ namespace BotApi.Api
 
         // POST: api/HelperApi
         [HttpPost]
-        [Route("api/postenablecommand/{userId}/{commandId}/{enabled}")]
-        public async Task PostUserId([FromBody] string userId, string commandId, bool enabled)
+        [Route("api/setcommandstatus/{userId}/{commandId}/{serverId}/{enabled}")]
+        public async Task SetCommandStatus([FromBody] string userId, string serverCid, string serverId, string enabled)
         {
             await using (var dto = new CommandModelDTO(_context, _services))
             {
                 var uid = ulong.TryParse(userId, out var uuid) == false ? 0 : uuid;
-                var cid = ulong.TryParse(commandId, out var id) == false ? 0 : id;
-                var command = dto.GetCommand(cid);
-                // var commands = dto.UpdateCommandStatus(
-                //     command.commandName, 
-                //     (bool)enabled, 
-                //     _selectedServer.serverId, 
-                //     _currUser.userId);
+                var cid = int.TryParse(serverCid, out var ccid) == false ? 0 : ccid;
+                var sid = ulong.TryParse(serverCid, out var ssid) == false ? 0 : ssid;
+                var enbld = bool.TryParse(enabled, out var enbl) != false && enbl;
+                var command = await dto.GetServerCommands(sid);
+                if (command != null)
+                {
+                    var cmd = await dto.GetCommand(cid);
+                    if (cmd != null)
+                    {
+                        await dto.UpdateCommandStatus(cmd.commandName, enbl, sid, uid);
+                    }
+                }
             }
         }
 

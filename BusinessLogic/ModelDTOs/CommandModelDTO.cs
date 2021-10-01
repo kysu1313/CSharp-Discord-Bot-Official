@@ -149,17 +149,28 @@ namespace BusinessLogic.ModelDTOs
         }
         
         /// <summary>
-        /// Returns the command given it's command ID
+        /// Returns the server command model given it's server command ID
         /// </summary>
         /// <param name="cid"></param>
         /// <returns></returns>
-        public async Task<ServerCommands> GetCommand(ulong cid)
+        public async Task<ServerCommands?> GetServerCommands(ulong serverCid)
         {
             var cmdSvr = await _context.ServerCommandModels
                 .FirstOrDefaultAsync(x => 
-                    x.serverCommandId == cid);
-
+                    x.serverCommandId == serverCid);
             return cmdSvr;
+        }
+        
+        /// <summary>
+        /// Returns the command model given it's command ID
+        /// </summary>
+        /// <param name="commandId"></param>
+        /// <returns></returns>
+        public async Task<CommandModel?> GetCommand(int commandId)
+        {
+            var cmd = (await _context.CommandModels.ToListAsync())
+                .FirstOrDefault(x => x.commandId == commandId);
+            return cmd;
         }
 
         public async ValueTask DisposeAsync()

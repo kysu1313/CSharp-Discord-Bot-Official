@@ -1,6 +1,6 @@
 ﻿@page "/userpanel"
 
-@inherits BotDash.Models.PageModels.ControlPanelModel
+@inherits BotDash.Models.PageModels.UserPanelModel
 @using ClassLibrary.Data
 @inject ApplicationDbContext _context
 
@@ -29,21 +29,20 @@ else
                 
                 <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Advanced" 
                                 PageSize="50" AllowPaging="true" AllowSorting="true" Style="width:80%"
-                                Data="@_selectedCommands" TItem="CommandModel"
+                                Data="@_selectedUsers" TItem="UserModel"
                                 LogicalFilterOperator="LogicalFilterOperator.Or">
                     <Columns>
-                        <RadzenDataGridColumn TItem="CommandModel" Property="commandName" Title="Command Name" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="enabled" Title="Enabled">
+                        <RadzenDataGridColumn TItem="UserModel" Property="UserName" Title="Username" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="isBotAdmin" Title="Is Bot Admin">
                             <Template Context="data">
-                                <RadzenSwitch  @bind-Value=@data.enabled Change=@(args => OnSwitchChange(args, data, "Switch")) />
+                                <RadzenSwitch  @bind-Value=@data.isBotAdmin Change=@(args => OnSwitchChange(args, data, "Switch")) />
                             </Template>
                         </RadzenDataGridColumn>
-                        <RadzenDataGridColumn TItem="CommandModel" Property="modifiedById" Title="Last Modified By" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="serverId" Title="Server ID" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="dateAdded" Title="Date Added" FormatString="{0:d}" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="dateModified" Title="Date Modified" FormatString="{0:d}" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="totalUses" Title="Total Uses" />
-                        <RadzenDataGridColumn TItem="CommandModel" Property="commandId" Title="Command ID" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="hasLinkedAccount" Title="Has Linked Account" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="userId" Title="Discord ID" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="userNameEntry" Title="Discord Username" FormatString="{0:d}" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="slowModeEnabled" Title="Slow Mode Enabled" FormatString="{0:d}" />
+                        <RadzenDataGridColumn TItem="UserModel" Property="slowModeTime" Title="Slow Mode Time" />
                     </Columns>
                 </RadzenDataGrid>
             }
