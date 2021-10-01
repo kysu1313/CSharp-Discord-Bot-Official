@@ -14,14 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/UserPanelModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Controls/UserPanel.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/UserPanel.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/_Host.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Shared/NavMenu.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/ModelDTOs/CommandModelDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/ModelDTOs/CommandModelDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BotDash/BotDash.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/BotDash.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +277,7 @@
       <workItem from="1632701286663" duration="4847000" />
       <workItem from="1632706867507" duration="12310000" />
       <workItem from="1633049124799" duration="3149000" />
-      <workItem from="1633052303877" duration="782000" />
+      <workItem from="1633052303877" duration="1885000" />
     </task>
     <servers />
   </component>
