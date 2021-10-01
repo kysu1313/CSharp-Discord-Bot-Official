@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class StatModel : IStatModel
     {
         [Key]

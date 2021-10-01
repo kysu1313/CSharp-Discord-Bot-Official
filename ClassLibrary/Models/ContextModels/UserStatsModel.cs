@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLibrary.Models.ContextModels;
 
-namespace ClassLibrary.Models
+namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class UserStatsModel : IUserStatsModel
     {
         public int id { get; set; }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.ContextModels
 {
+    [Serializable]
     public class DashItem : IDashItem
     {
         public int id { get; set; }

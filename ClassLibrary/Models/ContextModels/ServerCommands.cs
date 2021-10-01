@@ -9,6 +9,7 @@ namespace ClassLibrary.Models.ContextModels
     /// ServerCommands link a group of commands to a server.
     /// This is used for the dashboard.
     /// </summary>
+    [Serializable]
     public class ServerCommands : IServerCommands
     {
         [Key]

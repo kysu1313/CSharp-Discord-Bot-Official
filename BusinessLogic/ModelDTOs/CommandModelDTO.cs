@@ -23,6 +23,13 @@ namespace BusinessLogic.ModelDTOs
             _helper = new Helper(_context, services);
         }
 
+        /// <summary>
+        /// Adds a command to a server.
+        /// This is mainly used to link commands to a newly added server.
+        /// </summary>
+        /// <param name="commands"></param>
+        /// <param name="user"></param>
+        /// <param name="guild"></param>
         public async Task AddCommands(List<string> commands, SocketUser user, SocketGuild guild)
         {
             List<CommandModel> cmdLst = new List<CommandModel>();
@@ -63,6 +70,11 @@ namespace BusinessLogic.ModelDTOs
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Gets all the commands in a server given the server's ID.
+        /// </summary>
+        /// <param name="serverId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<CommandModel>> GetCommands(ulong serverId)
         {
             var svr = (await _context.ServerCommandModels.ToListAsync())
@@ -73,6 +85,12 @@ namespace BusinessLogic.ModelDTOs
             return cmds;
         }
 
+        /// <summary>
+        /// Returns the status of a command given it's name and server ID.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="serverId"></param>
+        /// <returns></returns>
         public async Task<bool> GetCommandStatus(string name, ulong serverId)
         {
             var svr = (await _context.ServerCommandModels.ToListAsync())
@@ -88,6 +106,12 @@ namespace BusinessLogic.ModelDTOs
             return false;
         }
 
+        /// <summary>
+        /// Updates the usage count of a command.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="newUses"></param>
+        /// <param name="serverId"></param>
         public async Task UpdateCommandUses(string name, int newUses, ulong serverId)
         {
             var cmds = await GetCommands(serverId);
@@ -99,6 +123,14 @@ namespace BusinessLogic.ModelDTOs
             cmd.totalUses += newUses;
         }
 
+        /// <summary>
+        /// Enables or disables the given command.
+        /// Updates the modified properties of the command.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="enabled"></param>
+        /// <param name="serverId"></param>
+        /// <param name="userId"></param>
         public async Task UpdateCommandStatus(string name, bool enabled, ulong serverId, ulong userId)
         {
             var cmdSvr = await _context.ServerCommandModels
@@ -114,6 +146,20 @@ namespace BusinessLogic.ModelDTOs
             }
 
             await _context.SaveChangesAsync();
+        }
+        
+        /// <summary>
+        /// Returns the command given it's command ID
+        /// </summary>
+        /// <param name="cid"></param>
+        /// <returns></returns>
+        public async Task<ServerCommands> GetCommand(ulong cid)
+        {
+            var cmdSvr = await _context.ServerCommandModels
+                .FirstOrDefaultAsync(x => 
+                    x.serverCommandId == cid);
+
+            return cmdSvr;
         }
 
         public async ValueTask DisposeAsync()
@@ -141,5 +187,6 @@ namespace BusinessLogic.ModelDTOs
             _helper.Dispose();
             return;
         }
+
     }
 }
