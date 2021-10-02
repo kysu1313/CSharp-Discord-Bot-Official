@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,10 +16,11 @@ namespace ClassLibrary.Models.ContextModels
     public class UserModel : IdentityUser, IUserModel
     {
         public Guid userGuid { get; set; }
+        public string? discordId { get; set; }
         public bool isBotAdmin { get; set; }
         public bool hasLinkedAccount { get; set; }
         public ulong userId { get; set; }
-        public string userNameEntry { get; set; }
+        public string? userNameEntry { get; set; }
         public bool slowModeEnabled { get; set; }
         public int slowModeTime { get; set; }
     }

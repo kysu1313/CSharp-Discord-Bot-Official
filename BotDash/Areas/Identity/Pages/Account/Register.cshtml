@@ -1,4 +1,7 @@
 ﻿@page
+@using Radzen.Blazor
+@using Radzen.Blazor.Rendering
+@using Radzen
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -18,6 +21,11 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Input.DiscordId"></label>
+                <input asp-for="Input.DiscordId" class="form-control" />
+                <span asp-validation-for="Input.DiscordId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -32,32 +40,17 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to register.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
+            <div class="card" style="margin-top: 10rem">
+                    <div class="col-md-8">
+                        <div>How to Find Your Discord ID:</div>
+                        <ol>
+                            <li>First open Discord.</li>
+                            <li>Next browse to any server.</li>
+                            <li>Right click on your user icon on the right.</li>
+                            <li>Select 'Copy ID'.</li>
+                        </ol>
                     </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
+                </div>
         </section>
     </div>
 </div>

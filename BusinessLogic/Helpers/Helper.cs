@@ -49,6 +49,15 @@ namespace BusinessLogic.Helpers
         }
         
         
+        
+        public  async Task<UserModel> getUser(string userName)
+        {
+            UserModel user = new UserModel();
+            var userModelDTO = new UserModelDTO(_context);
+            user = await userModelDTO.GetUser(userName, null);
+            
+            return user;
+        }
 
         public  async Task<UserModel> getUser(ulong userId)
         {

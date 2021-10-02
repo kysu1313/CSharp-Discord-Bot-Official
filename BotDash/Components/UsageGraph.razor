@@ -15,7 +15,82 @@
     }
 </style>
 
-<MatFAB Icon="@MatIconNames.People" Label="@GetUserCount()" ></MatFAB>
+@if (_isLoggedIn)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 my-5">
+                <RadzenChart>
+                    <RadzenLineSeries Data="@_users" CategoryProperty="Date" Title="User Count" LineType="LineType.Solid" ValueProperty="Count">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Data="@_servers" CategoryProperty="Date" Title="Server Count" ValueProperty="Count">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                    </RadzenLineSeries>
+                    <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
+                    <RadzenValueAxis Formatter="@_yAxis">
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="Revenue in USD" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+            </div>
+        </div>
+        
+        <div class="row">
+                    <div class="col-sm-12 my-5">
+                        <RadzenChart>
+                            <RadzenLineSeries Data="@_totalUsers" CategoryProperty="Date" Title="2019" LineType="LineType.Dashed" ValueProperty="Revenue">
+                                <RadzenMarkers MarkerType="MarkerType.Square" />
+                            </RadzenLineSeries>
+                            <RadzenLineSeries Data="@_totalServers" CategoryProperty="Date" Title="2020" ValueProperty="Revenue">
+                                <RadzenMarkers MarkerType="MarkerType.Circle" />
+                            </RadzenLineSeries>
+                            <RadzenLineSeries Data="@_totalCommands" CategoryProperty="Date" Title="2020" ValueProperty="Revenue">
+                                <RadzenMarkers MarkerType="MarkerType.Circle" />
+                            </RadzenLineSeries>
+                            <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
+                            <RadzenValueAxis Formatter="@_yAxis">
+                                <RadzenGridLines Visible="true" />
+                                <RadzenAxisTitle Text="Revenue in USD" />
+                            </RadzenValueAxis>
+                        </RadzenChart>
+                    </div>
+                </div>
+    </div>
+    
+    <MatFAB Icon="@MatIconNames.People" Label="@GetUserCount()" ></MatFAB>
+    
+    <MatFAB Icon="@MatIconNames.Computer" Label="@GetServerCount()"></MatFAB>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 my-5">
+                <RadzenChart>
+                    <RadzenLineSeries Data="@_totalUsers" CategoryProperty="Date" Title="2019" LineType="LineType.Dashed" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Data="@_totalServers" CategoryProperty="Date" Title="2020" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Data="@_totalCommands" CategoryProperty="Date" Title="2020" ValueProperty="Revenue">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                    </RadzenLineSeries>
+                    <RadzenCategoryAxis Padding="20" FormatString="{0:MMM}" />
+                    <RadzenValueAxis Formatter="@_yAxis">
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="Revenue in USD" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+            </div>
+        </div>
+    </div>
 
-<MatFAB Icon="@MatIconNames.Computer" Label="@GetServerCount()"></MatFAB>
+    <MatFAB Icon="@MatIconNames.People" Label="@GetUserCount()" ></MatFAB>
+
+    <MatFAB Icon="@MatIconNames.Computer" Label="@GetServerCount()"></MatFAB>
+}
+
+
 
