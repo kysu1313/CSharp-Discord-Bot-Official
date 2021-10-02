@@ -75,11 +75,27 @@ namespace BotApi.Api
         }
         // GET: api/HelperApi/getuser{id}
         [HttpGet]
-        [Route("api/getuser{userId}")]
-        public async Task<ActionResult> GetUser(string userId)
+        [Route("api/getuserfromusername{userName}")]
+        public async Task<ActionResult> GetUserFromUsername(string userName)
         {
             try
             {
+                var user = await _helper.getUser(userName);
+                return Ok(user);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+        // GET: api/HelperApi/getuser{id}
+        [HttpGet]
+        [Route("api/getuserfromid{userId}")]
+        public async Task<ActionResult> GetUserFromId(string userId)
+        {
+            try
+            {
+                
                 var usrId = ulong.TryParse(userId, out ulong uid) == false ? 0 : uid;
                 var user = await _helper.getUser(usrId);
                 return Ok(user);
@@ -145,6 +161,70 @@ namespace BotApi.Api
                     return NotFound();
                 }
                 return Ok(servers);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        // GET: api/HelperApi
+        [HttpGet]
+        [Route("api/gettotalcommands")]
+        public async Task<ActionResult> GetTotalCommands()
+        {
+            try
+            {
+                var list = new List<CommandModel>();
+                var servers = await _helper.getAllServerModels();
+                
+                if (servers.Count <= 0)
+                {
+                    return NotFound();
+                }
+
+                await using (var dto = new CommandModelDTO(_context, _services))
+                {
+                    foreach (var svr in servers)
+                    {
+                        list.AddRange(await dto.GetCommands(svr.serverId));
+                    }
+                }
+                
+                return Ok(list);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        // GET: api/HelperApi
+        [HttpGet]
+        [Route("api/gettotalusercommands{string}")]
+        public async Task<ActionResult> GetTotalUserCommands(string userId)
+        {
+            try
+            {
+                var list = new List<CommandModel>();
+                var uid = ulong.TryParse(userId, out var id) == false ? 0 : id;
+                var servers = (await _helper.getAllServerModels())
+                    .FindAll(x => x.userIdent == uid);
+                
+                if (servers.Count <= 0)
+                {
+                    return NotFound();
+                }
+
+                await using (var dto = new CommandModelDTO(_context, _services))
+                {
+                    foreach (var svr in servers)
+                    {
+                        list.AddRange(await dto.GetCommands(svr.serverId));
+                    }
+                }
+                
+                return Ok(list);
             }
             catch (Exception)
             {

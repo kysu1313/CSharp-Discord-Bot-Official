@@ -66,7 +66,7 @@ namespace BotDash.Models.PageModels
                 //     if (!userModel.hasLinkedAccount)
                 //     {
                 //         await dto.RegisterUser(name, uid);
-                //         await helpDto.RegisterUsersOwnServers(name, uid);
+                // await helpDto.RegisterUsersOwnServers(name, uid);
                 //     }
                 //     _success = true;
                 // }

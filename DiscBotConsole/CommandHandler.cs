@@ -12,7 +12,7 @@ using ClassLibrary.Data;
 using BusinessLogic.Helpers;
 using BusinessLogic.ModelDTOs;
 using BusinessLogic.Models;
-using ClassLibrary.ModelDTOs;
+// using ClassLibrary.ModelDTOs;
 using ClassLibrary.Models.ContextModels;
 using DiscBotConsole;
 using DiscBotConsole.Modules;
@@ -32,7 +32,7 @@ namespace ClassLibrary.Models.GeneralCommands
 
         public CommandHandler(IServiceProvider services)
         {
-            // juice up the fields with these services
+            // adding services
             // since we passed the services in, we can use GetRequiredService to pass them into the fields set earlier
             _config = services.GetRequiredService<IConfiguration>();
             _commands = services.GetRequiredService<CommandService>();
@@ -44,7 +44,7 @@ namespace ClassLibrary.Models.GeneralCommands
             _commands.CommandExecuted += CommandExecutedAsync;
             // take action when we receive a message
             _client.MessageReceived += MessageReceivedAsync;
-            Helper._socket = _client;
+            // Helper._socket = _client;
 
         }
 

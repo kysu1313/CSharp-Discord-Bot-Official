@@ -15,7 +15,8 @@ else
             @if (_servers != null)
             {
                 <div class="col-xl-6" style="display: inline-flex;">
-                <RadzenDropDownDataGrid TValue="ulong" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                <RadzenDropDownDataGrid TValue="ulong" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                        MouseEnter="@(args => ShowTooltip(args) )" 
                                         AllowFiltering="true" AllowClear="true"
                                         Data="@_severNames"
                                         EmptyText="Select a server"

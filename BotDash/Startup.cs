@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using ClassLibrary.Data;
 using ClassLibrary.Models.ContextModels;
 using MatBlazor;
+using Radzen;
 
 namespace BotDash
 {
@@ -41,6 +42,7 @@ namespace BotDash
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddMatBlazor();
+            services.AddScoped<TooltipService>();
             services.AddHttpContextAccessor();
             services
                 .AddBlazorise( options =>
