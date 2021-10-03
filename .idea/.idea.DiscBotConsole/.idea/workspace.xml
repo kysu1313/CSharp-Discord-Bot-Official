@@ -13,24 +13,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b554b858-593d-4960-a20b-609925607edd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile-old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewDockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DiscBotConsole/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotApi/BotApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotApi/BotApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/Register.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Areas/Identity/Pages/Account/Register.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/BotDash.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/BotDash.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Components/UsageGraph.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/ControlPanelModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Models/PageModels/LinkAccountModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Controls/ControlPanel.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BotDash/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BotDash/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Helpers/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Helpers/Helper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/ClassLibrary.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/Models/ContextModels/UserModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/CommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscBotConsole/DiscBotConsole.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/DiscBotConsole.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/AppDataContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/AppDataContextFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassLibrary/DataContext/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole.sln" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscBotConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiscBotConsole/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +84,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7ca8898b690a4181a32a9cf767cedb1ea9c28/39/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6e3212d57d1d4cfc9914680fd43feb3856790/73/Check.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BotDash/obj/Debug/net5.0/Razor/Components/UsageGraph.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BotDash/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86106d7203664ebfa9adfa0ecee28cc182e978/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc7c4b7c0cf43c18d518c817363ad206b000/23/a0db9a67/SocketVoiceChannel.cs" root0="SKIP_HIGHLIGHTING" />
@@ -295,7 +289,8 @@
       <workItem from="1632701286663" duration="4847000" />
       <workItem from="1632706867507" duration="12310000" />
       <workItem from="1633049124799" duration="3149000" />
-      <workItem from="1633052303877" duration="15026000" />
+      <workItem from="1633052303877" duration="16273000" />
+      <workItem from="1633215162803" duration="5803000" />
     </task>
     <servers />
   </component>
@@ -488,6 +483,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/BotDash/Models/ComponentModels/UsageGraphModel.cs</url>
+          <line>64</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotDash\Models\ComponentModels\UsageGraphModel.cs" initialLine="64" containingFunctionPresentation="method 'GetYAxis'">
+            <startOffsets>
+              <option value="2612" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2613" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/BotApi/Api/HelperApiController.cs</url>
+          <line>207</line>
+          <properties documentPath="D:\PROGRAMS\C#\DiscBotConsole2\BotApi\Api\HelperApiController.cs" initialLine="207" containingFunctionPresentation="method 'GetTotalUserCommands'">
+            <startOffsets>
+              <option value="6408" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6409" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

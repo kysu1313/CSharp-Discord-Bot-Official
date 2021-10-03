@@ -29,7 +29,7 @@ namespace ClassLibrary.Data
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlite(_config.GetConnectionString("DefaultDb"));
-                optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultDb"));
+                optionsBuilder.UseSqlServer(_config.GetConnectionString("ProductionDb"));
 
             }
             base.OnConfiguring(optionsBuilder);

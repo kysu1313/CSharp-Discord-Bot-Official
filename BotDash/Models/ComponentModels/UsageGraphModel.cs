@@ -41,25 +41,24 @@ namespace BotDash.Models.ComponentModels
 
         private async Task InitializeVars()
         {
-            if (_currAuth.User is { Identity: { IsAuthenticated: true } })
-            {
-                _isLoggedIn = true;
-                var name = _currAuth.User.Identity.Name;
-                var apiResp = await ApiHelper.CallApi(_baseUrl, "HelperApi/api/getuserfromusername", name);
-                var userModel = JsonConvert.DeserializeObject<UserModel>(apiResp);
-                // var userModel = await dto.GetUser(name, null);
-                if (userModel != null && userModel.hasLinkedAccount)
-                {
-                    _servers = await GetPersonalServers(userModel);
-                    _commands = await GetPersonalCommands(userModel);
-                    GetYAxis(_servers, _commands);
-                    return;
-                }
-            }
-            _totalUsers = await GetUsers();
-            _totalServers = await GetServers();
-            _totalCommands = await GetCommands();
-            GetYAxis(_totalServers, _totalCommands);
+            // if (_currAuth.User is { Identity: { IsAuthenticated: true } })
+            // {
+            //     _isLoggedIn = true;
+            //     var name = _currAuth.User.Identity.Name;
+            //     var apiResp = await ApiHelper.CallApi(_baseUrl, "HelperApi/api/getuserfromusername", name);
+            //     var userModel = JsonConvert.DeserializeObject<UserModel>(apiResp);
+            //     // var userModel = await dto.GetUser(name, null);
+            //     if (userModel != null && userModel.hasLinkedAccount)
+            //     {
+            //         _servers = await GetPersonalServers(userModel);
+            //         _commands = await GetPersonalCommands(userModel);
+            //         GetYAxis(_servers, _commands);
+            //     }
+            // }
+            // _totalUsers = await GetUsers();
+            // _totalServers = await GetServers();
+            // _totalCommands = await GetCommands();
+            // GetYAxis(_totalServers, _totalCommands);
         }
 
         private void GetYAxis(List<ServerModel> svrs, List<CommandModel> cmds)
