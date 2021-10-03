@@ -20,7 +20,7 @@ namespace ClassLibrary.DataContext
                 .AddJsonFile(path: "appsettings.json")
                 .Build();
 
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultDb"));
+            optionsBuilder.UseSqlServer(config.GetConnectionString("ProductionDb"));
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }

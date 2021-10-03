@@ -150,7 +150,7 @@ namespace BotApi.Api
 
         // GET: api/HelperApi
         [HttpGet]
-        [Route("api/getcommandsinserver{string}")]
+        [Route("api/getcommandsinserver{userId}")]
         public async Task<ActionResult> GetCommandsInServers(string userId)
         {
             try
@@ -201,7 +201,7 @@ namespace BotApi.Api
 
         // GET: api/HelperApi
         [HttpGet]
-        [Route("api/gettotalusercommands{string}")]
+        [Route("api/gettotalusercommands{userId}")]
         public async Task<ActionResult> GetTotalUserCommands(string userId)
         {
             try
