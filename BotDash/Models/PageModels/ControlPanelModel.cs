@@ -145,7 +145,7 @@ namespace BotDash.Models.PageModels
             {
                 foreach (var c in _commands)
                 {
-                    if (_commandNames != null) 
+                    if (_commandNames != null && c.commandName != null) 
                         _commandNames.Add(c.commandName, c.commandId);
                 }                
             }
