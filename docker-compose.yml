@@ -1,14 +1,15 @@
 version: "3.4"
 
 services:
-  image: nginx-core # Our custom NGINX Docker image  
-    container_name: "nginxcore" # Name the service  
-    ports:
-      - "8080:80"
+  nginx:
+    image: nginx-core # Our custom NGINX Docker image  
+      container_name: "nginxcore" # Name the service  
+      ports:
+        - "8080:80"
   ConsoleBackend:
     image: ksups111/botapi:dev1.9
     ports:
-      - "5003:5004"
+      - "5003:80"
     build:
       context: .
       dockerfile: Dockerfile.web
@@ -16,7 +17,9 @@ services:
   WebFrontend:
     image: ksups111/dash:dev1.1
     ports:
-      - "5001:5002"
+      - "5001:80"
     build:
       context: .
       dockerfile: Dockerfile.con
+
+
