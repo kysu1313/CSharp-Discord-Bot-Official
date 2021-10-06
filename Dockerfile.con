@@ -1,0 +1,43 @@
+
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY DiscordBotProject/DiscBotConsole.sln ./
+COPY ["DiscordBotProject/DiscBotConsole/DiscBotConsole.csproj", "DiscordBotProject/DiscBotConsole/"]
+COPY ["DiscordBotProject/BotApi/BotApi.csproj", "DiscordBotProject/BotApi/"]
+COPY ["DiscordBotProject/ClassLibrary/ClassLibrary.csproj", "DiscordBotProject/ClassLibrary/"]
+COPY ["DiscordBotProject/BusinessLogic/BusinessLogic.csproj", "DiscordBotProject/BusinessLogic/"]
+
+RUN dotnet restore DiscordBotProject/DiscBotConsole/DiscBotConsole.csproj
+RUN dotnet restore DiscordBotProject/ClassLibrary/ClassLibrary.csproj
+RUN dotnet restore DiscordBotProject/BusinessLogic/BusinessLogic.csproj
+RUN dotnet restore DiscordBotProject/BotApi/BotApi.csproj
+
+COPY . .
+WORKDIR "/src/DiscordBotProject/DiscBotConsole"
+RUN dotnet build "DiscBotConsole.csproj" -c Release -o /app
+
+WORKDIR "/src/DiscordBotProject/BotApi"
+RUN dotnet build "BotApi.csproj" -c Release -o /app
+
+#WORKDIR "/src/BotDash"
+#RUN dotnet build "BotDash.csproj" -c Release -o /app
+#FROM build AS publish
+#RUN dotnet publish "DiscBotConsole.csproj" -c Release -o /app/publish
+#ENV ASPNETCORE_ENVIRONMENT Development
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 5003
+EXPOSE 5004
+
+FROM build AS publish
+RUN dotnet publish -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+
+ENTRYPOINT ["dotnet", "DiscBotConsole.dll"]
