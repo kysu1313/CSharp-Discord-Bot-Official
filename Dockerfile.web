@@ -8,12 +8,11 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
 WORKDIR /src
-COPY ./BotDash/BotDash.csproj BotDash/
-#COPY ./ClassLibrary/ClassLibrary.csproj .
+COPY ./DiscordBotProject/BotDash/BotDash.csproj DiscordBotProject/BotDash/
 
-RUN dotnet restore BotDash/BotDash.csproj
+RUN dotnet restore DiscordBotProject/BotDash/BotDash.csproj
 COPY . .
-WORKDIR /src/BotDash
+WORKDIR /src/DiscordBotProject/BotDash
 RUN dotnet build "BotDash.csproj" -c Release -o /app
 
 FROM build AS publish
