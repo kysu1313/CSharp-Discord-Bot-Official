@@ -1,0 +1,16 @@
+
+
+version: '3.4'
+
+services:
+  webfrontend:
+    image: ${DOCKER_REGISTRY-}botapi:1.8
+    build:
+      context: .
+      dockerfile: WebFrontEnd/Dockerfile
+
+  mywebapi:
+    image: ${DOCKER_REGISTRY-}dash:dev1.0
+    build:
+      context: .
+      dockerfile: MyWebAPI/Dockerfile
