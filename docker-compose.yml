@@ -3,7 +3,7 @@ version: "3.4"
 services:
   
   Nginx:
-    image: nginx-core # Our custom NGINX Docker image  
+    image: nginx # Our custom NGINX Docker image  
       container_name: "nginxcore" # Name the service  
       ports:
         - "8080:80"
