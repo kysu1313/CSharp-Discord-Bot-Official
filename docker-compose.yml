@@ -1,10 +1,11 @@
-version: "3.4"
+import ruamel.yaml
 
+yaml_str = """\
+version: "3.4"
 services:
-  
   Nginx:
-    image: nginx # Our custom NGINX Docker image  
-      container_name: "nginxcore" # Name the service  
+    image: nginx
+      container_name: "nginxcore"
       ports:
         - "8080:80"
     networks:  
@@ -27,8 +28,12 @@ services:
       context: .
       dockerfile: Dockerfile.con
     networks:  
-      - mynetwork
+      - mynetwork  
+"""
 
-networks:  
-  mynetwork: # User-Defined Network with the name mynetwork  
-    driver: bridge  
+#networks:  
+#  mynetwork:
+#    driver: bridge
+
+data = ruamel.yaml.round_trip_load(yaml_str)
+print(ruamel.yaml.round_trip_dump(data))
