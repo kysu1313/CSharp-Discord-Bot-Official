@@ -7,6 +7,8 @@ services:
       container_name: "nginxcore" # Name the service  
       ports:
         - "8080:80"
+    networks:  
+      - mynetwork
   ConsoleBackend:
     image: ksups111/botapi:dev1.9
     ports:
@@ -14,6 +16,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.web
+    networks:  
+      - mynetwork
 
   WebFrontend:
     image: ksups111/dash:dev1.1
@@ -22,5 +26,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.con
+    networks:  
+      - mynetwork
 
-
+networks:  
+  mynetwork: # User-Defined Network with the name mynetwork  
+    driver: bridge  
