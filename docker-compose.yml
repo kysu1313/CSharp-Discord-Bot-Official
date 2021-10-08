@@ -1,39 +1,34 @@
-import ruamel.yaml
-
-yaml_str = """\
-version: '3'
+version: "3.8"
 services:
   Nginx:
     image: nginx
-      container_name: "nginxcore"
-      ports:
-        - "8080:80"
-    networks:  
+    container_name: "nginxcore"
+    ports:
+      - "8080:80"
+      - "443:443"
+    networks:
       - mynetwork
   ConsoleBackend:
-    image: ksups111/botapi:dev1.9
+    image: "ksups111/botapi:dev1.9"
     ports:
-      - "5003:80"
+      - "5001:80"
+      - "5002:443"
     build:
       context: .
-      dockerfile: Dockerfile.web
-    networks:  
+      dockerfile: "Dockerfile.web"
+    networks:
       - mynetwork
 
   WebFrontend:
-    image: ksups111/dash:dev1.1
+    image: "ksups111/dash:dev1.1"
     ports:
-      - "5001:80"
+      - "5003:80"
+      - "5004:443"
     build:
       context: .
-      dockerfile: Dockerfile.con
-    networks:  
-      - mynetwork  
-"""
-
-#networks:  
-#  mynetwork:
-#    driver: bridge
-
-data = ruamel.yaml.round_trip_load(yaml_str)
-print(ruamel.yaml.round_trip_dump(data))
+      dockerfile: "Dockerfile.con"
+    networks:
+      - "mynetwork"
+networks:
+  mynetwork: # User-Defined Network with the name mynetwork
+    driver: bridge

@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  Nginx:
+    image: nginx
+    container_name: "nginxcore"
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork
